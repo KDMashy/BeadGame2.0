@@ -1,0 +1,142 @@
+Minden egy kliensben lesz.
+
+A mentések egy XML fájl(ok) segítségével lesznek kezelve
+
+illetve megjelenítve egy táblázattal
+
+0/1 "kapcsoló" alapján működik néhány funkció
+
+A játék menete megmarad, de átalakul
+
+Hozzá lesz adva a heal illetve ?mana? funkció
+
+Több mentés lesz lehetséges
+
+Lesz story mind első, mind farm játékra
+
+NPC-k tervezése, bevezetése a storyval
+
+?itemek?
+
+?új enemy?
+
+?companion?
+
+Új sebzés, szint, egyéb számolás
+
+Átláthatóbb forráskód (igyekszem)
+
+
+KURVAFONTOS: DESTRUCTION LVL 100 egy beszélgetésre (skillek)
+
+
+----------------------------------------------------------------
+Login
+    
+    EXIT
+    
+    CREATE
+    
+        NEW CHAR
+        
+        SEX
+        
+        SAVE
+    
+    LOAD
+        
+        IF
+        CHAR LOAD = 0
+        !ENABLED
+        
+        ELSE
+        
+        ?LOAD CHAR?
+            choose
+----------------------------------------------------------------
+            game
+
+                EXIT
+
+                LOG OUT
+                    Login
+
+                EIO
+                LOAD ENEMY INFO
+                chart
+
+                SHELDON
+                rand.(0,100)
+                
+                    Sheldon
+
+----------------UNEXPECTED JOURNEY----------------
+                    ENEMY: 
+                        wolf
+                        bear
+                        vyvern
+
+                    STORY:
+                    Egy másik világban találod magad hírtelen.
+                    Egy ismeretlen füves pusztán, körülvéve erdővel, hegyekkel.
+                    Egy karddal/íjjal nálad, s megjelenik egy 
+                    HP-MANA-bar a szemed sarkában, és baljós zenét hallasz...
+                    
+                    FARM:
+                    Visszatérsz a gyökereidhez, hogy ismereteid tágítsd, és fejlődj.
+
+----------------TO THE MOUNTAINS----------------
+                    ENEMY:
+                        goblin
+                        harpy worker
+                        harpy warrior
+
+                    STORY:
+                    Mikor már elég magas szintűnek érzed magad, nekiindulsz a világnak, találsz falut, várost, majd eljutsz a hegyekig,
+                    hol igyekszel megmászni őket, nehézkes utad azonban nem kifizetendő, bár sok falusit és városit ismersz meg...
+                    
+                    FARM:
+                    Sokszor visszatérsz, hogy további tapasztalatokat szerezz, akár találkozz falsiakkal, kereskedőkkel.
+
+----------------CAVES OF THE MOUNTAIN----------------
+                    ENEMY:
+                        troll
+                        high mount goblin
+                        goblin king
+
+                    STORY:
+                    Szerencsét próbálsz egy baljós kinézetű barlang felé,
+                    melynek bejárata inkább váré mint barlangé, s megpróbálsz átkelni a hegyen...
+                    
+                    FARM:
+                    A hely zsúfoltságának köszönhetően sok tapasztalatot szerezhetsz.
+
+----------------BORDER OF WILDERNESS----------------
+                    ENEMY:
+                        watcher
+                        behemoth
+                        thungerjaw
+
+                    STORY:
+                    Átkeltél a hegyeken, a falusiak által tanult történetek
+                    alapján kialakult benned mit kell tenned hogy újra hazatérhess, és te ezt kitűzöd magadnak célul, neki indulva
+                    a egy hatalmas, titokzatos, és veszélyes erdőnek...
+                    
+                    FARM:
+                    Kevés ellenfél, de sok tapasztalatot szerezhetsz.
+
+----------------DOME OF DOOM----------------
+                    ENEMY:
+                        werewolf
+                        vampire
+                        KALKULUS
+
+                    STORY:
+                    Megtalálod a főgonosz várát, akit legyőzve hazakerülhetsz a saját világodba, bár ha szeretnél maradhatsz is, megkímélve az életét, előbbi esetben vége a játéknak, utóbbiban...FOLYT KÖV?
+                    
+                    FARM:
+                    Ha maradsz, tapasztalatot szerezhetsz, bár a KALKULUS legyőzésével minden alkalammal vállalni kell hogy maradsz, vagy nem, illetve beállíthatod első legyúzés után hogy a KALKULUS kimaradjon, ezt elkerülve.
+----------------------------------------------------------------                    
+        DONT LOAD
+    
+Login
