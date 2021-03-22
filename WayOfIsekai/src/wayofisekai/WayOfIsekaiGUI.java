@@ -57,6 +57,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cName = new javax.swing.JLabel();
         cNameText = new javax.swing.JTextField();
         createC = new javax.swing.JButton();
+        profilkep = new javax.swing.JLabel();
+        alairas = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -323,6 +325,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
+        profilkep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/profilkep.gif"))); // NOI18N
+        profilkep.setToolTipText("");
+
+        alairas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/aláírás.png"))); // NOI18N
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
@@ -330,14 +337,25 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(loginLayout.createSequentialGroup()
                 .addGap(495, 495, 495)
                 .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(505, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(profilkep, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(alairas, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
-                .addGap(247, 247, 247)
-                .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(profilkep)
+                        .addGap(18, 18, 18)
+                        .addComponent(alairas)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         lpFrame.add(login, "card2");
@@ -485,6 +503,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel alairas;
     private javax.swing.JLabel cName;
     private javax.swing.JLabel cNameDisp;
     private javax.swing.JLabel cNameDot;
@@ -506,6 +525,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
+    private javax.swing.JLabel profilkep;
     private javax.swing.JLabel sex;
     private javax.swing.JPanel sheldon;
     // End of variables declaration//GEN-END:variables
