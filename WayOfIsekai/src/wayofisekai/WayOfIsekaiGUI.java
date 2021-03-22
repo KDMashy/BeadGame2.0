@@ -37,6 +37,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lpFrame = new javax.swing.JLayeredPane();
         game = new javax.swing.JPanel();
+        cProf = new javax.swing.JPanel();
+        cNameDot = new javax.swing.JLabel();
+        cNameDisp = new javax.swing.JLabel();
+        cSex = new javax.swing.JLabel();
+        cSexDisp = new javax.swing.JLabel();
         fight = new javax.swing.JPanel();
         dialogue = new javax.swing.JPanel();
         sheldon = new javax.swing.JPanel();
@@ -71,15 +76,80 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         lpFrame.setPreferredSize(new java.awt.Dimension(1600, 800));
         lpFrame.setLayout(new java.awt.CardLayout());
 
+        cProf.setBackground(new java.awt.Color(96, 0, 25));
+        cProf.setPreferredSize(new java.awt.Dimension(350, 790));
+
+        cNameDot.setBackground(new java.awt.Color(255, 226, 163));
+        cNameDot.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cNameDot.setForeground(new java.awt.Color(255, 192, 160));
+        cNameDot.setText("Character Name: ");
+
+        cNameDisp.setBackground(new java.awt.Color(255, 226, 163));
+        cNameDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cNameDisp.setForeground(new java.awt.Color(255, 192, 160));
+        cNameDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cNameDisp.setText("name");
+        cNameDisp.setToolTipText("");
+
+        cSex.setBackground(new java.awt.Color(255, 226, 163));
+        cSex.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex.setForeground(new java.awt.Color(255, 192, 160));
+        cSex.setText("Sex: ");
+        cSex.setToolTipText("");
+
+        cSexDisp.setBackground(new java.awt.Color(255, 226, 163));
+        cSexDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSexDisp.setForeground(new java.awt.Color(255, 192, 160));
+        cSexDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cSexDisp.setText("Sex: ");
+        cSexDisp.setToolTipText("");
+
+        javax.swing.GroupLayout cProfLayout = new javax.swing.GroupLayout(cProf);
+        cProf.setLayout(cProfLayout);
+        cProfLayout.setHorizontalGroup(
+            cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cProfLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(cProfLayout.createSequentialGroup()
+                        .addComponent(cNameDot)
+                        .addGap(0, 202, Short.MAX_VALUE))
+                    .addGroup(cProfLayout.createSequentialGroup()
+                        .addComponent(cSex)
+                        .addGap(18, 18, 18)
+                        .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        cProfLayout.setVerticalGroup(
+            cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cProfLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cNameDot)
+                .addGap(18, 18, 18)
+                .addComponent(cNameDisp)
+                .addGap(18, 18, 18)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cSex)
+                    .addComponent(cSexDisp))
+                .addContainerGap(682, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout gameLayout = new javax.swing.GroupLayout(game);
         game.setLayout(gameLayout);
         gameLayout.setHorizontalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createSequentialGroup()
+                .addContainerGap(1244, Short.MAX_VALUE)
+                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         gameLayout.setVerticalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(gameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lpFrame.add(game, "card3");
@@ -324,15 +394,14 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         try {
             
-            //mentés
-        
-            //név alaphelyzetbe állítása, gombok ->enabled
+            //Mentés, név alaphelyzetbe állítása, gombok ->enabled
             if (cNameText.getText().length() < 1) {
                 
                 throw new Exception();
                 
             } else {
                 
+                Character ch = new Character(cNameText.getText(), charSex);
                 cNameText.setText("");
                 
             }
@@ -352,16 +421,19 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createCMouseClicked
 
     //Nemek csekkolása, radio-button váltás
+    private static Boolean charSex;
     
     private void femaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_femaleStateChanged
         
         if (female.isSelected()) {
             female.setEnabled(Boolean.FALSE);
             male.setSelected(Boolean.FALSE);
+            charSex = Boolean.TRUE;
         }
         else {
             female.setEnabled(Boolean.TRUE);
             male.setSelected(Boolean.TRUE);
+            charSex = Boolean.FALSE;
         }
         
     }//GEN-LAST:event_femaleStateChanged
@@ -371,10 +443,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (male.isSelected()) {
             male.setEnabled(Boolean.FALSE);
             female.setSelected(Boolean.FALSE);
+            charSex = Boolean.FALSE;
         }
         else {
             male.setEnabled(Boolean.TRUE);
             female.setSelected(Boolean.TRUE);
+            charSex = Boolean.TRUE;
         }
         
     }//GEN-LAST:event_maleStateChanged
@@ -412,7 +486,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cName;
+    private javax.swing.JLabel cNameDisp;
+    private javax.swing.JLabel cNameDot;
     private javax.swing.JTextField cNameText;
+    private javax.swing.JPanel cProf;
+    private javax.swing.JLabel cSex;
+    private javax.swing.JLabel cSexDisp;
     private javax.swing.JButton createC;
     private javax.swing.JPanel dialogue;
     private javax.swing.JButton exit;
