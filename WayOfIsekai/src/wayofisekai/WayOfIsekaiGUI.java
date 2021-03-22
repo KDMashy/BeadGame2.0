@@ -1,6 +1,7 @@
 
 package wayofisekai;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
@@ -321,16 +322,32 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void createCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCMouseClicked
         
-        //mentés
+        try {
+            
+            //mentés
         
-        //név alaphelyzetbe állítása, gombok ->enabled
-        cNameText.setText("");
-        load.setEnabled(Boolean.TRUE);
-        newSave.setEnabled(Boolean.TRUE);
-        exit.setEnabled(Boolean.TRUE);
-        
-        //newChar panel !visible
-        newChar.setVisible(Boolean.FALSE);
+            //név alaphelyzetbe állítása, gombok ->enabled
+            if (cNameText.getText().length() < 1) {
+                
+                throw new Exception();
+                
+            } else {
+                
+                cNameText.setText("");
+                
+            }
+            load.setEnabled(Boolean.TRUE);
+            newSave.setEnabled(Boolean.TRUE);
+            exit.setEnabled(Boolean.TRUE);
+
+            //newChar panel !visible
+            newChar.setVisible(Boolean.FALSE);
+            
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(rootPane, "A karakternek nevet kell adni!");
+            
+        }
         
     }//GEN-LAST:event_createCMouseClicked
 
