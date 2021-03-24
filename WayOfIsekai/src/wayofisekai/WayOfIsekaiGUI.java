@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
+    Character ch = new Character();
+    funkcio<Character> chF = new funkcio<Character>();
+    
     public WayOfIsekaiGUI() {
         initComponents();
         
@@ -16,8 +19,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
-        
-        
         
     }
     
@@ -59,6 +60,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         createC = new javax.swing.JButton();
         profilkep = new javax.swing.JLabel();
         alairas = new javax.swing.JLabel();
+        fName = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -330,17 +332,24 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         alairas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/aláírás.png"))); // NOI18N
 
+        fName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/cim.gif"))); // NOI18N
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
-                .addGap(495, 495, 495)
-                .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profilkep, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(alairas, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addGap(495, 495, 495)
+                        .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                        .addComponent(alairas))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(fName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(profilkep)))
                 .addContainerGap())
         );
         loginLayout.setVerticalGroup(
@@ -352,7 +361,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(loginLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(profilkep)
+                        .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(profilkep)
+                            .addComponent(fName))
                         .addGap(18, 18, 18)
                         .addComponent(alairas)))
                 .addContainerGap(142, Short.MAX_VALUE))
@@ -406,6 +417,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         //Játék betöltése
         meghiv(game);
         
+        cNameDisp.setText(ch.getName());
+        
     }//GEN-LAST:event_loadMouseClicked
 
     private void createCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCMouseClicked
@@ -419,7 +432,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 
             } else {
                 
-                Character ch = new Character(cNameText.getText(), charSex);
+                ch.setName(cNameText.getText());
+                ch.setSex(charSex);
+                chF.save(ch);
                 cNameText.setText("");
                 
             }
@@ -514,6 +529,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JButton createC;
     private javax.swing.JPanel dialogue;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel fName;
     private javax.swing.JRadioButton female;
     private javax.swing.JPanel fight;
     private javax.swing.JPanel game;

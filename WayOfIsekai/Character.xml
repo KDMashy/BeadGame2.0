@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<wayofisekai.Character>
+    <Character>
+        <lvl type="Integer">1</lvl>
+        <def type="Integer">30</def>
+        <sex type="Boolean">Female</sex>
+        <xp type="Integer">0</xp>
+        <name type="String">Test</name>
+        <hp type="Integer">350</hp>
+        <atk type="Integer">50</atk>
+        <sp type="Integer">0</sp>
+    </Character>
+</wayofisekai.Character>
