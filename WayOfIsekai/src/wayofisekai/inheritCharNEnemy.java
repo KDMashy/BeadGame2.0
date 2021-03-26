@@ -13,6 +13,8 @@ public class inheritCharNEnemy {
     protected Integer atk;
     @gFN(value = "getDef", type = Integer.class)
     protected Integer def;
+    @gFN(value = "getLvl", type = Integer.class)
+    protected Integer lvl;
     
     //ős konstruktor
     public inheritCharNEnemy(String name, Integer hp, Integer atk, Integer def) {
@@ -28,6 +30,12 @@ public class inheritCharNEnemy {
     public String getName(){
         
         return this.name;
+        
+    }
+    
+    public Integer getLvl(){
+        
+        return this.lvl;
         
     }
     

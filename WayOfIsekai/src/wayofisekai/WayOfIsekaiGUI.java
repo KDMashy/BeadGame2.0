@@ -3,6 +3,7 @@ package wayofisekai;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
@@ -19,7 +20,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
-        
     }
     
     public void meghiv(JPanel name){
@@ -30,6 +30,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         lpFrame.revalidate();
         
     }
+    
+    /*private void fillTable(){ //Enemy leírás
+        DefaultTableModel dtm = new DefaultTableModel(0, 0);
+        String header[] = new String [] {"Name", "Hp", "Dmg", "Def", "quest"};
+        dtm.setColumnIdentifiers(header);
+        this.tbEnemy.setModel(dtm);
+        for (Enemy k : this.listenemy) {
+            if (k.getName().contains("KALKULUS")) {
+                dtm.addRow(new Object[] {"???", k.getHp()*2*external.getLvl(), k.getDmg()*2*external.getLvl(), 
+                    k.getDef()*2*external.getLvl(), k.getQuest()*2*external.getLvl()});
+            } else {
+                dtm.addRow(new Object[] {k.getName(), k.getHp()*2*external.getLvl(), k.getDmg()*2*external.getLvl(), 
+                    k.getDef()*2*external.getLvl(), k.getQuest()*2*external.getLvl()});
+            }
+            
+       }
+    }*/
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -405,7 +422,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         //gombok !enabled
         load.setEnabled(Boolean.FALSE);
         newSave.setEnabled(Boolean.FALSE);
-        exit.setEnabled(Boolean.FALSE);
+        exit.setVisible(Boolean.FALSE);
         
         //Nem alap beállítása
         female.setSelected(Boolean.TRUE);
@@ -434,13 +451,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 
                 ch.setName(cNameText.getText());
                 ch.setSex(charSex);
-                chF.save(ch);
+                chF.saveObject(ch, ch.getName());
                 cNameText.setText("");
                 
             }
             load.setEnabled(Boolean.TRUE);
             newSave.setEnabled(Boolean.TRUE);
-            exit.setEnabled(Boolean.TRUE);
+            exit.setVisible(Boolean.TRUE);
 
             //newChar panel !visible
             newChar.setVisible(Boolean.FALSE);

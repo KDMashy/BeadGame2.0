@@ -20,6 +20,7 @@ public class Enemy extends inheritCharNEnemy{
     public Enemy(String name, Integer hp, Integer atk, Integer def, Integer dRate){
         
         super(name, hp, atk, def);
+        this.lvl = 1;
         this.xpDrop = rnd.nextInt(dRate) + 50;
         this.moneyDrop = rnd.nextInt(dRate) + 50;
         
@@ -41,6 +42,13 @@ public class Enemy extends inheritCharNEnemy{
     public Integer getDRate(){
         
         return this.dRate;
+        
+    }
+    
+    //Setter függvények
+    public void setEnemyLvl(Character ch){
+        
+        this.lvl = ch.getLvl() + 1;
         
     }
     

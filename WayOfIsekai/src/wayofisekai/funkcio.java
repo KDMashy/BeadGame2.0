@@ -24,10 +24,11 @@ import org.w3c.dom.NodeList;
 
 public class funkcio<gameClass> {
     
-    public Boolean save(gameClass obj){
+    public Boolean saveObject(gameClass obj, String name){
         
         String objName = obj.getClass().getSimpleName();
         String fileName = objName + ".xml";
+        Boolean first = Boolean.FALSE;
         
         try {
             
@@ -43,14 +44,63 @@ public class funkcio<gameClass> {
                 file.createNewFile();
                 Document xml = db.newDocument();
                 t.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-                String mainCellName = obj.getClass().getName();
+                String mainCellName = obj.getClass().getSimpleName();
                 Element mainCell = xml.createElement(mainCellName);
                 xml.appendChild(mainCell);
                 DOMSource source = new DOMSource(xml);
                 StreamResult result = new StreamResult(file);
                 t.transform(source, result);
+                first = Boolean.TRUE;
+                
+            } 
+            if (first == Boolean.TRUE) {
+                
+                saveMethod(obj, file, name);
+                
+            } else {
+                
+                try {
+                    
+                    Character xy = new Character();
+                    xy = loadGame(obj, name);
+                    
+                    if (xy.getName().contains(name)) {
+                        
+                        throw new van();
+                        
+                    } else {
+                        
+                        saveMethod(obj, file, name);
+                        
+                    }
+                    
+                } catch (van ex){
+                    
+                    System.out.println("Van már ilyen karakter");
+                    
+                }
                 
             }
+            
+            
+        } catch (Exception ex) {
+            
+            System.err.println("Error: " + ex.toString());
+            
+        }
+        
+        return Boolean.FALSE;
+        
+    }
+    
+    public Boolean saveMethod(gameClass obj, File file, String name){
+        
+        try {
+            
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            TransformerFactory tf = TransformerFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Transformer t = tf.newTransformer();
             
             //Mentési folyamat
             Field[] properties = obj.getClass().getDeclaredFields();
@@ -83,7 +133,8 @@ public class funkcio<gameClass> {
             Document xml = db.parse(file);
             xml.normalize();
             Element mainCell = (Element)xml.getFirstChild();
-            Element newCell = xml.createElement(obj.getClass().getSimpleName());
+            
+            Element newCell = xml.createElement(name);
             mainCell.appendChild(newCell);
             
             for (Map.Entry<String, HashMap<String, String>> data : dataHM.entrySet()) {
@@ -113,7 +164,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            System.err.println("Error: " + ex.toString());
+            System.out.println("Error: " + ex.toString());
             
         }
         
@@ -121,7 +172,7 @@ public class funkcio<gameClass> {
         
     }
     
-    public Object[] load(gameClass obj) {
+    public Object[] loadObjectArray(gameClass obj) {
         
         Object[] objects = null;
         String fileName = obj.getClass().getSimpleName() + ".xml";
@@ -182,5 +233,103 @@ public class funkcio<gameClass> {
         return objects;
         
     }
+    
+    public ArrayList loadList(gameClass kar){
+        
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            
+            String fileName = kar.getClass().getSimpleName() + ".xml";
+            File file = new File(fileName);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document xml = db.parse(file);
+            xml.normalize();
+            
+            NodeList charByTag = xml.getElementsByTagName(kar.getClass().getSimpleName());
+            for (Integer i = 0; i < charByTag.getLength(); i++) {
+                
+                Node charTag = charByTag.item(i);
+                Element charData = (Element)charTag;
+                String name = charData.getElementsByTagName("name").item(0).getTextContent();
+                for (Integer j = 0; j < list.size(); j++) {
+                    
+                    if (list.contains(name) == Boolean.FALSE) {
+                        
+                        list.add(j, name);
+                        
+                    } else {
+                        
+                        throw new Exception();
+                        
+                    }
+                    
+                }
+                
+                if (list.size() == 0) {
+                        
+                        list.add(name);
+                        
+                }
+                
+            }
+            
+        } catch (Exception ex){
+            
+            System.err.println("Error: " + ex.toString());
+            
+        }
+        return list;
+        
+    }
+    
+    public Character loadGame(gameClass kar, String text){
+        
+        Character loadedChar = new Character();
+        
+        try {
+            
+            String fileName = kar.getClass().getSimpleName() + ".xml";
+            File file = new File(fileName);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document xml = db.parse(file);
+            xml.normalize();
+            
+            NodeList charByTag = xml.getElementsByTagName(text);
+            for (Integer i = 0; i < charByTag.getLength(); i++) {
+                
+                Node charTag = charByTag.item(i);
+                Element charData = (Element)charTag;
+                String name = charData.getElementsByTagName("name").item(0).getTextContent();
+                Integer lvl = Integer.parseInt(charData.getElementsByTagName("lvl").item(0).getTextContent());
+                Integer xp = Integer.parseInt(charData.getElementsByTagName("xp").item(0).getTextContent());
+                Boolean sex = Boolean.parseBoolean(charData.getElementsByTagName("sex").item(0).getTextContent());
+                loadedChar = new Character(name, lvl, xp, sex);
+                
+            }
+            
+        } catch (Exception ex) {
+            
+            System.err.println("Error: " + ex.toString());
+            
+        }
+        return loadedChar;
+        
+    }
 
+    public Integer lvlUpXp(Integer lvl){
+        
+        Integer lvlUp = 0;
+        
+        if (lvl <= 15) lvlUp = lvl * 1500;
+        else if (lvl <= 30) lvlUp = lvl * 3000;
+        else if (lvl <= 45) lvlUp = lvl * 6000;
+        else lvlUp = lvl * 10000;
+        
+        return lvlUp;
+    }
+    
 }
+
+class van extends Exception{}

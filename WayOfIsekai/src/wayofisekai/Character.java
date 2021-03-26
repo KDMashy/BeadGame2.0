@@ -5,8 +5,6 @@ import anotation.gFN;
 public class Character extends inheritCharNEnemy {
  
     //Karakter saját tulajdonságainak deklarálása
-    @gFN(value = "getLvl", type = Integer.class)
-    private Integer lvl;
     @gFN(value = "getXp", type = Integer.class)
     private Integer xp;
     @gFN(value = "getSp", type = Integer.class)
@@ -25,6 +23,20 @@ public class Character extends inheritCharNEnemy {
         
     }
     
+    public Character(String name, Integer lvl, Integer xp, Boolean sex){
+        
+        super(name, 350, 50, 30);
+        this.lvl = lvl;
+        this.xp = xp;
+        this.sex = sex;
+        
+        this.hp = 350 + lvl * 50;
+        this.atk = 50 + lvl * 25;
+        this.def = 30 + lvl * 10;
+        
+        
+    }
+    
     public Character(String name, Boolean sex) {
         
         super(name, 350, 50, 30);
@@ -39,11 +51,6 @@ public class Character extends inheritCharNEnemy {
     public void lvlUp() { this.lvl++; }
     
     //Getter függvények
-    public Integer getLvl(){
-        
-        return this.lvl;
-        
-    }
     
     public Integer getXp(){
         
