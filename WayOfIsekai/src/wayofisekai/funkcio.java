@@ -44,7 +44,7 @@ public class funkcio<gameClass> {
                 file.createNewFile();
                 Document xml = db.newDocument();
                 t.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-                String mainCellName = obj.getClass().getSimpleName();
+                String mainCellName = obj.getClass().getName();
                 Element mainCell = xml.createElement(mainCellName);
                 xml.appendChild(mainCell);
                 DOMSource source = new DOMSource(xml);
@@ -55,22 +55,22 @@ public class funkcio<gameClass> {
             } 
             if (first == Boolean.TRUE) {
                 
-                saveMethod(obj, file, name);
+                saveMethod(obj, file);
                 
             } else {
                 
                 try {
                     
                     Character xy = new Character();
-                    xy = loadGame(obj, name);
+                    xy = loadGame(obj);
                     
-                    if (xy.getName().contains(name)) {
+                    if (xy.getName().contains(name) && xy.getName().length() == name.length()) {
                         
                         throw new van();
                         
                     } else {
                         
-                        saveMethod(obj, file, name);
+                        saveMethod(obj, file);
                         
                     }
                     
@@ -93,7 +93,7 @@ public class funkcio<gameClass> {
         
     }
     
-    public Boolean saveMethod(gameClass obj, File file, String name){
+    public Boolean saveMethod(gameClass obj, File file){
         
         try {
             
@@ -134,7 +134,7 @@ public class funkcio<gameClass> {
             xml.normalize();
             Element mainCell = (Element)xml.getFirstChild();
             
-            Element newCell = xml.createElement(name);
+            Element newCell = xml.createElement(obj.getClass().getSimpleName());
             mainCell.appendChild(newCell);
             
             for (Map.Entry<String, HashMap<String, String>> data : dataHM.entrySet()) {
@@ -234,7 +234,7 @@ public class funkcio<gameClass> {
         
     }
     
-    public ArrayList loadList(gameClass kar){
+    public ArrayList<String> loadList(gameClass kar){
         
         ArrayList<String> list = new ArrayList<>();
         try {
@@ -252,25 +252,7 @@ public class funkcio<gameClass> {
                 Node charTag = charByTag.item(i);
                 Element charData = (Element)charTag;
                 String name = charData.getElementsByTagName("name").item(0).getTextContent();
-                for (Integer j = 0; j < list.size(); j++) {
-                    
-                    if (list.contains(name) == Boolean.FALSE) {
-                        
-                        list.add(j, name);
-                        
-                    } else {
-                        
-                        throw new Exception();
-                        
-                    }
-                    
-                }
-                
-                if (list.size() == 0) {
-                        
-                        list.add(name);
-                        
-                }
+                list.add(name);
                 
             }
             
@@ -283,7 +265,7 @@ public class funkcio<gameClass> {
         
     }
     
-    public Character loadGame(gameClass kar, String text){
+    public Character loadGame(gameClass kar){
         
         Character loadedChar = new Character();
         
@@ -296,7 +278,7 @@ public class funkcio<gameClass> {
             Document xml = db.parse(file);
             xml.normalize();
             
-            NodeList charByTag = xml.getElementsByTagName(text);
+            NodeList charByTag = xml.getElementsByTagName(kar.getClass().getSimpleName());
             for (Integer i = 0; i < charByTag.getLength(); i++) {
                 
                 Node charTag = charByTag.item(i);

@@ -1,6 +1,7 @@
 
 package wayofisekai;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
+
     }
     
     public void meghiv(JPanel name){
