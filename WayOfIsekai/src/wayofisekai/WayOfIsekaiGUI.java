@@ -21,7 +21,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
-
+        loadPnl.setVisible(Boolean.FALSE);
     }
     
     public void meghiv(JPanel name){
@@ -33,22 +33,27 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }
     
-    /*private void fillTable(){ //Enemy leírás
+    private void fillTable(){
+        
+        //character táblázat feltöltés
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
-        String header[] = new String [] {"Name", "Hp", "Dmg", "Def", "quest"};
+        String header[] = new String [] {"Name", "Lvl", "Xp"};
         dtm.setColumnIdentifiers(header);
-        this.tbEnemy.setModel(dtm);
-        for (Enemy k : this.listenemy) {
-            if (k.getName().contains("KALKULUS")) {
-                dtm.addRow(new Object[] {"???", k.getHp()*2*external.getLvl(), k.getDmg()*2*external.getLvl(), 
-                    k.getDef()*2*external.getLvl(), k.getQuest()*2*external.getLvl()});
-            } else {
-                dtm.addRow(new Object[] {k.getName(), k.getHp()*2*external.getLvl(), k.getDmg()*2*external.getLvl(), 
-                    k.getDef()*2*external.getLvl(), k.getQuest()*2*external.getLvl()});
-            }
+        this.tbLoad.setModel(dtm);
+        ArrayList<Character> list = chF.loadList(ch);
+        for (Integer i = 0; i < list.size(); i++) {
+            dtm.addRow(new Object[] {list.get(i).getName(), list.get(i).getLvl(), list.get(i).getXp()});
+        }
+        //Combo box feltöltés
+        for (Character k : list) {
             
-       }
-    }*/
+            cBox.addItem(k.getName());
+            
+        }
+        
+        tbLoad.setEnabled(Boolean.FALSE);
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,9 +82,15 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cName = new javax.swing.JLabel();
         cNameText = new javax.swing.JTextField();
         createC = new javax.swing.JButton();
+        cimlbl = new javax.swing.JLabel();
         profilkep = new javax.swing.JLabel();
         alairas = new javax.swing.JLabel();
         fName = new javax.swing.JLabel();
+        loadPnl = new javax.swing.JPanel();
+        loadlbl = new javax.swing.JLabel();
+        cBox = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbLoad = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -316,6 +327,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        cimlbl.setBackground(new java.awt.Color(255, 102, 102));
+        cimlbl.setFont(new java.awt.Font("Footlight MT Light", 3, 24)); // NOI18N
+        cimlbl.setForeground(new java.awt.Color(255, 102, 102));
+        cimlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cimlbl.setText("Way of Isekai");
+
         javax.swing.GroupLayout logScreenLayout = new javax.swing.GroupLayout(logScreen);
         logScreen.setLayout(logScreenLayout);
         logScreenLayout.setHorizontalGroup(
@@ -325,7 +342,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(logScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(load, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newSave, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSave, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cimlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addComponent(newChar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -333,17 +351,20 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         logScreenLayout.setVerticalGroup(
             logScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logScreenLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(load, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(newSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logScreenLayout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(newChar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGroup(logScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logScreenLayout.createSequentialGroup()
+                        .addComponent(cimlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(load, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(newSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logScreenLayout.createSequentialGroup()
+                        .addComponent(newChar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
 
         profilkep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/profilkep.gif"))); // NOI18N
@@ -353,33 +374,80 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         fName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/cim.gif"))); // NOI18N
 
+        loadPnl.setBackground(new java.awt.Color(102, 102, 102));
+
+        loadlbl.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        loadlbl.setForeground(new java.awt.Color(255, 153, 102));
+        loadlbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loadlbl.setText("Load game");
+
+        tbLoad.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbLoad);
+
+        javax.swing.GroupLayout loadPnlLayout = new javax.swing.GroupLayout(loadPnl);
+        loadPnl.setLayout(loadPnlLayout);
+        loadPnlLayout.setHorizontalGroup(
+            loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loadPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        loadPnlLayout.setVerticalGroup(
+            loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loadPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(loadPnlLayout.createSequentialGroup()
+                        .addComponent(loadlbl)
+                        .addGap(18, 18, 18)
+                        .addComponent(cBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 114, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fName)
+                .addGap(119, 119, 119)
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(loadPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginLayout.createSequentialGroup()
-                        .addGap(495, 495, 495)
-                        .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
-                        .addComponent(alairas))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(fName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(profilkep)))
+                    .addComponent(alairas, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(profilkep, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginLayout.createSequentialGroup()
-                        .addGap(247, 247, 247)
+                        .addComponent(loadPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
                         .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(loginLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(profilkep)
                             .addComponent(fName))
@@ -434,9 +502,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
         
         //Játék betöltése
-        meghiv(game);
+        //meghiv(game);
+        //cNameDisp.setText(ch.getName());
+        //fillTable();
+        loadPnl.setVisible(Boolean.TRUE);
         
-        cNameDisp.setText(ch.getName());
         
     }//GEN-LAST:event_loadMouseClicked
 
@@ -538,6 +608,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alairas;
+    private javax.swing.JComboBox<String> cBox;
     private javax.swing.JLabel cName;
     private javax.swing.JLabel cNameDisp;
     private javax.swing.JLabel cNameDot;
@@ -545,6 +616,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel cProf;
     private javax.swing.JLabel cSex;
     private javax.swing.JLabel cSexDisp;
+    private javax.swing.JLabel cimlbl;
     private javax.swing.JButton createC;
     private javax.swing.JPanel dialogue;
     private javax.swing.JButton exit;
@@ -553,7 +625,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel fight;
     private javax.swing.JPanel game;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton load;
+    private javax.swing.JPanel loadPnl;
+    private javax.swing.JLabel loadlbl;
     private javax.swing.JPanel logScreen;
     private javax.swing.JPanel login;
     private javax.swing.JLayeredPane lpFrame;
@@ -563,5 +638,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel profilkep;
     private javax.swing.JLabel sex;
     private javax.swing.JPanel sheldon;
+    private javax.swing.JTable tbLoad;
     // End of variables declaration//GEN-END:variables
 }

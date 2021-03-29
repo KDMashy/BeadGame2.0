@@ -29,6 +29,7 @@ public class funkcio<gameClass> {
         String objName = obj.getClass().getSimpleName();
         String fileName = objName + ".xml";
         Boolean first = Boolean.FALSE;
+        Boolean nincs = Boolean.FALSE;
         
         try {
             
@@ -61,14 +62,19 @@ public class funkcio<gameClass> {
                 
                 try {
                     
-                    Character xy = new Character();
-                    xy = loadGame(obj);
+                    ArrayList<Character> xy = loadList(obj);
+                    for (Character k : xy){
+                        
+                        if (k.getName().contains(name) && k.getName().length() == name.length()) {
+                        
+                            nincs = Boolean.TRUE;
+                            throw new van();
+                        
+                        }
+                        
+                    }
                     
-                    if (xy.getName().contains(name) && xy.getName().length() == name.length()) {
-                        
-                        throw new van();
-                        
-                    } else {
+                    if (nincs == Boolean.FALSE) {
                         
                         saveMethod(obj, file);
                         
@@ -76,7 +82,7 @@ public class funkcio<gameClass> {
                     
                 } catch (van ex){
                     
-                    System.out.println("Van már ilyen karakter");
+                    System.err.println("Van már ilyen karakter");
                     
                 }
                 
@@ -164,7 +170,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            System.out.println("Error: " + ex.toString());
+            System.err.println("Error: " + ex.toString());
             
         }
         
@@ -172,103 +178,12 @@ public class funkcio<gameClass> {
         
     }
     
-    public Object[] loadObjectArray(gameClass obj) {
+    /* loadList azért szükséges, hogy egy listával kinyerjem az ősszes character.xml fájlban
+    található karaktert, pontosabban azok név, szint, és tapasztalat tulajdonságait, hogy
+    utána azt a betöltésnél egy táblázatba kiírassam, illetve egy comboBox segítségével választhassunk is közülük. */
+    public ArrayList<Character> loadList(gameClass kar){
         
-        Object[] objects = null;
-        String fileName = obj.getClass().getSimpleName() + ".xml";
-        
-        File file = new File(fileName);
-        try {
-            
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document xml = db.parse(file);
-            NodeList nodes = xml.getElementsByTagName(obj.getClass().getSimpleName());
-            objects = new Object[nodes.getLength()];
-            
-            for (Integer i = 0; i < nodes.getLength(); i++) {
-                
-                Node node = nodes.item(i);
-                Element indv = (Element)node;
-                ArrayList<SimpleEntry<SimpleEntry, HashMap<String, String>>> propertiesData = new ArrayList<SimpleEntry<SimpleEntry, HashMap<String, String>>>();
-                NodeList properties = indv.getChildNodes();
-                
-                for (Integer j = 0; j < properties.getLength(); j++) {
-                    
-                    Node nd = properties.item(j);
-                    if (nd.getNodeType() == Node.ELEMENT_NODE) {
-                        
-                        Element property = (Element)nd;
-                        NamedNodeMap attrs = property.getAttributes();
-                        HashMap<String, String> attrKeyValuePair = new HashMap<String, String>();
-                        
-                        for (Integer k = 0; k < attrs.getLength(); k++) {
-                            
-                            Attr attr = (Attr)attrs.item(k);
-                            String attrName = attr.getName();
-                            String attrValue = attr.getValue();
-                            attrKeyValuePair.put(attrName, attrValue);
-                            
-                        }
-                        
-                        String propertyName = property.getTagName();
-                        String propertyValue = property.getTextContent();
-                        SimpleEntry<SimpleEntry, HashMap<String, String>> propertyData = new SimpleEntry(new SimpleEntry(propertyName, propertyValue), attrKeyValuePair);
-                        propertiesData.add(propertyData);
-                        
-                    }
-                    
-                }
-                
-                objects[i] = propertiesData;
-                
-            }
-            
-        } catch (Exception ex) {
-            
-            System.err.println("Error: " + ex.toString());
-            
-        }
-        
-        return objects;
-        
-    }
-    
-    public ArrayList<String> loadList(gameClass kar){
-        
-        ArrayList<String> list = new ArrayList<>();
-        try {
-            
-            String fileName = kar.getClass().getSimpleName() + ".xml";
-            File file = new File(fileName);
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document xml = db.parse(file);
-            xml.normalize();
-            
-            NodeList charByTag = xml.getElementsByTagName(kar.getClass().getSimpleName());
-            for (Integer i = 0; i < charByTag.getLength(); i++) {
-                
-                Node charTag = charByTag.item(i);
-                Element charData = (Element)charTag;
-                String name = charData.getElementsByTagName("name").item(0).getTextContent();
-                list.add(name);
-                
-            }
-            
-        } catch (Exception ex){
-            
-            System.err.println("Error: " + ex.toString());
-            
-        }
-        return list;
-        
-    }
-    
-    public Character loadGame(gameClass kar){
-        
-        Character loadedChar = new Character();
-        
+        ArrayList<Character> list = new ArrayList<>();
         try {
             
             String fileName = kar.getClass().getSimpleName() + ".xml";
@@ -287,16 +202,17 @@ public class funkcio<gameClass> {
                 Integer lvl = Integer.parseInt(charData.getElementsByTagName("lvl").item(0).getTextContent());
                 Integer xp = Integer.parseInt(charData.getElementsByTagName("xp").item(0).getTextContent());
                 Boolean sex = Boolean.parseBoolean(charData.getElementsByTagName("sex").item(0).getTextContent());
-                loadedChar = new Character(name, lvl, xp, sex);
+                Character listChar = new Character(name, lvl, xp, sex);
+                list.add(listChar);
                 
             }
             
-        } catch (Exception ex) {
+        } catch (Exception ex){
             
             System.err.println("Error: " + ex.toString());
             
         }
-        return loadedChar;
+        return list;
         
     }
 
