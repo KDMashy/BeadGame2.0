@@ -201,7 +201,19 @@ public class funkcio<gameClass> {
                 String name = charData.getElementsByTagName("name").item(0).getTextContent();
                 Integer lvl = Integer.parseInt(charData.getElementsByTagName("lvl").item(0).getTextContent());
                 Integer xp = Integer.parseInt(charData.getElementsByTagName("xp").item(0).getTextContent());
-                Boolean sex = Boolean.parseBoolean(charData.getElementsByTagName("sex").item(0).getTextContent());
+                String sexS = charData.getElementsByTagName("sex").item(0).getTextContent();
+                
+                Boolean sex = Boolean.FALSE;
+                if (sexS.contains("Female")) {
+                
+                    sex = Boolean.TRUE;
+                    
+                } else {
+                    
+                    sex = Boolean.FALSE;
+                    
+                }
+                
                 Character listChar = new Character(name, lvl, xp, sex);
                 list.add(listChar);
                 

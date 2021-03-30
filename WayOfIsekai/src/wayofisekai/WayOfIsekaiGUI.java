@@ -54,6 +54,17 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         tbLoad.setEnabled(Boolean.FALSE);
         
     }
+    
+    public void clearTable(){
+        
+        //jTable clear
+        DefaultTableModel dm = (DefaultTableModel)tbLoad.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        //ComboBox clear
+        cBox.removeAllItems();
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -91,6 +102,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbLoad = new javax.swing.JTable();
+        loadSaveGame = new javax.swing.JButton();
+        loadBack = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,7 +148,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cSexDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         cSexDisp.setForeground(new java.awt.Color(255, 192, 160));
         cSexDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cSexDisp.setText("Sex: ");
+        cSexDisp.setText("sex");
         cSexDisp.setToolTipText("");
 
         javax.swing.GroupLayout cProfLayout = new javax.swing.GroupLayout(cProf);
@@ -394,6 +407,20 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbLoad);
 
+        loadSaveGame.setText("Load");
+        loadSaveGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadSaveGameMouseClicked(evt);
+            }
+        });
+
+        loadBack.setText("Back");
+        loadBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadBackMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout loadPnlLayout = new javax.swing.GroupLayout(loadPnl);
         loadPnl.setLayout(loadPnlLayout);
         loadPnlLayout.setHorizontalGroup(
@@ -402,9 +429,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loadSaveGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loadBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addContainerGap())
         );
         loadPnlLayout.setVerticalGroup(
@@ -417,7 +446,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         .addComponent(loadlbl)
                         .addGap(18, 18, 18)
                         .addComponent(cBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 114, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(loadSaveGame)
+                        .addGap(18, 18, 18)
+                        .addComponent(loadBack)
+                        .addGap(0, 14, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -490,8 +523,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         newChar.setVisible(Boolean.TRUE);
         
         //gombok !enabled
-        load.setEnabled(Boolean.FALSE);
-        newSave.setEnabled(Boolean.FALSE);
+        load.setVisible(Boolean.FALSE);
+        newSave.setVisible(Boolean.FALSE);
         exit.setVisible(Boolean.FALSE);
         
         //Nem alap beállítása
@@ -502,10 +535,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
         
         //Játék betöltése
-        //meghiv(game);
-        //cNameDisp.setText(ch.getName());
-        //fillTable();
+        fillTable();
         loadPnl.setVisible(Boolean.TRUE);
+        logScreen.setVisible(Boolean.FALSE);
         
         
     }//GEN-LAST:event_loadMouseClicked
@@ -527,8 +559,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 cNameText.setText("");
                 
             }
-            load.setEnabled(Boolean.TRUE);
-            newSave.setEnabled(Boolean.TRUE);
+            load.setVisible(Boolean.TRUE);
+            newSave.setVisible(Boolean.TRUE);
             exit.setVisible(Boolean.TRUE);
 
             //newChar panel !visible
@@ -574,6 +606,35 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_maleStateChanged
+
+    private void loadSaveGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSaveGameMouseClicked
+        
+        //Kiválasztja hogy melyik az az elmentett objektum amit be akarunk tölteni
+        for(Character ch : chF.loadList(ch)){
+            
+            String boxName = cBox.getSelectedItem().toString();
+            if (ch.getName().contains(boxName) && ch.getName().length() == boxName.length() ) {
+                
+                cNameDisp.setText(ch.getName());
+                
+                
+                cSexDisp.setText(ch.getSex());
+                loadPnl.setVisible(Boolean.FALSE);
+                meghiv(game);
+                
+            }
+            
+        }
+        
+    }//GEN-LAST:event_loadSaveGameMouseClicked
+
+    private void loadBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadBackMouseClicked
+        
+        clearTable();
+        loadPnl.setVisible(Boolean.FALSE);
+        logScreen.setVisible(Boolean.TRUE);
+        
+    }//GEN-LAST:event_loadBackMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -627,7 +688,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton load;
+    private javax.swing.JButton loadBack;
     private javax.swing.JPanel loadPnl;
+    private javax.swing.JButton loadSaveGame;
     private javax.swing.JLabel loadlbl;
     private javax.swing.JPanel logScreen;
     private javax.swing.JPanel login;
