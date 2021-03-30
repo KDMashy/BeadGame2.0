@@ -22,6 +22,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
         loadPnl.setVisible(Boolean.FALSE);
+        del.setEnabled(Boolean.FALSE);
     }
     
     public void meghiv(JPanel name){
@@ -93,6 +94,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cName = new javax.swing.JLabel();
         cNameText = new javax.swing.JTextField();
         createC = new javax.swing.JButton();
+        createCancel = new javax.swing.JButton();
         cimlbl = new javax.swing.JLabel();
         profilkep = new javax.swing.JLabel();
         alairas = new javax.swing.JLabel();
@@ -104,6 +106,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         tbLoad = new javax.swing.JTable();
         loadSaveGame = new javax.swing.JButton();
         loadBack = new javax.swing.JButton();
+        del = new javax.swing.JButton();
+        removeAccept = new javax.swing.JCheckBox();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,11 +296,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cName.setToolTipText("");
 
         cNameText.setBackground(new java.awt.Color(102, 102, 102));
+        cNameText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cNameTextKeyReleased(evt);
+            }
+        });
 
         createC.setText("Create");
         createC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createCMouseClicked(evt);
+            }
+        });
+
+        createCancel.setText("Cancel");
+        createCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createCancelMouseClicked(evt);
             }
         });
 
@@ -306,7 +322,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newCharLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(newCharLayout.createSequentialGroup()
                         .addGroup(newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cName)
@@ -318,10 +334,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(male))
                             .addComponent(cNameText)))
-                    .addGroup(newCharLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(createC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addGroup(newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(createCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(createC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         newCharLayout.setVerticalGroup(
             newCharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,9 +351,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     .addComponent(female)
                     .addComponent(male)
                     .addComponent(sex))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(createC, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18)
+                .addComponent(createCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         cimlbl.setBackground(new java.awt.Color(255, 102, 102));
@@ -421,6 +439,20 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        del.setText("Delete");
+        del.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delMouseClicked(evt);
+            }
+        });
+
+        removeAccept.setText("Want to remove?");
+        removeAccept.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                removeAcceptStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout loadPnlLayout = new javax.swing.GroupLayout(loadPnl);
         loadPnl.setLayout(loadPnlLayout);
         loadPnlLayout.setHorizontalGroup(
@@ -428,12 +460,19 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(loadPnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loadSaveGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loadBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                    .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(loadPnlLayout.createSequentialGroup()
+                        .addComponent(loadSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(loadBack, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loadPnlLayout.createSequentialGroup()
+                        .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeAccept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         loadPnlLayout.setVerticalGroup(
@@ -447,10 +486,14 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(loadSaveGame)
-                        .addGap(18, 18, 18)
-                        .addComponent(loadBack)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(loadSaveGame)
+                            .addComponent(loadBack))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(del)
+                            .addComponent(removeAccept))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -462,10 +505,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(fName)
                 .addGap(119, 119, 119)
-                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loadPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginLayout.createSequentialGroup()
+                        .addComponent(logScreen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(loadPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(alairas, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profilkep, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -512,63 +557,79 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
         
-        //Kilépés
-        System.exit(0);
+        if (exit.isEnabled() == Boolean.TRUE) {
+            
+            //Kilépés
+            System.exit(0);
+            
+        }
         
     }//GEN-LAST:event_exitMouseClicked
 
     private void newSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newSaveMouseClicked
         
-        //Kreáció panele
-        newChar.setVisible(Boolean.TRUE);
-        
-        //gombok !enabled
-        load.setVisible(Boolean.FALSE);
-        newSave.setVisible(Boolean.FALSE);
-        exit.setVisible(Boolean.FALSE);
-        
-        //Nem alap beállítása
-        female.setSelected(Boolean.TRUE);
+        if (newSave.isEnabled() == Boolean.TRUE) {
+            
+            //Kreáció panele
+            newChar.setVisible(Boolean.TRUE);
+
+            //gombok !enabled
+            load.setEnabled(Boolean.FALSE);
+            newSave.setEnabled(Boolean.FALSE);
+            exit.setEnabled(Boolean.FALSE);
+            createC.setEnabled(Boolean.FALSE);
+
+            //Nem alap beállítása
+            female.setSelected(Boolean.TRUE);
+            
+        }
         
     }//GEN-LAST:event_newSaveMouseClicked
 
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
         
-        //Játék betöltése
-        fillTable();
-        loadPnl.setVisible(Boolean.TRUE);
-        logScreen.setVisible(Boolean.FALSE);
-        
+        if (load.isEnabled() == Boolean.TRUE) {
+         
+            //Játék betöltése
+            fillTable();
+            loadPnl.setVisible(Boolean.TRUE);
+            logScreen.setVisible(Boolean.FALSE);
+            
+        }
         
     }//GEN-LAST:event_loadMouseClicked
 
     private void createCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCMouseClicked
         
-        try {
+        if (createC.isEnabled() == Boolean.TRUE) {
             
-            //Mentés, név alaphelyzetbe állítása, gombok ->enabled
-            if (cNameText.getText().length() < 1) {
-                
-                throw new Exception();
-                
-            } else {
-                
-                ch.setName(cNameText.getText());
-                ch.setSex(charSex);
-                chF.saveObject(ch, ch.getName());
-                cNameText.setText("");
-                
-            }
-            load.setVisible(Boolean.TRUE);
-            newSave.setVisible(Boolean.TRUE);
-            exit.setVisible(Boolean.TRUE);
+            try {
+            
+                //Mentés, név alaphelyzetbe állítása, gombok ->enabled
+                if (cNameText.getText().length() < 1) {
 
-            //newChar panel !visible
-            newChar.setVisible(Boolean.FALSE);
-            
-        } catch (Exception ex) {
-            
-            JOptionPane.showMessageDialog(rootPane, "A karakternek nevet kell adni!");
+                    throw new Exception();
+
+                } else {
+
+                    ch.setName(cNameText.getText());
+                    ch.setSex(charSex);
+                    chF.saveObject(ch, ch.getName());
+                    cNameText.setText("");
+
+                }
+                load.setEnabled(Boolean.TRUE);
+                newSave.setEnabled(Boolean.TRUE);
+                exit.setEnabled(Boolean.TRUE);
+
+                //newChar panel !visible
+                newChar.setVisible(Boolean.FALSE);
+
+            } catch (Exception ex) {
+
+                JOptionPane.showMessageDialog(rootPane, "A karakternek nevet kell adni!");
+
+            }
             
         }
         
@@ -636,6 +697,54 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_loadBackMouseClicked
 
+    private void createCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCancelMouseClicked
+        
+        cNameText.setText("");
+        newChar.setVisible(Boolean.FALSE);
+        load.setEnabled(Boolean.TRUE);
+        newSave.setEnabled(Boolean.TRUE);
+        exit.setEnabled(Boolean.TRUE);
+        
+    }//GEN-LAST:event_createCancelMouseClicked
+
+    private void cNameTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNameTextKeyReleased
+        if (cNameText.getText().length() > 2) {
+            
+            createC.setEnabled(Boolean.TRUE);
+            
+        } else {
+            
+            createC.setEnabled(Boolean.FALSE);
+            
+        }
+    }//GEN-LAST:event_cNameTextKeyReleased
+
+    private void delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseClicked
+        
+        if (del.isEnabled() == Boolean.TRUE) {
+            
+            chF.removeChar(ch, cBox.getSelectedItem().toString());
+            clearTable();
+            fillTable();
+            
+        }
+        
+    }//GEN-LAST:event_delMouseClicked
+
+    private void removeAcceptStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_removeAcceptStateChanged
+        
+        if (removeAccept.isSelected()) {
+            
+            del.setEnabled(Boolean.TRUE);
+            
+        } else {
+            
+            del.setEnabled(Boolean.FALSE);
+            
+        }
+        
+    }//GEN-LAST:event_removeAcceptStateChanged
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -679,6 +788,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel cSexDisp;
     private javax.swing.JLabel cimlbl;
     private javax.swing.JButton createC;
+    private javax.swing.JButton createCancel;
+    private javax.swing.JButton del;
     private javax.swing.JPanel dialogue;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fName;
@@ -699,6 +810,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
     private javax.swing.JLabel profilkep;
+    private javax.swing.JCheckBox removeAccept;
     private javax.swing.JLabel sex;
     private javax.swing.JPanel sheldon;
     private javax.swing.JTable tbLoad;

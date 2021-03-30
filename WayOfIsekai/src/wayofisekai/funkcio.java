@@ -228,6 +228,60 @@ public class funkcio<gameClass> {
         
     }
 
+    public Boolean removeChar(gameClass kar, String name){
+        
+        try {
+            
+            String fileName = kar.getClass().getSimpleName() + ".xml";
+            File file = new File(fileName);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document xml = db.parse(file);
+            
+            NodeList chars = xml.getElementsByTagName(kar.getClass().getSimpleName());
+            for (Integer i = 0; i < chars.getLength(); i++) {
+                
+                Element character = (Element)chars.item(i);
+                Element nameTag = (Element)character.getElementsByTagName("name").item(0);
+                if (nameTag.getTextContent().equalsIgnoreCase(name)) {
+                    
+                    nameTag.getParentNode().getParentNode().removeChild(chars.item(i));
+                    break;
+                    
+                }
+                
+            }
+            
+            saveXMLContent(xml, fileName);
+            return Boolean.TRUE;
+            
+        } catch (Exception ex) {
+            
+            System.err.println("Error: " + ex.toString());
+            
+        }
+        
+        return Boolean.FALSE;
+        
+    }
+    
+    private static void saveXMLContent(Document xml, String file) {
+		try {
+                    
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			DOMSource domSource = new DOMSource(xml);
+			StreamResult streamResult = new StreamResult(file);
+			transformer.transform(domSource, streamResult);
+                        
+		} catch (Exception ex) {
+                    
+			System.err.println(ex.getMessage());
+                        
+		}
+	}
+    
     public Integer lvlUpXp(Integer lvl){
         
         Integer lvlUp = 0;

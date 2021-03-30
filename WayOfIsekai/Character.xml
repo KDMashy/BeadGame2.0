@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><wayofisekai.Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Female</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">Adri</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
+    
     <Character>
         <lvl type="Integer">1</lvl>
         <def type="Integer">30</def>
@@ -19,26 +10,8 @@
         <atk type="Integer">50</atk>
         <sp type="Integer">0</sp>
     </Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Female</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">Csilla</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Male</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">Raku</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
+    
+    
     <Character>
         <lvl type="Integer">1</lvl>
         <def type="Integer">30</def>
@@ -49,34 +22,19 @@
         <atk type="Integer">50</atk>
         <sp type="Integer">0</sp>
     </Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Male</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">Kuro</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Female</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">Kincső</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
-    <Character>
-        <lvl type="Integer">1</lvl>
-        <def type="Integer">30</def>
-        <sex type="Boolean">Male</sex>
-        <xp type="Integer">0</xp>
-        <name type="String">RPGTestChar</name>
-        <hp type="Integer">350</hp>
-        <atk type="Integer">50</atk>
-        <sp type="Integer">0</sp>
-    </Character>
-<Character><lvl type="Integer">1</lvl><def type="Integer">30</def><sex type="Boolean">Female</sex><xp type="Integer">0</xp><name type="String">RPGTestChar2</name><hp type="Integer">350</hp><atk type="Integer">50</atk><sp type="Integer">0</sp></Character><Character><lvl type="Integer">1</lvl><def type="Integer">30</def><sex type="Boolean">Female</sex><xp type="Integer">0</xp><name type="String">RPGTestChar3</name><hp type="Integer">350</hp><atk type="Integer">50</atk><sp type="Integer">0</sp></Character></wayofisekai.Character>
+    
+    
+    
+    
+    
+<Character>
+    <lvl type="Integer">1</lvl>
+    <def type="Integer">30</def>
+    <sex type="Boolean">Female</sex>
+    <xp type="Integer">0</xp>
+    <name type="String">Kincső</name>
+    <hp type="Integer">350</hp>
+    <atk type="Integer">50</atk>
+    <sp type="Integer">0</sp>
+</Character>
+</wayofisekai.Character>
