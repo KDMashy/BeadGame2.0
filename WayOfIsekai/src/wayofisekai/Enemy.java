@@ -12,21 +12,38 @@ public class Enemy extends inheritCharNEnemy{
     private Integer moneyDrop;
     @gFN(value = "getDRate", type = Integer.class)
     private Integer dRate;
+    @gFN(value = "getQuest", type = Integer.class)
+    private Integer quest;
     //random így nincs használva, csak helyileg az Enemy classjában
     //@gFN(value = "getRnd", type = Random.class)
     private Random rnd = new Random();
     
     //Enemy létrehouása
-    public Enemy(String name, Integer hp, Integer atk, Integer def, Integer dRate){
+    public Enemy(){
+        
+        super(".", 0, 0, 0);
+        this.xpDrop = 0;
+        this.moneyDrop = 0;
+        this.quest = 0;
+        
+    }
+    
+    public Enemy(String name, Integer hp, Integer atk, Integer def, Integer dRate, Integer quest){
         
         super(name, hp, atk, def);
-        this.lvl = 1;
         this.xpDrop = rnd.nextInt(dRate) + 50;
         this.moneyDrop = rnd.nextInt(dRate) + 50;
+        this.quest = quest;
         
     }
     
     //Getter fügvények
+    public Integer getQuest(){
+        
+        return this.quest;
+        
+    }
+    
     public Integer getXpDrop(){
         
         return this.xpDrop;

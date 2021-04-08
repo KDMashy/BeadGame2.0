@@ -4,12 +4,16 @@ package wayofisekai;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
-    Character ch = new Character();
-    funkcio<Character> chF = new funkcio<Character>();
+    public Character ch = new Character();
+    public Enemy en = new Enemy();
+    public funkcio<Character> chF = new funkcio<Character>();
+    public funkcio<Enemy> enemyF = new funkcio<Enemy>();
+    ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
     
     public WayOfIsekaiGUI() {
         initComponents();
@@ -23,6 +27,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         newChar.setVisible(Boolean.FALSE);
         loadPnl.setVisible(Boolean.FALSE);
         del.setEnabled(Boolean.FALSE);
+        
     }
     
     public void meghiv(JPanel name){
@@ -34,7 +39,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }
     
-    private void fillTable(){
+    private void fillTableCharacter(){
         
         //character táblázat feltöltés
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
@@ -56,10 +61,30 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }
     
-    public void clearTable(){
+    
+    
+    private void fillTableEnemy(){
+        DefaultTableModel dtm = new DefaultTableModel(0, 0);
+        String header[] = new String [] {"Name", "Hp", "Dmg", "Def", "quest"};
+        dtm.setColumnIdentifiers(header);
+        this.enemyListTable.setModel(dtm);
+        Integer chLvl = ch.getLvl();
+        for (Enemy k : this.listenemy) {
+            if (k.getName().contains("KALKULUS")) {
+                dtm.addRow(new Object[] {"???", k.getHp()*2*chLvl, k.getAtk()*2*chLvl, 
+                    k.getDef()*2*chLvl, k.getQuest()});
+            } else {
+                dtm.addRow(new Object[] {k.getName(), k.getHp()*2*chLvl, k.getAtk()*2*chLvl, 
+                    k.getDef()*2*chLvl, k.getQuest()});
+            }
+            
+       }
+    }
+    
+    public void clearTable(JTable tbl){
         
         //jTable clear
-        DefaultTableModel dm = (DefaultTableModel)tbLoad.getModel();
+        DefaultTableModel dm = (DefaultTableModel)tbl.getModel();
         dm.getDataVector().removeAllElements();
         dm.fireTableDataChanged();
         //ComboBox clear
@@ -78,7 +103,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cNameDot = new javax.swing.JLabel();
         cNameDisp = new javax.swing.JLabel();
         cSex = new javax.swing.JLabel();
+        cHpDisp = new javax.swing.JLabel();
+        xpBar = new javax.swing.JProgressBar();
+        xpBarDisp = new javax.swing.JLabel();
+        cSex1 = new javax.swing.JLabel();
         cSexDisp = new javax.swing.JLabel();
+        cSex2 = new javax.swing.JLabel();
+        cDmgDisp = new javax.swing.JLabel();
+        cSex3 = new javax.swing.JLabel();
+        cMoneyDisp = new javax.swing.JLabel();
+        lvl = new javax.swing.JLabel();
+        cLvl = new javax.swing.JLabel();
+        enemyList = new javax.swing.JButton();
+        gameExit1 = new javax.swing.JButton();
+        eTable = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        enemyListTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         fight = new javax.swing.JPanel();
         dialogue = new javax.swing.JPanel();
         sheldon = new javax.swing.JPanel();
@@ -145,8 +186,27 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cSex.setBackground(new java.awt.Color(255, 226, 163));
         cSex.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         cSex.setForeground(new java.awt.Color(255, 192, 160));
-        cSex.setText("Sex: ");
+        cSex.setText("Hp: ");
         cSex.setToolTipText("");
+
+        cHpDisp.setBackground(new java.awt.Color(255, 226, 163));
+        cHpDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cHpDisp.setForeground(new java.awt.Color(255, 192, 160));
+        cHpDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cHpDisp.setText("hp");
+        cHpDisp.setToolTipText("");
+
+        xpBarDisp.setBackground(new java.awt.Color(255, 192, 160));
+        xpBarDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        xpBarDisp.setForeground(new java.awt.Color(255, 192, 160));
+        xpBarDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xpBarDisp.setText("0 / 0");
+
+        cSex1.setBackground(new java.awt.Color(255, 226, 163));
+        cSex1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex1.setForeground(new java.awt.Color(255, 192, 160));
+        cSex1.setText("Sex: ");
+        cSex1.setToolTipText("");
 
         cSexDisp.setBackground(new java.awt.Color(255, 226, 163));
         cSexDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
@@ -155,6 +215,40 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cSexDisp.setText("sex");
         cSexDisp.setToolTipText("");
 
+        cSex2.setBackground(new java.awt.Color(255, 226, 163));
+        cSex2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex2.setForeground(new java.awt.Color(255, 192, 160));
+        cSex2.setText("Dmg:");
+        cSex2.setToolTipText("");
+
+        cDmgDisp.setBackground(new java.awt.Color(255, 226, 163));
+        cDmgDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cDmgDisp.setForeground(new java.awt.Color(255, 192, 160));
+        cDmgDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cDmgDisp.setText("dmg");
+        cDmgDisp.setToolTipText("");
+
+        cSex3.setBackground(new java.awt.Color(255, 226, 163));
+        cSex3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex3.setForeground(new java.awt.Color(255, 192, 160));
+        cSex3.setText("Money:");
+        cSex3.setToolTipText("");
+
+        cMoneyDisp.setBackground(new java.awt.Color(255, 226, 163));
+        cMoneyDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cMoneyDisp.setForeground(new java.awt.Color(255, 192, 160));
+        cMoneyDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cMoneyDisp.setText("money");
+        cMoneyDisp.setToolTipText("");
+
+        lvl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lvl.setText("0");
+
+        cLvl.setBackground(new java.awt.Color(255, 192, 160));
+        cLvl.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cLvl.setForeground(new java.awt.Color(255, 192, 160));
+        cLvl.setText("LvL:");
+
         javax.swing.GroupLayout cProfLayout = new javax.swing.GroupLayout(cProf);
         cProf.setLayout(cProfLayout);
         cProfLayout.setHorizontalGroup(
@@ -162,45 +256,165 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(cProfLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cProfLayout.createSequentialGroup()
-                        .addComponent(cNameDot)
-                        .addGap(0, 202, Short.MAX_VALUE))
+                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cSex2)
+                            .addComponent(cSex1)
+                            .addComponent(cSex3))
+                        .addGap(18, 18, 18)
+                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cMoneyDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(cProfLayout.createSequentialGroup()
+                                .addComponent(cDmgDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 4, Short.MAX_VALUE))))
                     .addGroup(cProfLayout.createSequentialGroup()
                         .addComponent(cSex)
-                        .addGap(18, 18, 18)
-                        .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(41, 41, 41)
+                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cProfLayout.createSequentialGroup()
+                                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(xpBarDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(xpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cHpDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cProfLayout.createSequentialGroup()
+                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(cProfLayout.createSequentialGroup()
+                                .addComponent(cNameDot)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cLvl)
+                            .addComponent(lvl, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)))
                 .addContainerGap())
         );
         cProfLayout.setVerticalGroup(
             cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cProfLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cNameDot)
-                .addGap(18, 18, 18)
-                .addComponent(cNameDisp)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cNameDot)
+                    .addComponent(cLvl))
                 .addGap(18, 18, 18)
                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cNameDisp)
+                    .addComponent(lvl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(xpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(xpBarDisp)
+                .addGap(24, 24, 24)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cSex)
+                    .addComponent(cHpDisp))
+                .addGap(18, 18, 18)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cSex1)
                     .addComponent(cSexDisp))
-                .addContainerGap(682, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cSex2)
+                    .addComponent(cDmgDisp))
+                .addGap(18, 18, 18)
+                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cSex3)
+                    .addComponent(cMoneyDisp))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        enemyList.setBackground(new java.awt.Color(51, 51, 51));
+        enemyList.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        enemyList.setForeground(new java.awt.Color(255, 192, 160));
+        enemyList.setText("List Enemy");
+        enemyList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enemyListMouseClicked(evt);
+            }
+        });
+
+        gameExit1.setBackground(new java.awt.Color(51, 51, 51));
+        gameExit1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        gameExit1.setForeground(new java.awt.Color(255, 192, 160));
+        gameExit1.setText("Exit");
+        gameExit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gameExit1MouseClicked(evt);
+            }
+        });
+
+        enemyListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(enemyListTable);
+
+        javax.swing.GroupLayout eTableLayout = new javax.swing.GroupLayout(eTable);
+        eTable.setLayout(eTableLayout);
+        eTableLayout.setHorizontalGroup(
+            eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(eTableLayout.createSequentialGroup()
+                    .addGap(2, 2, 2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        eTableLayout.setVerticalGroup(
+            eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 345, Short.MAX_VALUE)
+            .addGroup(eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(eTableLayout.createSequentialGroup()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout gameLayout = new javax.swing.GroupLayout(game);
         game.setLayout(gameLayout);
         gameLayout.setHorizontalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createSequentialGroup()
-                .addContainerGap(1244, Short.MAX_VALUE)
-                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(gameLayout.createSequentialGroup()
+                .addContainerGap(610, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(539, 539, 539)
+                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gameExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                    .addComponent(enemyList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         gameLayout.setVerticalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(gameLayout.createSequentialGroup()
+                        .addGap(251, 251, 251)
+                        .addComponent(jButton1)))
+                .addGap(18, 18, 18)
+                .addComponent(enemyList)
+                .addGap(18, 18, 18)
+                .addComponent(gameExit1)
+                .addGap(18, 18, 18)
+                .addComponent(eTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         lpFrame.add(game, "card3");
@@ -250,7 +464,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         logScreen.setAlignmentY(0.0F);
         logScreen.setPreferredSize(new java.awt.Dimension(600, 400));
 
+        load.setBackground(new java.awt.Color(51, 51, 51));
         load.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        load.setForeground(new java.awt.Color(255, 255, 255));
         load.setText("Load Game");
         load.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -258,7 +474,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        newSave.setBackground(new java.awt.Color(51, 51, 51));
         newSave.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        newSave.setForeground(new java.awt.Color(255, 255, 255));
         newSave.setText("New Game");
         newSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,7 +484,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        exit.setBackground(new java.awt.Color(51, 51, 51));
         exit.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        exit.setForeground(new java.awt.Color(255, 255, 255));
         exit.setText("Exit");
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -276,6 +496,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         newChar.setPreferredSize(new java.awt.Dimension(280, 360));
 
+        female.setBackground(new java.awt.Color(51, 51, 51));
+        female.setForeground(new java.awt.Color(60, 63, 65));
         female.setText("Female");
         female.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -283,6 +505,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        male.setBackground(new java.awt.Color(51, 51, 51));
+        male.setForeground(new java.awt.Color(60, 63, 65));
         male.setText("male");
         male.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -290,18 +514,24 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        sex.setBackground(new java.awt.Color(51, 51, 51));
+        sex.setForeground(new java.awt.Color(60, 63, 65));
         sex.setText("Sex: ");
 
+        cName.setBackground(new java.awt.Color(51, 51, 51));
+        cName.setForeground(new java.awt.Color(60, 63, 65));
         cName.setText("Name: ");
         cName.setToolTipText("");
 
-        cNameText.setBackground(new java.awt.Color(102, 102, 102));
+        cNameText.setBackground(new java.awt.Color(204, 204, 204));
         cNameText.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cNameTextKeyReleased(evt);
             }
         });
 
+        createC.setBackground(new java.awt.Color(51, 51, 51));
+        createC.setForeground(new java.awt.Color(255, 255, 255));
         createC.setText("Create");
         createC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -309,6 +539,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        createCancel.setBackground(new java.awt.Color(51, 51, 51));
+        createCancel.setForeground(new java.awt.Color(255, 255, 255));
         createCancel.setText("Cancel");
         createCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -425,6 +657,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbLoad);
 
+        loadSaveGame.setBackground(new java.awt.Color(51, 51, 51));
+        loadSaveGame.setForeground(new java.awt.Color(255, 255, 255));
         loadSaveGame.setText("Load");
         loadSaveGame.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -432,6 +666,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        loadBack.setBackground(new java.awt.Color(51, 51, 51));
+        loadBack.setForeground(new java.awt.Color(255, 255, 255));
         loadBack.setText("Back");
         loadBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -439,6 +675,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        del.setBackground(new java.awt.Color(51, 51, 51));
+        del.setForeground(new java.awt.Color(255, 255, 255));
         del.setText("Delete");
         del.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -446,6 +684,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        removeAccept.setBackground(new java.awt.Color(51, 51, 51));
+        removeAccept.setForeground(new java.awt.Color(255, 255, 255));
         removeAccept.setText("Want to remove?");
         removeAccept.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -460,9 +700,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(loadPnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(loadPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                        .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(loadlbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(loadPnlLayout.createSequentialGroup()
                         .addComponent(loadSaveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -591,9 +830,18 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (load.isEnabled() == Boolean.TRUE) {
          
             //Játék betöltése
-            fillTable();
+            fillTableCharacter();
             loadPnl.setVisible(Boolean.TRUE);
             logScreen.setVisible(Boolean.FALSE);
+            if (cBox.getItemAt(0) == "") {
+                
+                loadSaveGame.setEnabled(Boolean.FALSE);
+                
+            } else {
+                
+                loadSaveGame.setEnabled(Boolean.TRUE);
+                
+            }
             
         }
         
@@ -636,7 +884,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_createCMouseClicked
 
     //Nemek csekkolása, radio-button váltás
-    private static Boolean charSex;
+    private Boolean charSex;
     
     private void femaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_femaleStateChanged
         
@@ -670,19 +918,33 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void loadSaveGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSaveGameMouseClicked
         
-        //Kiválasztja hogy melyik az az elmentett objektum amit be akarunk tölteni
-        for(Character ch : chF.loadList(ch)){
+        if (loadSaveGame.isEnabled() == Boolean.TRUE) {
             
-            String boxName = cBox.getSelectedItem().toString();
-            if (ch.getName().contains(boxName) && ch.getName().length() == boxName.length() ) {
-                
-                cNameDisp.setText(ch.getName());
-                
-                
-                cSexDisp.setText(ch.getSex());
-                loadPnl.setVisible(Boolean.FALSE);
-                meghiv(game);
-                
+            //Kiválasztja hogy melyik az az elmentett objektum amit be akarunk tölteni
+            for(Character chk : chF.loadList(ch)){
+
+                String boxName = cBox.getSelectedItem().toString();
+                if (chk.getName().contains(boxName) && 
+                        chk.getName().length() == boxName.length() ) {
+
+                    cNameDisp.setText(chk.getName());
+                    if (chk.getSex() == Boolean.TRUE) {
+                        cSexDisp.setText("female");
+                    } else {
+                        cSexDisp.setText("male");
+                    }
+                    cDmgDisp.setText(chk.getAtk().toString());
+                    cLvl.setText(chk.getLvl().toString());
+                    cHpDisp.setText(chk.getHp().toString());
+                    cMoneyDisp.setText(chk.getMoney().toString());
+                    loadPnl.setVisible(Boolean.FALSE);
+                    eTable.setVisible(Boolean.FALSE);
+                    ch = new Character(chk.getName(), chk.getLvl(), 
+                            chk.getXp(), chk.getSex(), chk.getMoney());
+                    meghiv(game);
+
+                }
+
             }
             
         }
@@ -691,7 +953,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void loadBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadBackMouseClicked
         
-        clearTable();
+        clearTable(tbLoad);
         loadPnl.setVisible(Boolean.FALSE);
         logScreen.setVisible(Boolean.TRUE);
         
@@ -724,8 +986,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (del.isEnabled() == Boolean.TRUE) {
             
             chF.removeChar(ch, cBox.getSelectedItem().toString());
-            clearTable();
-            fillTable();
+            clearTable(tbLoad);
+            fillTableCharacter();
             
         }
         
@@ -744,6 +1006,40 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_removeAcceptStateChanged
+
+    private Boolean elc = Boolean.FALSE;
+    private void enemyListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enemyListMouseClicked
+        
+        if (elc == Boolean.FALSE) {
+            
+            elc = Boolean.TRUE;
+            fillTableEnemy();
+            enemyList.setText("Hide Enemy List");
+            eTable.setVisible(Boolean.TRUE);
+            
+        } else {
+            
+            elc = Boolean.FALSE;
+            clearTable(enemyListTable);
+            enemyList.setText("List Enemy");
+            eTable.setVisible(Boolean.FALSE);
+            
+        }
+        
+    }//GEN-LAST:event_enemyListMouseClicked
+
+    private void gameExit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gameExit1MouseClicked
+        
+        logScreen.setVisible(Boolean.TRUE);
+        clearTable(tbLoad);
+        meghiv(login);
+        
+    }//GEN-LAST:event_gameExit1MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        chF.removeChar(ch, ch.getName());
+        chF.saveObject(ch, ch.getName());
+    }//GEN-LAST:event_jButton1MouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -779,25 +1075,38 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alairas;
     private javax.swing.JComboBox<String> cBox;
+    private javax.swing.JLabel cDmgDisp;
+    private javax.swing.JLabel cHpDisp;
+    private javax.swing.JLabel cLvl;
+    private javax.swing.JLabel cMoneyDisp;
     private javax.swing.JLabel cName;
     private javax.swing.JLabel cNameDisp;
     private javax.swing.JLabel cNameDot;
     private javax.swing.JTextField cNameText;
     private javax.swing.JPanel cProf;
     private javax.swing.JLabel cSex;
+    private javax.swing.JLabel cSex1;
+    private javax.swing.JLabel cSex2;
+    private javax.swing.JLabel cSex3;
     private javax.swing.JLabel cSexDisp;
     private javax.swing.JLabel cimlbl;
     private javax.swing.JButton createC;
     private javax.swing.JButton createCancel;
     private javax.swing.JButton del;
     private javax.swing.JPanel dialogue;
+    private javax.swing.JPanel eTable;
+    private javax.swing.JButton enemyList;
+    private javax.swing.JTable enemyListTable;
     private javax.swing.JButton exit;
     private javax.swing.JLabel fName;
     private javax.swing.JRadioButton female;
     private javax.swing.JPanel fight;
     private javax.swing.JPanel game;
+    private javax.swing.JButton gameExit1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton load;
     private javax.swing.JButton loadBack;
     private javax.swing.JPanel loadPnl;
@@ -806,6 +1115,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel logScreen;
     private javax.swing.JPanel login;
     private javax.swing.JLayeredPane lpFrame;
+    private javax.swing.JLabel lvl;
     private javax.swing.JRadioButton male;
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
@@ -814,5 +1124,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel sex;
     private javax.swing.JPanel sheldon;
     private javax.swing.JTable tbLoad;
+    private javax.swing.JProgressBar xpBar;
+    private javax.swing.JLabel xpBarDisp;
     // End of variables declaration//GEN-END:variables
 }

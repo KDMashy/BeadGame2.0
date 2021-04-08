@@ -7,7 +7,9 @@ import java.lang.reflect.Method;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -82,7 +84,7 @@ public class funkcio<gameClass> {
                     
                 } catch (van ex){
                     
-                    System.err.println("Van már ilyen karakter");
+                    JOptionPane.showMessageDialog(null, "Error: Van már ilyen karakter");
                     
                 }
                 
@@ -91,7 +93,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            System.err.println("Error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
             
         }
         
@@ -110,7 +112,9 @@ public class funkcio<gameClass> {
             
             //Mentési folyamat
             Field[] properties = obj.getClass().getDeclaredFields();
-            HashMap<String, HashMap<String, String>> dataHM = new HashMap<String, HashMap<String,String>>();
+            HashMap<String, HashMap<String, String>> dataHM = 
+                    new HashMap<String, HashMap<String,String>>();
+            
             for (Field property : properties) {
                 
                 String gFN = property.getAnnotation(gFN.class).value();
@@ -170,7 +174,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            System.err.println("Error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "ANYÁD");
             
         }
         
@@ -198,36 +202,91 @@ public class funkcio<gameClass> {
                 
                 Node charTag = charByTag.item(i);
                 Element charData = (Element)charTag;
-                String name = charData.getElementsByTagName("name").item(0).getTextContent();
-                Integer lvl = Integer.parseInt(charData.getElementsByTagName("lvl").item(0).getTextContent());
-                Integer xp = Integer.parseInt(charData.getElementsByTagName("xp").item(0).getTextContent());
-                String sexS = charData.getElementsByTagName("sex").item(0).getTextContent();
+                String name = 
+                    charData.getElementsByTagName("name").item(0).getTextContent();
                 
-                Boolean sex = Boolean.FALSE;
-                if (sexS.contains("Female")) {
+                Integer lvl = 
+                        Integer.parseInt
+                    (charData.getElementsByTagName("lvl").item(0).getTextContent());
                 
-                    sex = Boolean.TRUE;
-                    
-                } else {
-                    
-                    sex = Boolean.FALSE;
-                    
-                }
+                Integer xp = 
+                        Integer.parseInt
+                    (charData.getElementsByTagName("xp").item(0).getTextContent());
                 
-                Character listChar = new Character(name, lvl, xp, sex);
+                Boolean sex = 
+                        Boolean.parseBoolean
+                    (charData.getElementsByTagName("sex").item(0).getTextContent());
+                
+                Integer money = 
+                        Integer.parseInt
+                    (charData.getElementsByTagName("money").item(0).getTextContent());
+                
+                Character listChar = new Character(name, lvl, xp, sex, money);
                 list.add(listChar);
                 
             }
             
         } catch (Exception ex){
             
-            System.err.println("Error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
             
         }
         return list;
         
     }
-
+    
+    public ArrayList<Enemy> loadEnemy(Character ch){
+        ArrayList<Enemy> enemies = new ArrayList<>();
+        try {
+            String filename = "enemy.xml";
+            File file = new File(filename);
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document xml = builder.parse(file);
+            xml.normalize();
+            
+            NodeList enemyByTag = xml.getElementsByTagName("enemy");
+            for (Integer i = 0; i < enemyByTag.getLength(); i++) {
+                Node enemyTag = enemyByTag.item(i);
+                Element enemyAdat = (Element)enemyTag;
+                String name = enemyAdat.getElementsByTagName("name").item(0).getTextContent();
+                Integer hp = Integer.parseInt(enemyAdat.getElementsByTagName("hp").item(0).getTextContent());
+                Integer dmg = Integer.parseInt(enemyAdat.getElementsByTagName("dmg").item(0).getTextContent());
+                Integer def = Integer.parseInt(enemyAdat.getElementsByTagName("def").item(0).getTextContent());
+                Integer drate = Integer.parseInt(enemyAdat.getElementsByTagName("drate").item(0).getTextContent());
+                Integer quest = Integer.parseInt(enemyAdat.getElementsByTagName("quest").item(0).getTextContent());
+                Enemy e = new Enemy(name, hp, dmg, def, drate, quest);
+                enemyStat(e, ch);
+                enemies.add(e);
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+        }
+        return enemies;
+    }
+    
+    public Enemy enemyStat(Enemy en, Character ch){
+        
+        try {
+            
+            if (ch.getLvl() != 1) {
+                
+                en.setHp((en.getHp() / (ch.getLvl() - 1)) * ch.getLvl());
+                en.setAtk((en.getAtk() / (ch.getLvl() - 1)) * ch.getLvl());
+                en.setDef((en.getDef() / (ch.getLvl() - 1)) * ch.getLvl());
+                
+            }
+            
+        } catch (Exception ex){
+            
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+            
+        }
+        return en;
+        
+    }
+    
     public Boolean removeChar(gameClass kar, String name){
         
         try {
@@ -257,7 +316,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            System.err.println("Error: " + ex.toString());
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
             
         }
         
@@ -266,21 +325,21 @@ public class funkcio<gameClass> {
     }
     
     private static void saveXMLContent(Document xml, String file) {
-		try {
-                    
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			DOMSource domSource = new DOMSource(xml);
-			StreamResult streamResult = new StreamResult(file);
-			transformer.transform(domSource, streamResult);
+        try {
+                   
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource domSource = new DOMSource(xml);
+            StreamResult streamResult = new StreamResult(file);
+            transformer.transform(domSource, streamResult);
                         
-		} catch (Exception ex) {
-                    
-			System.err.println(ex.getMessage());
+        } catch (Exception ex) {
+                   
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
                         
-		}
-	}
+        }
+    }
     
     public Integer lvlUpXp(Integer lvl){
         

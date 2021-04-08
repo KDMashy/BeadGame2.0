@@ -63,5 +63,29 @@ public class inheritCharNEnemy {
         this.name = name;
         
     }
-    
+
+    public void setHp(Integer hp) {
+        
+        this.hp = hp;
+        
+    }
+
+    public void setAtk(Integer atk) {
+        
+        this.atk = atk;
+        
+    }
+
+    public void setDef(Integer def) {
+        
+        this.def = def;
+        
+    }
+
+    public void setLvl(Integer lvl) {
+        
+        this.lvl = lvl;
+        
+    }
+
 }

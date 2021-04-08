@@ -7,10 +7,10 @@ public class Character extends inheritCharNEnemy {
     //Karakter saját tulajdonságainak deklarálása
     @gFN(value = "getXp", type = Integer.class)
     private Integer xp;
-    @gFN(value = "getSp", type = Integer.class)
-    private Integer sp; //Skill Points
     @gFN(value = "getSex", type = Boolean.class)
     private Boolean sex;
+    @gFN(value = "getMoney", type = Integer.class)
+    private Integer money;
     
     //Karakter OBJ létrehozása
     public Character(){
@@ -19,20 +19,21 @@ public class Character extends inheritCharNEnemy {
         this.sex = Boolean.TRUE;
         this.lvl = 1;
         this.xp = 0;
-        this.sp = 0;
+        this.money = 0;
         
     }
     
-    public Character(String name, Integer lvl, Integer xp, Boolean sex){
+    public Character(String name, Integer lvl, Integer xp, Boolean sex, Integer money){
         
         super(name, 350, 50, 30);
         this.lvl = lvl;
         this.xp = xp;
         this.sex = sex;
+        this.money = money;
         
-        this.hp = 350 + lvl * 50;
-        this.atk = 50 + lvl * 25;
-        this.def = 30 + lvl * 10;
+        this.hp = 350 + (lvl * 50);
+        this.atk = 50 + (lvl * 25);
+        this.def = 30 + (lvl * 10);
         
         
     }
@@ -43,7 +44,7 @@ public class Character extends inheritCharNEnemy {
         this.sex = sex;
         this.lvl = 1;
         this.xp = 0;
-        this.sp = 0;
+        this.money = 0;
         
     }
     
@@ -58,23 +59,15 @@ public class Character extends inheritCharNEnemy {
         
     }
     
-    public Integer getSp(){
+    public Integer getMoney() {
         
-        return this.sp;
-                
+        return this.money;
+        
     }
     
-    public String getSex(){
+    public Boolean getSex(){
         
-        if (sex == Boolean.TRUE) {
-            
-            return "Female";
-            
-        } else {
-            
-            return "Male";
-            
-        }
+        return this.sex;
         
     }
     
@@ -82,6 +75,18 @@ public class Character extends inheritCharNEnemy {
     public void setSex(Boolean sex){
         
         this.sex = sex;
+        
+    }
+    
+    public void setMoney(Integer money){
+        
+        this.money += money;
+        
+    }
+    
+    public void setXp(Integer xp){
+        
+        this.xp += xp;
         
     }
     
