@@ -1327,15 +1327,15 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void latkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_latkMouseClicked
         
-        chF.fightCharacter(ch, en, Boolean.FALSE);
-        chF.fightEnemy(ch, en);
+        chF.fight(ch, en, 0);
+        chF.fight(ch, en, 2);
         
     }//GEN-LAST:event_latkMouseClicked
 
     private void catkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catkMouseClicked
         
-        chF.fightCharacter(ch, en, Boolean.TRUE);
-        chF.fightEnemy(ch, en);
+        chF.fight(ch, en, 1);
+        chF.fight(ch, en, 2);
         
     }//GEN-LAST:event_catkMouseClicked
 

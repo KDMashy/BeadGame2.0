@@ -357,65 +357,52 @@ public class funkcio<gameClass> {
     
     public Random r = new Random();
     
-    public Integer fightCharacter(Character ch, Enemy e, Boolean s){
-        
-        if (e.getHp() <= 0) {
+    public Integer fight(Character ch, Enemy e, Integer s){
+        //deklarálás
+        Integer hp = 0;
+        Integer dealt = 0;
+        Integer defend = 0;
+        //sebződő fél választás
+        if (s == 0 || s == 1) {
+            //ellenfél
+            hp = e.getHp();
+            defend = r.nextInt(e.getDef());
             
-            e.setHp(0);
+        } else {
+            //karakter
+            hp = ch.getHp();
+            r.nextInt(ch.getDef());
+            
+        }
+        //visszatérés HA
+        if (hp <= 0) {
+            //halott
             return 0;
             
         } else {
-            
+            //light - charged
             Integer x = 5;
-            if (s == Boolean.TRUE) {
-                
-                x = 7;
-                
-            }
-            
-            Integer dealt = ch.getAtk() * r.nextInt(x);
-            Integer defend = r.nextInt(e.getDef());
-            
+            if (s == 1) x = 7;
+            else if (s == 2) x = 6;
+            //ch vagy enemy atk
+            if (s == 0 || s == 1) dealt = ch.getAtk() * r.nextInt(x);
+            else dealt = e.getAtk() * r.nextInt(x);
+            //védés
             if (defend > dealt) {
-                
+                //védett
                 dealt = 0;
-                if (s == Boolean.TRUE) {
-                    
+                if (s == 1) {
+                    //védett, de a karakter charged atk-t használt
                     dealt = ch.getLvl() * 5;
                     
                 }
                 
             }
-            e.setHp(e.getHp() - dealt);
+            hp = hp - dealt;
+            //hp visszatérése
+            if (hp <= 0) return 0;
+            else return hp;
             
-            if (e.getHp() <= 0) return 0;
-            else return e.getHp();
-            
-        }
-        
-    }
-    
-    public Integer fightEnemy(Character ch, Enemy e){
-        
-        if (ch.getHp() <= 0) {
-            
-            ch.setHp(0);
-            return 0;
-            
-        } else {
-            
-            Integer dealt = e.getAtk() * r.nextInt(6);
-            Integer defend = r.nextInt(ch.getDef());
-            
-            if (defend > dealt) {
-                
-                dealt = 0;
-                
-            }
-            ch.setHp(ch.getHp() - dealt);
-            
-            if (ch.getHp() <= 0) return 0;
-            else return ch.getHp();
         }
         
     }
