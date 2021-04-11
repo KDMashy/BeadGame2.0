@@ -14,6 +14,8 @@ public class Enemy extends inheritCharNEnemy{
     private Integer dRate;
     @gFN(value = "getQuest", type = Integer.class)
     private Integer quest;
+    @gFN(value = "getDefHp", type = Integer.class)
+    private Integer defhp;
     //random így nincs használva, csak helyileg az Enemy classjában
     //@gFN(value = "getRnd", type = Random.class)
     private Random rnd = new Random();
@@ -62,11 +64,16 @@ public class Enemy extends inheritCharNEnemy{
         
     }
     
-    //Setter függvények
-    public void setEnemyLvl(Character ch){
+    public Integer getDefHp(){
         
-        this.lvl = ch.getLvl() + 1;
+        return this.defhp;
         
     }
     
+    //Setter függvények
+    public void setDefHp(Integer defhp){
+        
+        this.defhp = defhp;
+        
+    }
 }

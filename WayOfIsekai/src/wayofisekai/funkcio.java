@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -257,6 +258,7 @@ public class funkcio<gameClass> {
                 Integer quest = Integer.parseInt(enemyAdat.getElementsByTagName("quest").item(0).getTextContent());
                 Enemy e = new Enemy(name, hp, dmg, def, drate, quest);
                 enemyStat(e, ch);
+                e.setDefHp(hp);
                 enemies.add(e);
             }
         }
@@ -351,6 +353,71 @@ public class funkcio<gameClass> {
         else lvlUp = lvl * 10000;
         
         return lvlUp;
+    }
+    
+    public Random r = new Random();
+    
+    public Integer fightCharacter(Character ch, Enemy e, Boolean s){
+        
+        if (e.getHp() <= 0) {
+            
+            e.setHp(0);
+            return 0;
+            
+        } else {
+            
+            Integer x = 5;
+            if (s == Boolean.TRUE) {
+                
+                x = 7;
+                
+            }
+            
+            Integer dealt = ch.getAtk() * r.nextInt(x);
+            Integer defend = r.nextInt(e.getDef());
+            
+            if (defend > dealt) {
+                
+                dealt = 0;
+                if (s == Boolean.TRUE) {
+                    
+                    dealt = ch.getLvl() * 5;
+                    
+                }
+                
+            }
+            e.setHp(e.getHp() - dealt);
+            
+            if (e.getHp() <= 0) return 0;
+            else return e.getHp();
+            
+        }
+        
+    }
+    
+    public Integer fightEnemy(Character ch, Enemy e){
+        
+        if (ch.getHp() <= 0) {
+            
+            ch.setHp(0);
+            return 0;
+            
+        } else {
+            
+            Integer dealt = e.getAtk() * r.nextInt(6);
+            Integer defend = r.nextInt(ch.getDef());
+            
+            if (defend > dealt) {
+                
+                dealt = 0;
+                
+            }
+            ch.setHp(ch.getHp() - dealt);
+            
+            if (ch.getHp() <= 0) return 0;
+            else return ch.getHp();
+        }
+        
     }
     
 }

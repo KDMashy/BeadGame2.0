@@ -13,7 +13,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     public Enemy en = new Enemy();
     public funkcio<Character> chF = new funkcio<Character>();
     public funkcio<Enemy> enemyF = new funkcio<Enemy>();
-    ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
+    public ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
+    public Integer charDefHp;
     
     public WayOfIsekaiGUI() {
         initComponents();
@@ -119,8 +120,28 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         eTable = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         enemyListTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        igsave = new javax.swing.JButton();
         fight = new javax.swing.JPanel();
+        fDataPnl = new javax.swing.JPanel();
+        fLvlDisp = new javax.swing.JLabel();
+        fNameDisp = new javax.swing.JLabel();
+        flvl = new javax.swing.JLabel();
+        fHpDisp = new javax.swing.JLabel();
+        fMonDisp = new javax.swing.JLabel();
+        fDmgDisp = new javax.swing.JLabel();
+        choice = new javax.swing.JPanel();
+        LEAVE = new javax.swing.JButton();
+        HIT = new javax.swing.JButton();
+        lorc = new javax.swing.JPanel();
+        latk = new javax.swing.JButton();
+        catk = new javax.swing.JButton();
+        enemyimg = new javax.swing.JLabel();
+        charimg = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        fename = new javax.swing.JLabel();
+        eHpBar = new javax.swing.JProgressBar();
+        eHpDisp = new javax.swing.JLabel();
+        efDmg = new javax.swing.JLabel();
         dialogue = new javax.swing.JPanel();
         sheldon = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
@@ -241,6 +262,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cMoneyDisp.setText("money");
         cMoneyDisp.setToolTipText("");
 
+        lvl.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        lvl.setForeground(new java.awt.Color(255, 192, 160));
         lvl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lvl.setText("0");
 
@@ -362,7 +385,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         eTable.setLayout(eTableLayout);
         eTableLayout.setHorizontalGroup(
             eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
             .addGroup(eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(eTableLayout.createSequentialGroup()
                     .addGap(2, 2, 2)
@@ -371,17 +394,21 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         );
         eTableLayout.setVerticalGroup(
             eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(eTableLayout.createSequentialGroup()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        igsave.setBackground(new java.awt.Color(51, 51, 51));
+        igsave.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        igsave.setForeground(new java.awt.Color(255, 192, 160));
+        igsave.setText("Save");
+        igsave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                igsaveMouseClicked(evt);
             }
         });
 
@@ -390,44 +417,284 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         gameLayout.setHorizontalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameLayout.createSequentialGroup()
-                .addContainerGap(610, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(539, 539, 539)
-                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(gameExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                    .addComponent(enemyList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1226, Short.MAX_VALUE)
+                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(gameExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                        .addComponent(enemyList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(igsave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         gameLayout.setVerticalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameLayout.createSequentialGroup()
-                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(gameLayout.createSequentialGroup()
-                        .addGap(251, 251, 251)
-                        .addComponent(jButton1)))
+                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(enemyList)
                 .addGap(18, 18, 18)
-                .addComponent(gameExit1)
+                .addComponent(igsave)
                 .addGap(18, 18, 18)
-                .addComponent(eTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addComponent(gameExit1)
+                .addGap(14, 14, 14)
+                .addComponent(eTable, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         lpFrame.add(game, "card3");
 
+        fDataPnl.setBackground(new java.awt.Color(96, 0, 25));
+
+        fLvlDisp.setBackground(new java.awt.Color(255, 192, 160));
+        fLvlDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fLvlDisp.setForeground(new java.awt.Color(255, 192, 160));
+        fLvlDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fLvlDisp.setText("LvL:");
+
+        fNameDisp.setBackground(new java.awt.Color(255, 226, 163));
+        fNameDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fNameDisp.setForeground(new java.awt.Color(255, 192, 160));
+        fNameDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fNameDisp.setText("name");
+        fNameDisp.setToolTipText("");
+
+        flvl.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        flvl.setForeground(new java.awt.Color(255, 192, 160));
+        flvl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        flvl.setText("0");
+
+        fHpDisp.setBackground(new java.awt.Color(255, 226, 163));
+        fHpDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fHpDisp.setForeground(new java.awt.Color(255, 192, 160));
+        fHpDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fHpDisp.setText("hp");
+        fHpDisp.setToolTipText("");
+
+        fMonDisp.setBackground(new java.awt.Color(255, 226, 163));
+        fMonDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fMonDisp.setForeground(new java.awt.Color(255, 192, 160));
+        fMonDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fMonDisp.setText("money");
+        fMonDisp.setToolTipText("");
+
+        fDmgDisp.setBackground(new java.awt.Color(255, 226, 163));
+        fDmgDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fDmgDisp.setForeground(new java.awt.Color(255, 192, 160));
+        fDmgDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fDmgDisp.setText("dmg");
+        fDmgDisp.setToolTipText("");
+
+        javax.swing.GroupLayout fDataPnlLayout = new javax.swing.GroupLayout(fDataPnl);
+        fDataPnl.setLayout(fDataPnlLayout);
+        fDataPnlLayout.setHorizontalGroup(
+            fDataPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fDataPnlLayout.createSequentialGroup()
+                .addGroup(fDataPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fHpDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fDmgDisp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fMonDisp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(fDataPnlLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(fNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(fDataPnlLayout.createSequentialGroup()
+                        .addComponent(fLvlDisp, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(flvl, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        fDataPnlLayout.setVerticalGroup(
+            fDataPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fDataPnlLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(fNameDisp)
+                .addGap(18, 18, 18)
+                .addGroup(fDataPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fLvlDisp)
+                    .addComponent(flvl))
+                .addGap(47, 47, 47)
+                .addComponent(fHpDisp)
+                .addGap(18, 18, 18)
+                .addComponent(fMonDisp)
+                .addGap(18, 18, 18)
+                .addComponent(fDmgDisp)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        choice.setBackground(new java.awt.Color(96, 0, 25));
+
+        LEAVE.setText("RUN!");
+        LEAVE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LEAVEMouseClicked(evt);
+            }
+        });
+
+        HIT.setText("HIT");
+        HIT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HITMouseClicked(evt);
+            }
+        });
+        HIT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HITActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout choiceLayout = new javax.swing.GroupLayout(choice);
+        choice.setLayout(choiceLayout);
+        choiceLayout.setHorizontalGroup(
+            choiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(LEAVE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+            .addGroup(choiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(HIT, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+        );
+        choiceLayout.setVerticalGroup(
+            choiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, choiceLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LEAVE, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(choiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(choiceLayout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(HIT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(95, Short.MAX_VALUE)))
+        );
+
+        lorc.setBackground(new java.awt.Color(96, 0, 25));
+
+        latk.setText("Light Attack");
+        latk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                latkMouseClicked(evt);
+            }
+        });
+
+        catk.setText("Charged Attack");
+        catk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                catkMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout lorcLayout = new javax.swing.GroupLayout(lorc);
+        lorc.setLayout(lorcLayout);
+        lorcLayout.setHorizontalGroup(
+            lorcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lorcLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(latk, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(265, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lorcLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(catk, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        lorcLayout.setVerticalGroup(
+            lorcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lorcLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(latk, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(catk, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        enemyimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        enemyimg.setText("ENEMY");
+
+        charimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        charimg.setText("CHARACTER");
+
+        jPanel2.setBackground(new java.awt.Color(96, 0, 25));
+
+        fename.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        fename.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fename.setText("ENEMY NAME");
+
+        eHpDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        eHpDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eHpDisp.setText("0 / 0");
+
+        efDmg.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        efDmg.setText("Dmg: 0");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(fename, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(eHpDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eHpBar, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(efDmg, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(fename)
+                .addGap(18, 18, 18)
+                .addComponent(eHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(eHpDisp)
+                .addGap(18, 18, 18)
+                .addComponent(efDmg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout fightLayout = new javax.swing.GroupLayout(fight);
         fight.setLayout(fightLayout);
         fightLayout.setHorizontalGroup(
-            fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(fightLayout.createSequentialGroup()
+                .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(enemyimg, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(fDataPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lorc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(choice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(fightLayout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(charimg, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                    .addGap(990, 990, 990)))
         );
         fightLayout.setVerticalGroup(
             fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enemyimg, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fightLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fDataPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lorc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(choice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
+                    .addContainerGap(324, Short.MAX_VALUE)
+                    .addComponent(charimg, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         lpFrame.add(fight, "card4");
@@ -941,6 +1208,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     eTable.setVisible(Boolean.FALSE);
                     ch = new Character(chk.getName(), chk.getLvl(), 
                             chk.getXp(), chk.getSex(), chk.getMoney());
+                    removeAccept.setSelected(Boolean.FALSE);
                     meghiv(game);
 
                 }
@@ -1036,10 +1304,40 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_gameExit1MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void igsaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_igsaveMouseClicked
         chF.removeChar(ch, ch.getName());
         chF.saveObject(ch, ch.getName());
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_igsaveMouseClicked
+
+    private void HITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HITActionPerformed
+        //véletlen volt... :'c
+    }//GEN-LAST:event_HITActionPerformed
+
+    private void HITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HITMouseClicked
+        
+        lorc.setVisible(Boolean.TRUE);
+        
+    }//GEN-LAST:event_HITMouseClicked
+
+    private void LEAVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LEAVEMouseClicked
+        
+        meghiv(game);
+        
+    }//GEN-LAST:event_LEAVEMouseClicked
+
+    private void latkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_latkMouseClicked
+        
+        chF.fightCharacter(ch, en, Boolean.FALSE);
+        chF.fightEnemy(ch, en);
+        
+    }//GEN-LAST:event_latkMouseClicked
+
+    private void catkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_catkMouseClicked
+        
+        chF.fightCharacter(ch, en, Boolean.TRUE);
+        chF.fightEnemy(ch, en);
+        
+    }//GEN-LAST:event_catkMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1073,6 +1371,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton HIT;
+    private javax.swing.JButton LEAVE;
     private javax.swing.JLabel alairas;
     private javax.swing.JComboBox<String> cBox;
     private javax.swing.JLabel cDmgDisp;
@@ -1089,24 +1389,41 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel cSex2;
     private javax.swing.JLabel cSex3;
     private javax.swing.JLabel cSexDisp;
+    private javax.swing.JButton catk;
+    private javax.swing.JLabel charimg;
+    private javax.swing.JPanel choice;
     private javax.swing.JLabel cimlbl;
     private javax.swing.JButton createC;
     private javax.swing.JButton createCancel;
     private javax.swing.JButton del;
     private javax.swing.JPanel dialogue;
+    private javax.swing.JProgressBar eHpBar;
+    private javax.swing.JLabel eHpDisp;
     private javax.swing.JPanel eTable;
+    private javax.swing.JLabel efDmg;
     private javax.swing.JButton enemyList;
     private javax.swing.JTable enemyListTable;
+    private javax.swing.JLabel enemyimg;
     private javax.swing.JButton exit;
+    private javax.swing.JPanel fDataPnl;
+    private javax.swing.JLabel fDmgDisp;
+    private javax.swing.JLabel fHpDisp;
+    private javax.swing.JLabel fLvlDisp;
+    private javax.swing.JLabel fMonDisp;
     private javax.swing.JLabel fName;
+    private javax.swing.JLabel fNameDisp;
     private javax.swing.JRadioButton female;
+    private javax.swing.JLabel fename;
     private javax.swing.JPanel fight;
+    private javax.swing.JLabel flvl;
     private javax.swing.JPanel game;
     private javax.swing.JButton gameExit1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton igsave;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton latk;
     private javax.swing.JButton load;
     private javax.swing.JButton loadBack;
     private javax.swing.JPanel loadPnl;
@@ -1114,6 +1431,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel loadlbl;
     private javax.swing.JPanel logScreen;
     private javax.swing.JPanel login;
+    private javax.swing.JPanel lorc;
     private javax.swing.JLayeredPane lpFrame;
     private javax.swing.JLabel lvl;
     private javax.swing.JRadioButton male;
