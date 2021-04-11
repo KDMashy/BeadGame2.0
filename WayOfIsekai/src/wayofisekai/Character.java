@@ -1,6 +1,7 @@
 package wayofisekai;
 
 import anotation.gFN;
+import java.util.ArrayList;
 
 public class Character extends inheritCharNEnemy {
  
@@ -31,9 +32,9 @@ public class Character extends inheritCharNEnemy {
         this.sex = sex;
         this.money = money;
         
-        this.hp = 350 + (lvl * 50);
-        this.atk = 50 + (lvl * 25);
-        this.def = 30 + (lvl * 10);
+        this.hp = 500 + ((lvl - 1) * 150);
+        this.atk = 50 + ((lvl - 1) * 25);
+        this.def = 30 + ((lvl - 1) * 10);
         
         
     }
@@ -51,8 +52,20 @@ public class Character extends inheritCharNEnemy {
     //LvL Up
     public void lvlUp() { 
         
+        funkcio<Character> xpStay = new funkcio<>();
         this.lvl++;
-        this.xp = 0;
+        this.xp -= xpStay.lvlUpXp(this.lvl - 1);
+        this.hp = 500 + ((lvl - 1) * 150);
+        this.atk = 50 + ((lvl - 1) * 25);
+        this.def = 30 + ((lvl - 1) * 10);
+        funkcio<Enemy> stat = new funkcio<>();
+        ArrayList<Enemy> e = stat.loadEnemy(this);
+        for (Enemy x : e) {
+            
+            x = stat.enemyStat(x, this);
+            x.setDefHp(x.getHp());
+            
+        }
     
     }
     

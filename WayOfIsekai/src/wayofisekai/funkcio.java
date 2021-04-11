@@ -258,7 +258,7 @@ public class funkcio<gameClass> {
                 Integer quest = Integer.parseInt(enemyAdat.getElementsByTagName("quest").item(0).getTextContent());
                 Enemy e = new Enemy(name, hp, dmg, def, drate, quest);
                 enemyStat(e, ch);
-                e.setDefHp(hp);
+                e.setDefHp(e.getHp());
                 enemies.add(e);
             }
         }
@@ -274,9 +274,9 @@ public class funkcio<gameClass> {
             
             if (ch.getLvl() != 1) {
                 
-                en.setHp((en.getHp() / (ch.getLvl() - 1)) * ch.getLvl());
-                en.setAtk((en.getAtk() / (ch.getLvl() - 1)) * ch.getLvl());
-                en.setDef((en.getDef() / (ch.getLvl() - 1)) * ch.getLvl());
+                en.setHp(en.getHp() * ch.getLvl());
+                en.setAtk(en.getAtk() * ch.getLvl());
+                en.setDef(en.getDef() * ch.getLvl());
                 
             }
             
@@ -355,55 +355,22 @@ public class funkcio<gameClass> {
         return lvlUp;
     }
     
-    public Random r = new Random();
-    
-    public Integer fight(Character ch, Enemy e, Integer s){
-        //deklarálás
-        Integer hp = 0;
-        Integer dealt = 0;
-        Integer defend = 0;
-        //sebződő fél választás
-        if (s == 0 || s == 1) {
-            //ellenfél
-            hp = e.getHp();
-            defend = r.nextInt(e.getDef());
+    public ArrayList quest(Character ch, Integer qid){
+        
+        ArrayList<Enemy> qe = new ArrayList<>();
+        ArrayList<Enemy> list = loadEnemy(ch);
+        
+        for (Integer i = 0; i < list.size(); i++) {
             
-        } else {
-            //karakter
-            hp = ch.getHp();
-            r.nextInt(ch.getDef());
-            
-        }
-        //visszatérés HA
-        if (hp <= 0) {
-            //halott
-            return 0;
-            
-        } else {
-            //light - charged
-            Integer x = 5;
-            if (s == 1) x = 7;
-            else if (s == 2) x = 6;
-            //ch vagy enemy atk
-            if (s == 0 || s == 1) dealt = ch.getAtk() * r.nextInt(x);
-            else dealt = e.getAtk() * r.nextInt(x);
-            //védés
-            if (defend > dealt) {
-                //védett
-                dealt = 0;
-                if (s == 1) {
-                    //védett, de a karakter charged atk-t használt
-                    dealt = ch.getLvl() * 5;
-                    
-                }
+            if (list.get(i).getQuest() == qid) {
+                
+                qe.add(list.get(i));
                 
             }
-            hp = hp - dealt;
-            //hp visszatérése
-            if (hp <= 0) return 0;
-            else return hp;
             
         }
+        
+        return qe;
         
     }
     

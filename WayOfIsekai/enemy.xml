@@ -3,7 +3,7 @@
     <enemy>
         <name>Wolf</name>
         <hp>100</hp>
-        <dmg>24</dmg>
+        <dmg>12</dmg>
         <def>14</def>
         <drate>20</drate>
         <quest>1</quest>
@@ -11,7 +11,7 @@
     <enemy>
         <name>Bear</name>
         <hp>200</hp>
-        <dmg>30</dmg>
+        <dmg>15</dmg>
         <def>24</def>
         <drate>25</drate>
         <quest>1</quest>
@@ -19,7 +19,7 @@
     <enemy>
         <name>Vyvern</name>
         <hp>300</hp>
-        <dmg>34</dmg>
+        <dmg>17</dmg>
         <def>34</def>
         <drate>30</drate>
         <quest>1</quest>
