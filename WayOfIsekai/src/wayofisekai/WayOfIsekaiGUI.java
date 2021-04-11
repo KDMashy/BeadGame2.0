@@ -121,6 +121,35 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         enemyListTable = new javax.swing.JTable();
         igsave = new javax.swing.JButton();
+        quests = new javax.swing.JPanel();
+        q1 = new javax.swing.JPanel();
+        q1name = new javax.swing.JLabel();
+        q1start = new javax.swing.JButton();
+        q2 = new javax.swing.JPanel();
+        q2name = new javax.swing.JLabel();
+        q2start = new javax.swing.JButton();
+        q3 = new javax.swing.JPanel();
+        q3name = new javax.swing.JLabel();
+        q3start = new javax.swing.JButton();
+        q4 = new javax.swing.JPanel();
+        q4name = new javax.swing.JLabel();
+        q4start = new javax.swing.JButton();
+        q5 = new javax.swing.JPanel();
+        q5name = new javax.swing.JLabel();
+        q5start = new javax.swing.JButton();
+        city = new javax.swing.JPanel();
+        cityName = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        mapDisp = new javax.swing.JPanel();
+        mapLabel = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        cityPoint = new javax.swing.JButton();
+        q1point = new javax.swing.JButton();
+        q2point = new javax.swing.JButton();
+        q3point = new javax.swing.JButton();
+        q4point = new javax.swing.JButton();
+        q5point = new javax.swing.JButton();
+        MAP = new javax.swing.JLabel();
         fight = new javax.swing.JPanel();
         fDataPnl = new javax.swing.JPanel();
         fLvlDisp = new javax.swing.JLabel();
@@ -193,82 +222,82 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cProf.setPreferredSize(new java.awt.Dimension(350, 790));
 
         cNameDot.setBackground(new java.awt.Color(255, 226, 163));
-        cNameDot.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cNameDot.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cNameDot.setForeground(new java.awt.Color(255, 192, 160));
         cNameDot.setText("Character Name: ");
 
         cNameDisp.setBackground(new java.awt.Color(255, 226, 163));
-        cNameDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cNameDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cNameDisp.setForeground(new java.awt.Color(255, 192, 160));
         cNameDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cNameDisp.setText("name");
         cNameDisp.setToolTipText("");
 
         cSex.setBackground(new java.awt.Color(255, 226, 163));
-        cSex.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cSex.setForeground(new java.awt.Color(255, 192, 160));
         cSex.setText("Hp: ");
         cSex.setToolTipText("");
 
         cHpDisp.setBackground(new java.awt.Color(255, 226, 163));
-        cHpDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cHpDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cHpDisp.setForeground(new java.awt.Color(255, 192, 160));
         cHpDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cHpDisp.setText("hp");
         cHpDisp.setToolTipText("");
 
         xpBarDisp.setBackground(new java.awt.Color(255, 192, 160));
-        xpBarDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        xpBarDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         xpBarDisp.setForeground(new java.awt.Color(255, 192, 160));
         xpBarDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         xpBarDisp.setText("0 / 0");
 
         cSex1.setBackground(new java.awt.Color(255, 226, 163));
-        cSex1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex1.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cSex1.setForeground(new java.awt.Color(255, 192, 160));
         cSex1.setText("Sex: ");
         cSex1.setToolTipText("");
 
         cSexDisp.setBackground(new java.awt.Color(255, 226, 163));
-        cSexDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSexDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cSexDisp.setForeground(new java.awt.Color(255, 192, 160));
         cSexDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cSexDisp.setText("sex");
         cSexDisp.setToolTipText("");
 
         cSex2.setBackground(new java.awt.Color(255, 226, 163));
-        cSex2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex2.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cSex2.setForeground(new java.awt.Color(255, 192, 160));
         cSex2.setText("Dmg:");
         cSex2.setToolTipText("");
 
         cDmgDisp.setBackground(new java.awt.Color(255, 226, 163));
-        cDmgDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cDmgDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cDmgDisp.setForeground(new java.awt.Color(255, 192, 160));
         cDmgDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cDmgDisp.setText("dmg");
         cDmgDisp.setToolTipText("");
 
         cSex3.setBackground(new java.awt.Color(255, 226, 163));
-        cSex3.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cSex3.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cSex3.setForeground(new java.awt.Color(255, 192, 160));
         cSex3.setText("Money:");
         cSex3.setToolTipText("");
 
         cMoneyDisp.setBackground(new java.awt.Color(255, 226, 163));
-        cMoneyDisp.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cMoneyDisp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cMoneyDisp.setForeground(new java.awt.Color(255, 192, 160));
         cMoneyDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cMoneyDisp.setText("money");
         cMoneyDisp.setToolTipText("");
 
-        lvl.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        lvl.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         lvl.setForeground(new java.awt.Color(255, 192, 160));
         lvl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lvl.setText("0");
 
         cLvl.setBackground(new java.awt.Color(255, 192, 160));
-        cLvl.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        cLvl.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         cLvl.setForeground(new java.awt.Color(255, 192, 160));
         cLvl.setText("LvL:");
 
@@ -290,7 +319,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(cProfLayout.createSequentialGroup()
                                 .addComponent(cDmgDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 4, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(cProfLayout.createSequentialGroup()
                         .addComponent(cSex)
                         .addGap(41, 41, 41)
@@ -345,11 +374,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cSex3)
                     .addComponent(cMoneyDisp))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         enemyList.setBackground(new java.awt.Color(51, 51, 51));
-        enemyList.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        enemyList.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         enemyList.setForeground(new java.awt.Color(255, 192, 160));
         enemyList.setText("List Enemy");
         enemyList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -359,7 +388,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         });
 
         gameExit1.setBackground(new java.awt.Color(51, 51, 51));
-        gameExit1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        gameExit1.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         gameExit1.setForeground(new java.awt.Color(255, 192, 160));
         gameExit1.setText("Exit");
         gameExit1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -385,7 +414,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         eTable.setLayout(eTableLayout);
         eTableLayout.setHorizontalGroup(
             eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(eTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(eTableLayout.createSequentialGroup()
                     .addGap(2, 2, 2)
@@ -403,7 +432,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         );
 
         igsave.setBackground(new java.awt.Color(51, 51, 51));
-        igsave.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        igsave.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         igsave.setForeground(new java.awt.Color(255, 192, 160));
         igsave.setText("Save");
         igsave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -412,16 +441,337 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        quests.setBackground(new java.awt.Color(102, 102, 102));
+
+        q1.setBackground(new java.awt.Color(96, 0, 25));
+
+        q1name.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        q1name.setForeground(new java.awt.Color(255, 192, 160));
+        q1name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        q1name.setText("1 - Unexpected Journey");
+
+        q1start.setBackground(new java.awt.Color(51, 51, 51));
+        q1start.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q1start.setForeground(new java.awt.Color(255, 192, 160));
+        q1start.setText("Start here or Quest 1");
+
+        javax.swing.GroupLayout q1Layout = new javax.swing.GroupLayout(q1);
+        q1.setLayout(q1Layout);
+        q1Layout.setHorizontalGroup(
+            q1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(q1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q1name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(q1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(q1start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        q1Layout.setVerticalGroup(
+            q1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q1name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(q1start)
+                .addContainerGap())
+        );
+
+        q2.setBackground(new java.awt.Color(96, 0, 25));
+
+        q2name.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        q2name.setForeground(new java.awt.Color(255, 192, 160));
+        q2name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        q2name.setText("2 - To the Mountains");
+
+        q2start.setBackground(new java.awt.Color(51, 51, 51));
+        q2start.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q2start.setForeground(new java.awt.Color(255, 192, 160));
+        q2start.setText("Start here or Quest 2");
+
+        javax.swing.GroupLayout q2Layout = new javax.swing.GroupLayout(q2);
+        q2.setLayout(q2Layout);
+        q2Layout.setHorizontalGroup(
+            q2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(q2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q2name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(q2start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        q2Layout.setVerticalGroup(
+            q2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q2name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(q2start)
+                .addContainerGap())
+        );
+
+        q3.setBackground(new java.awt.Color(96, 0, 25));
+
+        q3name.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        q3name.setForeground(new java.awt.Color(255, 192, 160));
+        q3name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        q3name.setText("3 - Caves of the Mountain");
+
+        q3start.setBackground(new java.awt.Color(51, 51, 51));
+        q3start.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q3start.setForeground(new java.awt.Color(255, 192, 160));
+        q3start.setText("Start here or Quest 3");
+
+        javax.swing.GroupLayout q3Layout = new javax.swing.GroupLayout(q3);
+        q3.setLayout(q3Layout);
+        q3Layout.setHorizontalGroup(
+            q3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(q3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q3name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(q3start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        q3Layout.setVerticalGroup(
+            q3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q3name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(q3start)
+                .addContainerGap())
+        );
+
+        q4.setBackground(new java.awt.Color(96, 0, 25));
+
+        q4name.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        q4name.setForeground(new java.awt.Color(255, 192, 160));
+        q4name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        q4name.setText("4 - The Wild Forest");
+
+        q4start.setBackground(new java.awt.Color(51, 51, 51));
+        q4start.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q4start.setForeground(new java.awt.Color(255, 192, 160));
+        q4start.setText("Start here or Quest 4");
+
+        javax.swing.GroupLayout q4Layout = new javax.swing.GroupLayout(q4);
+        q4.setLayout(q4Layout);
+        q4Layout.setHorizontalGroup(
+            q4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q4Layout.createSequentialGroup()
+                .addGroup(q4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q4name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(q4start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        q4Layout.setVerticalGroup(
+            q4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q4name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(q4start)
+                .addContainerGap())
+        );
+
+        q5.setBackground(new java.awt.Color(96, 0, 25));
+
+        q5name.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        q5name.setForeground(new java.awt.Color(255, 192, 160));
+        q5name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        q5name.setText("5 - Dome of DOOM");
+
+        q5start.setBackground(new java.awt.Color(51, 51, 51));
+        q5start.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q5start.setForeground(new java.awt.Color(255, 192, 160));
+        q5start.setText("Start here or Quest 5");
+
+        javax.swing.GroupLayout q5Layout = new javax.swing.GroupLayout(q5);
+        q5.setLayout(q5Layout);
+        q5Layout.setHorizontalGroup(
+            q5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(q5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(q5name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q5Layout.createSequentialGroup()
+                        .addGap(0, 302, Short.MAX_VALUE)
+                        .addComponent(q5start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        q5Layout.setVerticalGroup(
+            q5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(q5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q5name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(q5start)
+                .addContainerGap())
+        );
+
+        city.setBackground(new java.awt.Color(0, 102, 102));
+
+        cityName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        cityName.setForeground(new java.awt.Color(255, 192, 160));
+        cityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cityName.setText("Mashiria");
+
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 192, 160));
+        jButton1.setText("Travel to city or Mashiria");
+
+        javax.swing.GroupLayout cityLayout = new javax.swing.GroupLayout(city);
+        city.setLayout(cityLayout);
+        cityLayout.setHorizontalGroup(
+            cityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cityLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cityLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        cityLayout.setVerticalGroup(
+            cityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cityLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cityName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout questsLayout = new javax.swing.GroupLayout(quests);
+        quests.setLayout(questsLayout);
+        questsLayout.setHorizontalGroup(
+            questsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(questsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(questsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(questsLayout.createSequentialGroup()
+                        .addGroup(questsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(q1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(q2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(q3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(q4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(q5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(city, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        questsLayout.setVerticalGroup(
+            questsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(questsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(q1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(q2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(q3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(q4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(q5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        mapDisp.setBackground(new java.awt.Color(51, 51, 51));
+
+        mapLabel.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
+        mapLabel.setForeground(new java.awt.Color(255, 192, 160));
+        mapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLabel.setText("Map");
+
+        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cityPoint.setBackground(new java.awt.Color(51, 51, 51));
+        cityPoint.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        cityPoint.setForeground(new java.awt.Color(255, 192, 160));
+        cityPoint.setText("Mashiria");
+        jLayeredPane1.add(cityPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 140, 50));
+
+        q1point.setBackground(new java.awt.Color(51, 51, 51));
+        q1point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q1point.setForeground(new java.awt.Color(255, 192, 160));
+        q1point.setText("Quest 1");
+        jLayeredPane1.add(q1point, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 140, 50));
+
+        q2point.setBackground(new java.awt.Color(51, 51, 51));
+        q2point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q2point.setForeground(new java.awt.Color(255, 192, 160));
+        q2point.setText("Quest 2");
+        jLayeredPane1.add(q2point, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 140, 50));
+
+        q3point.setBackground(new java.awt.Color(51, 51, 51));
+        q3point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q3point.setForeground(new java.awt.Color(255, 192, 160));
+        q3point.setText("Quest 3");
+        jLayeredPane1.add(q3point, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 140, 50));
+
+        q4point.setBackground(new java.awt.Color(51, 51, 51));
+        q4point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q4point.setForeground(new java.awt.Color(255, 192, 160));
+        q4point.setText("Quest 4");
+        jLayeredPane1.add(q4point, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 140, 50));
+
+        q5point.setBackground(new java.awt.Color(51, 51, 51));
+        q5point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        q5point.setForeground(new java.awt.Color(255, 192, 160));
+        q5point.setText("Quest 5");
+        jLayeredPane1.add(q5point, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 140, 50));
+
+        MAP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MAP.setText("MAP");
+        jLayeredPane1.add(MAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 620, 710));
+
+        javax.swing.GroupLayout mapDispLayout = new javax.swing.GroupLayout(mapDisp);
+        mapDisp.setLayout(mapDispLayout);
+        mapDispLayout.setHorizontalGroup(
+            mapDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mapDispLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mapDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                    .addComponent(mapLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        mapDispLayout.setVerticalGroup(
+            mapDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mapDispLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mapLabel)
+                .addGap(18, 18, 18)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout gameLayout = new javax.swing.GroupLayout(game);
         game.setLayout(gameLayout);
         gameLayout.setHorizontalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameLayout.createSequentialGroup()
-                .addContainerGap(1226, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(quests, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(mapDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(gameExit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                        .addComponent(cProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
                         .addComponent(enemyList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(igsave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -440,6 +790,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(eTable, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(gameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(quests, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mapDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         lpFrame.add(game, "card3");
@@ -1254,6 +1610,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (del.isEnabled() == Boolean.TRUE) {
             
             chF.removeChar(ch, cBox.getSelectedItem().toString());
+            removeAccept.setSelected(Boolean.FALSE);
             clearTable(tbLoad);
             fillTableCharacter();
             
@@ -1373,6 +1730,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton HIT;
     private javax.swing.JButton LEAVE;
+    private javax.swing.JLabel MAP;
     private javax.swing.JLabel alairas;
     private javax.swing.JComboBox<String> cBox;
     private javax.swing.JLabel cDmgDisp;
@@ -1393,6 +1751,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel charimg;
     private javax.swing.JPanel choice;
     private javax.swing.JLabel cimlbl;
+    private javax.swing.JPanel city;
+    private javax.swing.JLabel cityName;
+    private javax.swing.JButton cityPoint;
     private javax.swing.JButton createC;
     private javax.swing.JButton createCancel;
     private javax.swing.JButton del;
@@ -1419,6 +1780,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel game;
     private javax.swing.JButton gameExit1;
     private javax.swing.JButton igsave;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1435,9 +1798,32 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane lpFrame;
     private javax.swing.JLabel lvl;
     private javax.swing.JRadioButton male;
+    private javax.swing.JPanel mapDisp;
+    private javax.swing.JLabel mapLabel;
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
     private javax.swing.JLabel profilkep;
+    private javax.swing.JPanel q1;
+    private javax.swing.JLabel q1name;
+    private javax.swing.JButton q1point;
+    private javax.swing.JButton q1start;
+    private javax.swing.JPanel q2;
+    private javax.swing.JLabel q2name;
+    private javax.swing.JButton q2point;
+    private javax.swing.JButton q2start;
+    private javax.swing.JPanel q3;
+    private javax.swing.JLabel q3name;
+    private javax.swing.JButton q3point;
+    private javax.swing.JButton q3start;
+    private javax.swing.JPanel q4;
+    private javax.swing.JLabel q4name;
+    private javax.swing.JButton q4point;
+    private javax.swing.JButton q4start;
+    private javax.swing.JPanel q5;
+    private javax.swing.JLabel q5name;
+    private javax.swing.JButton q5point;
+    private javax.swing.JButton q5start;
+    private javax.swing.JPanel quests;
     private javax.swing.JCheckBox removeAccept;
     private javax.swing.JLabel sex;
     private javax.swing.JPanel sheldon;

@@ -49,7 +49,12 @@ public class Character extends inheritCharNEnemy {
     }
     
     //LvL Up
-    public void lvlUp() { this.lvl++; }
+    public void lvlUp() { 
+        
+        this.lvl++;
+        this.xp = 0;
+    
+    }
     
     //Getter függvények
     

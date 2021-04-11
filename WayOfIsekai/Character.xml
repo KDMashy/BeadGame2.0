@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><wayofisekai.Character>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<wayofisekai.Character>
     
 
 
@@ -14,26 +15,18 @@
     <hp type="Integer">350</hp>
     <atk type="Integer">50</atk>
 </Character>
-<Character>
-    <lvl type="Integer">1</lvl>
-    <money type="Integer">0</money>
-    <def type="Integer">30</def>
-    <sex type="Boolean">false</sex>
-    <xp type="Integer">0</xp>
-    <name type="String">Raku</name>
-    <hp type="Integer">350</hp>
-    <atk type="Integer">50</atk>
-</Character>
+
+
 
 
 <Character>
-    <lvl type="Integer">1</lvl>
-    <money type="Integer">0</money>
-    <def type="Integer">40</def>
-    <sex type="Boolean">true</sex>
-    <xp type="Integer">0</xp>
-    <name type="String">RENÁTA</name>
-    <hp type="Integer">400</hp>
-    <atk type="Integer">75</atk>
+<lvl type="Integer">1</lvl>
+<money type="Integer">0</money>
+<def type="Integer">40</def>
+<sex type="Boolean">true</sex>
+<xp type="Integer">0</xp>
+<name type="String">Kaede</name>
+<hp type="Integer">400</hp>
+<atk type="Integer">75</atk>
 </Character>
-<Character><lvl type="Integer">1</lvl><money type="Integer">0</money><def type="Integer">40</def><sex type="Boolean">true</sex><xp type="Integer">0</xp><name type="String">Kaede</name><hp type="Integer">400</hp><atk type="Integer">75</atk></Character></wayofisekai.Character>
+</wayofisekai.Character>
