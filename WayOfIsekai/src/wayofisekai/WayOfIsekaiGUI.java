@@ -127,18 +127,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         q2 = new javax.swing.JPanel();
         q2name = new javax.swing.JLabel();
         q2start = new javax.swing.JButton();
+        req4 = new javax.swing.JLabel();
         q3 = new javax.swing.JPanel();
         q3name = new javax.swing.JLabel();
         q3start = new javax.swing.JButton();
+        req3 = new javax.swing.JLabel();
         q4 = new javax.swing.JPanel();
         q4name = new javax.swing.JLabel();
         q4start = new javax.swing.JButton();
+        req2 = new javax.swing.JLabel();
         q5 = new javax.swing.JPanel();
         q5name = new javax.swing.JLabel();
         q5start = new javax.swing.JButton();
+        req1 = new javax.swing.JLabel();
         city = new javax.swing.JPanel();
         cityName = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        mashiriaB = new javax.swing.JButton();
+        req = new javax.swing.JLabel();
         mapDisp = new javax.swing.JPanel();
         mapLabel = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
@@ -171,7 +176,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         eHpDisp = new javax.swing.JLabel();
         efDmg = new javax.swing.JLabel();
         dialogue = new javax.swing.JPanel();
-        sheldon = new javax.swing.JPanel();
+        MashiriaCity = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
         logScreen = new javax.swing.JPanel();
         load = new javax.swing.JButton();
@@ -499,6 +504,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        req4.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        req4.setForeground(new java.awt.Color(255, 192, 160));
+        req4.setText("Required lvl: 5");
+
         javax.swing.GroupLayout q2Layout = new javax.swing.GroupLayout(q2);
         q2.setLayout(q2Layout);
         q2Layout.setHorizontalGroup(
@@ -508,7 +517,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(q2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(q2name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(req4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(q2start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -518,7 +528,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(q2name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(q2start)
+                .addGroup(q2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q2start)
+                    .addComponent(req4))
                 .addContainerGap())
         );
 
@@ -539,6 +551,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        req3.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        req3.setForeground(new java.awt.Color(255, 192, 160));
+        req3.setText("Required lvl: 15");
+
         javax.swing.GroupLayout q3Layout = new javax.swing.GroupLayout(q3);
         q3.setLayout(q3Layout);
         q3Layout.setHorizontalGroup(
@@ -548,7 +564,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(q3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(q3name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(req3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(q3start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -558,7 +575,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(q3name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(q3start)
+                .addGroup(q3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q3start)
+                    .addComponent(req3))
                 .addContainerGap())
         );
 
@@ -579,6 +598,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        req2.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        req2.setForeground(new java.awt.Color(255, 192, 160));
+        req2.setText("Required lvl: 30");
+
         javax.swing.GroupLayout q4Layout = new javax.swing.GroupLayout(q4);
         q4.setLayout(q4Layout);
         q4Layout.setHorizontalGroup(
@@ -587,7 +610,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(q4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(q4name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(req2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(q4start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -597,7 +622,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(q4name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(q4start)
+                .addGroup(q4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q4start)
+                    .addComponent(req2))
                 .addContainerGap())
         );
 
@@ -618,6 +645,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         });
 
+        req1.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        req1.setForeground(new java.awt.Color(255, 192, 160));
+        req1.setText("Required lvl: 45");
+
         javax.swing.GroupLayout q5Layout = new javax.swing.GroupLayout(q5);
         q5.setLayout(q5Layout);
         q5Layout.setHorizontalGroup(
@@ -627,7 +658,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(q5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(q5name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, q5Layout.createSequentialGroup()
-                        .addGap(0, 302, Short.MAX_VALUE)
+                        .addComponent(req1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                         .addComponent(q5start, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -637,7 +669,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(q5name)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(q5start)
+                .addGroup(q5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(q5start)
+                    .addComponent(req1))
                 .addContainerGap())
         );
 
@@ -648,10 +682,19 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cityName.setText("Mashiria");
 
-        jButton1.setBackground(new java.awt.Color(51, 51, 51));
-        jButton1.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 192, 160));
-        jButton1.setText("Travel to city or Mashiria");
+        mashiriaB.setBackground(new java.awt.Color(51, 51, 51));
+        mashiriaB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        mashiriaB.setForeground(new java.awt.Color(255, 192, 160));
+        mashiriaB.setText("Travel to city or Mashiria");
+        mashiriaB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mashiriaBMouseClicked(evt);
+            }
+        });
+
+        req.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        req.setForeground(new java.awt.Color(255, 192, 160));
+        req.setText("Required lvl: 15");
 
         javax.swing.GroupLayout cityLayout = new javax.swing.GroupLayout(city);
         city.setLayout(cityLayout);
@@ -661,9 +704,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(cityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cityName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cityLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(cityLayout.createSequentialGroup()
+                        .addComponent(req)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mashiriaB, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         cityLayout.setVerticalGroup(
@@ -672,7 +716,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cityName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addGroup(cityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mashiriaB)
+                    .addComponent(req))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -712,52 +758,85 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mapDisp.setBackground(new java.awt.Color(51, 51, 51));
+        mapDisp.setBackground(new java.awt.Color(204, 204, 204));
 
         mapLabel.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
-        mapLabel.setForeground(new java.awt.Color(255, 192, 160));
+        mapLabel.setForeground(new java.awt.Color(102, 102, 102));
         mapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLabel.setText("Map");
 
+        jLayeredPane1.setBackground(new java.awt.Color(204, 204, 204));
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cityPoint.setBackground(new java.awt.Color(51, 51, 51));
         cityPoint.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         cityPoint.setForeground(new java.awt.Color(255, 192, 160));
         cityPoint.setText("Mashiria");
-        jLayeredPane1.add(cityPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 140, 50));
+        cityPoint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cityPointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(cityPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, 140, 50));
 
         q1point.setBackground(new java.awt.Color(51, 51, 51));
         q1point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         q1point.setForeground(new java.awt.Color(255, 192, 160));
         q1point.setText("Quest 1");
-        jLayeredPane1.add(q1point, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 140, 50));
+        q1point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q1pointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(q1point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 140, 50));
 
         q2point.setBackground(new java.awt.Color(51, 51, 51));
         q2point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         q2point.setForeground(new java.awt.Color(255, 192, 160));
         q2point.setText("Quest 2");
-        jLayeredPane1.add(q2point, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 140, 50));
+        q2point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q2pointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(q2point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 140, 50));
 
         q3point.setBackground(new java.awt.Color(51, 51, 51));
         q3point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         q3point.setForeground(new java.awt.Color(255, 192, 160));
         q3point.setText("Quest 3");
-        jLayeredPane1.add(q3point, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 140, 50));
+        q3point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q3pointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(q3point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 140, 50));
 
         q4point.setBackground(new java.awt.Color(51, 51, 51));
         q4point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         q4point.setForeground(new java.awt.Color(255, 192, 160));
         q4point.setText("Quest 4");
-        jLayeredPane1.add(q4point, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 140, 50));
+        q4point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q4pointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(q4point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 140, 50));
 
         q5point.setBackground(new java.awt.Color(51, 51, 51));
         q5point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         q5point.setForeground(new java.awt.Color(255, 192, 160));
         q5point.setText("Quest 5");
-        jLayeredPane1.add(q5point, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 140, 50));
+        q5point.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                q5pointMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(q5point, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 140, 50));
 
+        MAP.setBackground(new java.awt.Color(204, 204, 204));
         MAP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/MAP.png"))); // NOI18N
         MAP.setText("MAP");
         jLayeredPane1.add(MAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 620, 710));
 
@@ -768,7 +847,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(mapDispLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mapDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                     .addComponent(mapLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1095,18 +1174,18 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         lpFrame.add(dialogue, "card5");
 
-        javax.swing.GroupLayout sheldonLayout = new javax.swing.GroupLayout(sheldon);
-        sheldon.setLayout(sheldonLayout);
-        sheldonLayout.setHorizontalGroup(
-            sheldonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout MashiriaCityLayout = new javax.swing.GroupLayout(MashiriaCity);
+        MashiriaCity.setLayout(MashiriaCityLayout);
+        MashiriaCityLayout.setHorizontalGroup(
+            MashiriaCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1600, Short.MAX_VALUE)
         );
-        sheldonLayout.setVerticalGroup(
-            sheldonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        MashiriaCityLayout.setVerticalGroup(
+            MashiriaCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
         );
 
-        lpFrame.add(sheldon, "card6");
+        lpFrame.add(MashiriaCity, "card6");
 
         logScreen.setBackground(new java.awt.Color(102, 102, 102));
         logScreen.setForeground(new java.awt.Color(102, 102, 102));
@@ -1597,6 +1676,37 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             chk.getXp(), chk.getSex(), chk.getMoney());
                     hp = ch.getHp();
                     removeAccept.setSelected(Boolean.FALSE);
+                    if (ch.getLvl() >= 45) { 
+                        q5start.setEnabled(Boolean.TRUE); 
+                        q4start.setEnabled(Boolean.TRUE);
+                        q3start.setEnabled(Boolean.TRUE);
+                        q2start.setEnabled(Boolean.TRUE);
+                        mashiriaB.setEnabled(Boolean.TRUE);
+                    } else if (ch.getLvl() >= 30) {
+                        q5start.setEnabled(Boolean.FALSE);
+                        q4start.setEnabled(Boolean.TRUE);
+                        q3start.setEnabled(Boolean.TRUE);
+                        q2start.setEnabled(Boolean.TRUE);
+                        mashiriaB.setEnabled(Boolean.TRUE);
+                    } else if (ch.getLvl() >= 15) {
+                        q5start.setEnabled(Boolean.FALSE);
+                        q4start.setEnabled(Boolean.FALSE);
+                        q3start.setEnabled(Boolean.TRUE);
+                        q2start.setEnabled(Boolean.TRUE);
+                        mashiriaB.setEnabled(Boolean.TRUE);
+                    } else if (ch.getLvl() >= 5) {
+                        q5start.setEnabled(Boolean.FALSE);
+                        q4start.setEnabled(Boolean.FALSE);
+                        q3start.setEnabled(Boolean.FALSE);
+                        q2start.setEnabled(Boolean.TRUE);
+                        mashiriaB.setEnabled(Boolean.FALSE);
+                    } else {
+                        q5start.setEnabled(Boolean.FALSE);
+                        q4start.setEnabled(Boolean.FALSE);
+                        q3start.setEnabled(Boolean.FALSE);
+                        q2start.setEnabled(Boolean.FALSE);
+                        mashiriaB.setEnabled(Boolean.FALSE);
+                    }
                     meghiv(game);
 
                 }
@@ -1845,43 +1955,83 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     
     private void q1startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q1startMouseClicked
         
-        chF.quest(ch, 1);
-        fightStart(1);
-        meghiv(fight);
+        if (q1start.isEnabled() == Boolean.TRUE) {
+            chF.quest(ch, 1);
+            fightStart(1);
+            meghiv(fight);
+        }
         
     }//GEN-LAST:event_q1startMouseClicked
 
     private void q2startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q2startMouseClicked
         
-        chF.quest(ch, 2);
-        fightStart(2);
-        meghiv(fight);
+        if (q2start.isEnabled() == Boolean.TRUE) {
+            chF.quest(ch, 2);
+            fightStart(2);
+            meghiv(fight);
+        }
         
     }//GEN-LAST:event_q2startMouseClicked
 
     private void q3startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q3startMouseClicked
         
-        chF.quest(ch, 3);
-        fightStart(3);
-        meghiv(fight);
+        if (q3start.isEnabled() == Boolean.TRUE) {
+            chF.quest(ch, 3);
+            fightStart(3);
+            meghiv(fight);
+        }
         
     }//GEN-LAST:event_q3startMouseClicked
 
     private void q4startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q4startMouseClicked
         
-        chF.quest(ch, 4);
-        fightStart(4);
-        meghiv(fight);
+        if (q4start.isEnabled() == Boolean.TRUE) {
+            chF.quest(ch, 4);
+            fightStart(4);
+            meghiv(fight);
+        }
         
     }//GEN-LAST:event_q4startMouseClicked
 
     private void q5startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q5startMouseClicked
         
-        chF.quest(ch, 5);
-        fightStart(5);
-        meghiv(fight);
+        if (q5start.isEnabled() == Boolean.TRUE) {
+            chF.quest(ch, 5);
+            fightStart(5);
+            meghiv(fight);
+        }
         
     }//GEN-LAST:event_q5startMouseClicked
+
+    private void q1pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q1pointMouseClicked
+        q1startMouseClicked(evt);
+    }//GEN-LAST:event_q1pointMouseClicked
+
+    private void q2pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q2pointMouseClicked
+        q2startMouseClicked(evt);
+    }//GEN-LAST:event_q2pointMouseClicked
+
+    private void q3pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q3pointMouseClicked
+        q3startMouseClicked(evt);
+    }//GEN-LAST:event_q3pointMouseClicked
+
+    private void q4pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q4pointMouseClicked
+        q4startMouseClicked(evt);
+    }//GEN-LAST:event_q4pointMouseClicked
+
+    private void q5pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q5pointMouseClicked
+        q5startMouseClicked(evt);
+    }//GEN-LAST:event_q5pointMouseClicked
+
+    private void cityPointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cityPointMouseClicked
+        mashiriaBMouseClicked(evt);
+    }//GEN-LAST:event_cityPointMouseClicked
+
+    private void mashiriaBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashiriaBMouseClicked
+        
+        if (mashiriaB.isEnabled() == Boolean.TRUE) meghiv(MashiriaCity);
+        
+    }//GEN-LAST:event_mashiriaBMouseClicked
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1918,6 +2068,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JButton HIT;
     private javax.swing.JButton LEAVE;
     private javax.swing.JLabel MAP;
+    private javax.swing.JPanel MashiriaCity;
     private javax.swing.JLabel alairas;
     private javax.swing.JButton atk;
     private javax.swing.JComboBox<String> cBox;
@@ -1969,7 +2120,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JButton gameExit1;
     private javax.swing.JButton heal;
     private javax.swing.JButton igsave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1987,6 +2137,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JPanel mapDisp;
     private javax.swing.JLabel mapLabel;
+    private javax.swing.JButton mashiriaB;
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
     private javax.swing.JLabel profilkep;
@@ -2012,8 +2163,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JButton q5start;
     private javax.swing.JPanel quests;
     private javax.swing.JCheckBox removeAccept;
+    private javax.swing.JLabel req;
+    private javax.swing.JLabel req1;
+    private javax.swing.JLabel req2;
+    private javax.swing.JLabel req3;
+    private javax.swing.JLabel req4;
     private javax.swing.JLabel sex;
-    private javax.swing.JPanel sheldon;
     private javax.swing.JTable tbLoad;
     private javax.swing.JProgressBar xpBar;
     private javax.swing.JLabel xpBarDisp;

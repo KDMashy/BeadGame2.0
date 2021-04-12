@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><wayofisekai.Character>
 
 
-<Character><lvl type="Integer">2</lvl><money type="Integer">1703</money><def type="Integer">40</def><sex type="Boolean">true</sex><xp type="Integer">231</xp><name type="String">Kaede</name><hp type="Integer">650</hp><atk type="Integer">75</atk></Character></wayofisekai.Character>
+
+
+
+
+
+
+
+<Character><lvl type="Integer">2</lvl><money type="Integer">2250</money><def type="Integer">40</def><sex type="Boolean">true</sex><xp type="Integer">763</xp><name type="String">Kaede</name><hp type="Integer">650</hp><atk type="Integer">75</atk></Character></wayofisekai.Character>
