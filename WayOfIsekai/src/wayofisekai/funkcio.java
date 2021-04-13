@@ -18,6 +18,11 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -57,7 +62,7 @@ public class funkcio<gameClass> {
                 first = Boolean.TRUE;
                 
             } 
-            if (first == Boolean.TRUE) {
+            if (first == Boolean.TRUE || obj.getClass().getSimpleName().equals("npc")) {
                 
                 saveMethod(obj, file);
                 
@@ -268,6 +273,40 @@ public class funkcio<gameClass> {
         return enemies;
     }
     
+    public ArrayList<npc> loadNpc(npc xy){
+        
+        ArrayList<npc> npcs = new ArrayList<>();
+        
+        try {
+            String filename = xy.getClass().getSimpleName() + ".xml";
+            File file = new File(filename);
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document xml = builder.parse(file);
+            xml.normalize();
+            
+            NodeList enemyByTag = xml.getElementsByTagName(xy.getClass().getSimpleName());
+            for (Integer i = 0; i < enemyByTag.getLength(); i++) {
+                Node npcTag = enemyByTag.item(i);
+                Element npcAdat = (Element)npcTag;
+                String name = npcAdat.getElementsByTagName("vilName").item(0).getTextContent();
+                Boolean comp = Boolean.parseBoolean
+                    (npcAdat.getElementsByTagName("comp").item(0).getTextContent());
+                Boolean acc = Boolean.parseBoolean
+                    (npcAdat.getElementsByTagName("acc").item(0).getTextContent());
+                String cname = npcAdat.getElementsByTagName("cname").item(0).getTextContent();
+                xy = new npc(name, comp, acc, cname);
+                npcs.add(xy);
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+        }
+        
+        return npcs;
+        
+    }
+    
     public Enemy enemyStat(Enemy en, Character ch){
         
         try {
@@ -313,6 +352,8 @@ public class funkcio<gameClass> {
                 
             }
             
+            clean(xml);
+            
             saveXMLContent(xml, fileName);
             return Boolean.TRUE;
             
@@ -324,6 +365,69 @@ public class funkcio<gameClass> {
         
         return Boolean.FALSE;
         
+    }
+    
+    public Boolean removeNpcs(gameClass xy, String name){
+        
+        try {
+            
+            String fileName = xy.getClass().getSimpleName() + ".xml";
+            File file = new File(fileName);
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document xml = db.parse(file);
+            
+            NodeList npcs = xml.getElementsByTagName(xy.getClass().getSimpleName());
+            for (Integer i = 0; i < npcs.getLength(); i++) {
+                
+                Element npc = (Element)npcs.item(i);
+                Element nameTag = (Element)npc.getElementsByTagName("cname").item(0);
+                if (nameTag.getTextContent().equalsIgnoreCase(name)) {
+                    
+                    nameTag.getParentNode().getParentNode().removeChild(npcs.item(i));
+                    break;
+                    
+                }
+                
+            }
+            
+            clean(xml);
+            
+            saveXMLContent(xml, fileName);
+            return Boolean.TRUE;
+            
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+            
+        }
+        
+        return Boolean.FALSE;
+        
+    }
+    
+    public static void clean(Node node)
+    {
+      NodeList childNodes = node.getChildNodes();
+
+      for (int n = childNodes.getLength() - 1; n >= 0; n--)
+      {
+         Node child = childNodes.item(n);
+         short nodeType = child.getNodeType();
+
+         if (nodeType == Node.ELEMENT_NODE)
+            clean(child);
+         else if (nodeType == Node.TEXT_NODE)
+         {
+            String trimmedNodeVal = child.getNodeValue().trim();
+            if (trimmedNodeVal.length() == 0)
+               node.removeChild(child);
+            else
+               child.setNodeValue(trimmedNodeVal);
+         }
+         else if (nodeType == Node.COMMENT_NODE)
+            node.removeChild(child);
+      }
     }
     
     private static void saveXMLContent(Document xml, String file) {

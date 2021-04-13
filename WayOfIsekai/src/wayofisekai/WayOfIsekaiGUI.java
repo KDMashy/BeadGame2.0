@@ -2,10 +2,13 @@
 package wayofisekai;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.xml.xpath.XPathExpressionException;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
@@ -14,6 +17,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     public funkcio<Character> chF = new funkcio<Character>();
     public funkcio<Enemy> enemyF = new funkcio<Enemy>();
     public ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
+    public funkcio<npc> npcsave = new funkcio<>();
+    public ArrayList<npc> npcList = new ArrayList<>();
     
     public WayOfIsekaiGUI() {
         initComponents();
@@ -1317,6 +1322,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         mashiron.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         mashiron.setForeground(new java.awt.Color(255, 192, 160));
         mashiron.setText("Mashiron");
+        mashiron.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mashironMouseClicked(evt);
+            }
+        });
         mashiriaLayers.add(mashiron, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 720, 150, 50));
 
         hiro.setBackground(new java.awt.Color(51, 51, 51));
@@ -2177,6 +2187,16 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     ch.setName(cNameText.getText());
                     ch.setSex(charSex);
                     chF.saveObject(ch, ch.getName());
+                    
+                    String[] npcNames = new String[] 
+                        {"Mashiron", "Shiina",
+                        "Raku", "Kaede",
+                        "Chi", "Shiro",
+                        "Kuro", "Hiro"};
+                    for (int i = 0; i < 8; i++) {
+                        npc xy = new npc(npcNames[i], Boolean.FALSE, Boolean.FALSE, ch.getName());
+                        npcsave.saveObject(xy, npcNames[i]);
+                    }
                     cNameText.setText("");
 
                 }
@@ -2261,6 +2281,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             chk.getXp(), chk.getSex(), chk.getMoney());
                     hp = ch.getHp();
                     removeAccept.setSelected(Boolean.FALSE);
+                    
+                    npc xynpc = new npc("xy", Boolean.FALSE,
+                        Boolean.FALSE, "nb");
+                    npcList = chF.loadNpc(xynpc);
                     
                     q5start.setEnabled(Boolean.FALSE);
                     q4start.setEnabled(Boolean.FALSE);
@@ -2351,6 +2375,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (del.isEnabled() == Boolean.TRUE) {
             
             chF.removeChar(ch, cBox.getSelectedItem().toString());
+            chF.removeNpcs(ch, cBox.getSelectedItem().toString());
             removeAccept.setSelected(Boolean.FALSE);
             clearTable(tbLoad);
             fillTableCharacter();
@@ -2400,13 +2425,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         clearTable(tbLoad);
         chF.removeChar(ch, ch.getName());
         chF.saveObject(ch, ch.getName());
+        for (npc savenpc : npcList) {
+            npcsave.removeNpcs(savenpc, savenpc.getCname());
+            npcsave.saveObject(savenpc, savenpc.getVilName());
+        }
         meghiv(login);
         
     }//GEN-LAST:event_gameExit1MouseClicked
 
     private void igsaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_igsaveMouseClicked
+        
         chF.removeChar(ch, ch.getName());
         chF.saveObject(ch, ch.getName());
+        for (npc savenpc : npcList) {
+            npcsave.removeNpcs(savenpc, savenpc.getCname());
+            npcsave.saveObject(savenpc, savenpc.getVilName());
+        }
+        
     }//GEN-LAST:event_igsaveMouseClicked
 
     private void HITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HITActionPerformed
@@ -2669,6 +2704,14 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_healMouseClicked
+
+    private void mashironMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseClicked
+        if (mashiron.isEnabled() == Boolean.TRUE) {
+            
+            masPnl.setVisible(Boolean.TRUE);
+            
+        }
+    }//GEN-LAST:event_mashironMouseClicked
 
     public Boolean 
             npcMashiron = Boolean.FALSE,
