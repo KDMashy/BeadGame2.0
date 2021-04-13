@@ -146,7 +146,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         req = new javax.swing.JLabel();
         mapDisp = new javax.swing.JPanel();
         mapLabel = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        mapLayers = new javax.swing.JLayeredPane();
         cityPoint = new javax.swing.JButton();
         q1point = new javax.swing.JButton();
         q2point = new javax.swing.JButton();
@@ -177,6 +177,69 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         efDmg = new javax.swing.JLabel();
         dialogue = new javax.swing.JPanel();
         MashiriaCity = new javax.swing.JPanel();
+        mashiriaLayers = new javax.swing.JLayeredPane();
+        chiComp = new javax.swing.JLabel();
+        masComp = new javax.swing.JLabel();
+        kuroComp = new javax.swing.JLabel();
+        shiComp = new javax.swing.JLabel();
+        kaeComp = new javax.swing.JLabel();
+        shiroComp = new javax.swing.JLabel();
+        hiroComp = new javax.swing.JLabel();
+        rakuComp = new javax.swing.JLabel();
+        kuro = new javax.swing.JButton();
+        shiina = new javax.swing.JButton();
+        raku = new javax.swing.JButton();
+        shiro = new javax.swing.JButton();
+        mashiron = new javax.swing.JButton();
+        hiro = new javax.swing.JButton();
+        chi = new javax.swing.JButton();
+        kaede = new javax.swing.JButton();
+        sheldon = new javax.swing.JButton();
+        travelB = new javax.swing.JButton();
+        kuroPnl = new javax.swing.JPanel();
+        kuroName = new javax.swing.JLabel();
+        kuroAnswB = new javax.swing.JButton();
+        kuroQ = new javax.swing.JLabel();
+        kuroAnsw = new javax.swing.JComboBox<>();
+        shiroPnl = new javax.swing.JPanel();
+        shiroName = new javax.swing.JLabel();
+        shiroAnsw = new javax.swing.JComboBox<>();
+        shiroAnswB = new javax.swing.JButton();
+        shiroQ = new javax.swing.JLabel();
+        rakuPnl = new javax.swing.JPanel();
+        rakuName = new javax.swing.JLabel();
+        rakuQ = new javax.swing.JLabel();
+        rakuAnsw = new javax.swing.JComboBox<>();
+        rakuAnswB = new javax.swing.JButton();
+        shiPnl = new javax.swing.JPanel();
+        shiName = new javax.swing.JLabel();
+        shiQ = new javax.swing.JLabel();
+        shiAccB = new javax.swing.JButton();
+        kaePnl = new javax.swing.JPanel();
+        kaeName = new javax.swing.JLabel();
+        kaeQ = new javax.swing.JLabel();
+        kaeAccB = new javax.swing.JButton();
+        masPnl = new javax.swing.JPanel();
+        masName = new javax.swing.JLabel();
+        masAccB = new javax.swing.JButton();
+        masQ = new javax.swing.JLabel();
+        hiroPnl = new javax.swing.JPanel();
+        hiroName = new javax.swing.JLabel();
+        hiroQ = new javax.swing.JLabel();
+        hiroAccB = new javax.swing.JButton();
+        chiPnl = new javax.swing.JPanel();
+        chiName = new javax.swing.JLabel();
+        chiQ = new javax.swing.JLabel();
+        chiAccB = new javax.swing.JButton();
+        sheldonPnl = new javax.swing.JPanel();
+        shelLayer = new javax.swing.JLayeredPane();
+        shelQ = new javax.swing.JLabel();
+        shelC = new javax.swing.JComboBox<>();
+        sheldonName = new javax.swing.JLabel();
+        winlose = new javax.swing.JTextField();
+        shelImg = new javax.swing.JLabel();
+        shelChoose = new javax.swing.JButton();
+        mashiriaMap = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         logScreen = new javax.swing.JPanel();
         load = new javax.swing.JButton();
@@ -765,8 +828,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         mapLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLabel.setText("Map");
 
-        jLayeredPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mapLayers.setBackground(new java.awt.Color(204, 204, 204));
+        mapLayers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cityPoint.setBackground(new java.awt.Color(51, 51, 51));
         cityPoint.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -777,7 +840,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 cityPointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(cityPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, 140, 50));
+        mapLayers.add(cityPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, 140, 50));
 
         q1point.setBackground(new java.awt.Color(51, 51, 51));
         q1point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -788,7 +851,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 q1pointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(q1point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 140, 50));
+        mapLayers.add(q1point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 140, 50));
 
         q2point.setBackground(new java.awt.Color(51, 51, 51));
         q2point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -799,7 +862,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 q2pointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(q2point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 140, 50));
+        mapLayers.add(q2point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 140, 50));
 
         q3point.setBackground(new java.awt.Color(51, 51, 51));
         q3point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -810,7 +873,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 q3pointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(q3point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 140, 50));
+        mapLayers.add(q3point, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 140, 50));
 
         q4point.setBackground(new java.awt.Color(51, 51, 51));
         q4point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -821,7 +884,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 q4pointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(q4point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 140, 50));
+        mapLayers.add(q4point, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 140, 50));
 
         q5point.setBackground(new java.awt.Color(51, 51, 51));
         q5point.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -832,13 +895,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 q5pointMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(q5point, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 140, 50));
+        mapLayers.add(q5point, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 140, 50));
 
         MAP.setBackground(new java.awt.Color(204, 204, 204));
         MAP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MAP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/MAP.png"))); // NOI18N
         MAP.setText("MAP");
-        jLayeredPane1.add(MAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 620, 710));
+        mapLayers.add(MAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 620, 710));
 
         javax.swing.GroupLayout mapDispLayout = new javax.swing.GroupLayout(mapDisp);
         mapDisp.setLayout(mapDispLayout);
@@ -847,7 +910,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(mapDispLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mapDispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                    .addComponent(mapLayers, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                     .addComponent(mapLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -857,7 +920,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(mapLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mapLayers, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -946,7 +1009,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         heal.setBackground(new java.awt.Color(51, 51, 51));
         heal.setForeground(new java.awt.Color(255, 192, 160));
-        heal.setText("Heal");
+        heal.setText("Heal / 100");
+        heal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                healMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout fDataPnlLayout = new javax.swing.GroupLayout(fDataPnl);
         fDataPnl.setLayout(fDataPnlLayout);
@@ -1174,15 +1242,532 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         lpFrame.add(dialogue, "card5");
 
+        mashiriaLayers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chiComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        chiComp.setForeground(new java.awt.Color(204, 255, 255));
+        chiComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(chiComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 740, -1, -1));
+
+        masComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        masComp.setForeground(new java.awt.Color(204, 255, 255));
+        masComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(masComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 740, -1, -1));
+
+        kuroComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kuroComp.setForeground(new java.awt.Color(204, 255, 255));
+        kuroComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(kuroComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+
+        shiComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiComp.setForeground(new java.awt.Color(204, 255, 255));
+        shiComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(shiComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, -1));
+
+        kaeComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kaeComp.setForeground(new java.awt.Color(204, 255, 255));
+        kaeComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(kaeComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, -1, -1));
+
+        shiroComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiroComp.setForeground(new java.awt.Color(204, 255, 255));
+        shiroComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(shiroComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 410, -1, -1));
+
+        hiroComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        hiroComp.setForeground(new java.awt.Color(204, 255, 255));
+        hiroComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(hiroComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, -1, -1));
+
+        rakuComp.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        rakuComp.setForeground(new java.awt.Color(204, 255, 255));
+        rakuComp.setText("Már teljesítetted !");
+        mashiriaLayers.add(rakuComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 420, -1, -1));
+
+        kuro.setBackground(new java.awt.Color(51, 51, 51));
+        kuro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kuro.setForeground(new java.awt.Color(255, 192, 160));
+        kuro.setText("Kuro");
+        kuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kuroActionPerformed(evt);
+            }
+        });
+        mashiriaLayers.add(kuro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 150, 50));
+
+        shiina.setBackground(new java.awt.Color(51, 51, 51));
+        shiina.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiina.setForeground(new java.awt.Color(255, 192, 160));
+        shiina.setText("Shiina");
+        mashiriaLayers.add(shiina, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 150, 50));
+
+        raku.setBackground(new java.awt.Color(51, 51, 51));
+        raku.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        raku.setForeground(new java.awt.Color(255, 192, 160));
+        raku.setText("Raku");
+        mashiriaLayers.add(raku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 460, 150, 50));
+
+        shiro.setBackground(new java.awt.Color(51, 51, 51));
+        shiro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiro.setForeground(new java.awt.Color(255, 192, 160));
+        shiro.setText("Shiro");
+        mashiriaLayers.add(shiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 150, 50));
+
+        mashiron.setBackground(new java.awt.Color(51, 51, 51));
+        mashiron.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        mashiron.setForeground(new java.awt.Color(255, 192, 160));
+        mashiron.setText("Mashiron");
+        mashiriaLayers.add(mashiron, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 720, 150, 50));
+
+        hiro.setBackground(new java.awt.Color(51, 51, 51));
+        hiro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        hiro.setForeground(new java.awt.Color(255, 192, 160));
+        hiro.setText("Hiro");
+        mashiriaLayers.add(hiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 150, 50));
+
+        chi.setBackground(new java.awt.Color(51, 51, 51));
+        chi.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        chi.setForeground(new java.awt.Color(255, 192, 160));
+        chi.setText("Chi");
+        mashiriaLayers.add(chi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 680, 150, 50));
+
+        kaede.setBackground(new java.awt.Color(51, 51, 51));
+        kaede.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kaede.setForeground(new java.awt.Color(255, 192, 160));
+        kaede.setText("Kaede");
+        mashiriaLayers.add(kaede, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 150, 50));
+
+        sheldon.setBackground(new java.awt.Color(51, 51, 51));
+        sheldon.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        sheldon.setForeground(new java.awt.Color(255, 192, 160));
+        sheldon.setText("Sheldon");
+        sheldon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sheldonActionPerformed(evt);
+            }
+        });
+        mashiriaLayers.add(sheldon, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 720, 150, 50));
+
+        travelB.setBackground(new java.awt.Color(51, 51, 51));
+        travelB.setFont(new java.awt.Font("Papyrus", 3, 24)); // NOI18N
+        travelB.setForeground(new java.awt.Color(255, 192, 160));
+        travelB.setText("Travel Back");
+        travelB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                travelBMouseClicked(evt);
+            }
+        });
+        mashiriaLayers.add(travelB, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 10, 240, 70));
+
+        kuroName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kuroName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kuroName.setText("Kuro");
+
+        kuroAnswB.setBackground(new java.awt.Color(51, 51, 51));
+        kuroAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        kuroAnswB.setForeground(new java.awt.Color(255, 192, 160));
+        kuroAnswB.setText("Answer");
+
+        kuroQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        kuroQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kuroQ.setText("<html>\n<p>\nHonnan kezdődik a játék? <br>\n1000 xp, 500 gold\n</p>\n</html>");
+
+        kuroAnsw.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mount Sep", "Dome of DOOM", "Mashiria", "The Shire" }));
+
+        javax.swing.GroupLayout kuroPnlLayout = new javax.swing.GroupLayout(kuroPnl);
+        kuroPnl.setLayout(kuroPnlLayout);
+        kuroPnlLayout.setHorizontalGroup(
+            kuroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kuroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(kuroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kuroName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(kuroPnlLayout.createSequentialGroup()
+                        .addComponent(kuroAnsw, 0, 180, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(kuroAnswB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kuroQ))
+                .addContainerGap())
+        );
+        kuroPnlLayout.setVerticalGroup(
+            kuroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kuroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kuroName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kuroQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(kuroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(kuroAnswB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kuroAnsw))
+                .addGap(14, 14, 14))
+        );
+
+        mashiriaLayers.add(kuroPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 330, 150));
+
+        shiroName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiroName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shiroName.setText("Shiro");
+
+        shiroAnsw.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mount of DOOM", "Mount of Trolls", "Mount of Sep", "Mount of Separator" }));
+
+        shiroAnswB.setBackground(new java.awt.Color(51, 51, 51));
+        shiroAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        shiroAnswB.setForeground(new java.awt.Color(255, 192, 160));
+        shiroAnswB.setText("Answer");
+
+        shiroQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        shiroQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shiroQ.setText("<html>\n<p>\nMi a hegy neve? <br>\n1500 - 3000 xp, 500 gold\n</p>\n</html>");
+
+        javax.swing.GroupLayout shiroPnlLayout = new javax.swing.GroupLayout(shiroPnl);
+        shiroPnl.setLayout(shiroPnlLayout);
+        shiroPnlLayout.setHorizontalGroup(
+            shiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(shiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shiroName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(shiroPnlLayout.createSequentialGroup()
+                        .addComponent(shiroAnsw, 0, 150, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(shiroAnswB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shiroQ))
+                .addContainerGap())
+        );
+        shiroPnlLayout.setVerticalGroup(
+            shiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(shiroName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(shiroQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(shiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(shiroAnswB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(shiroAnsw, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        mashiriaLayers.add(shiroPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 300, 130));
+
+        rakuName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        rakuName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rakuName.setText("Raku");
+
+        rakuQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        rakuQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rakuQ.setText("<html>\n<p>\nMi a főgonosz neve? <br>\n15000 xp, 10000 gold\n</p>\n</html>");
+
+        rakuAnsw.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creeper", "G-Man", "KALKULUS", "C language" }));
+
+        rakuAnswB.setBackground(new java.awt.Color(51, 51, 51));
+        rakuAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        rakuAnswB.setForeground(new java.awt.Color(255, 192, 160));
+        rakuAnswB.setText("Answer");
+
+        javax.swing.GroupLayout rakuPnlLayout = new javax.swing.GroupLayout(rakuPnl);
+        rakuPnl.setLayout(rakuPnlLayout);
+        rakuPnlLayout.setHorizontalGroup(
+            rakuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rakuPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(rakuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rakuName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rakuQ, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                    .addGroup(rakuPnlLayout.createSequentialGroup()
+                        .addComponent(rakuAnsw, 0, 150, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rakuAnswB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        rakuPnlLayout.setVerticalGroup(
+            rakuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rakuPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rakuName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rakuQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(rakuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rakuAnswB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rakuAnsw, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        mashiriaLayers.add(rakuPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 380, 300, 140));
+
+        shiName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        shiName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shiName.setText("Shiina");
+
+        shiQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        shiQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shiQ.setText("<html>\n<p>\nTeljesítsd újra az elsső küldetést<br>\n500 - 3000 xp, <br>\n500 - 1000 gold\n</p>\n</html>");
+
+        shiAccB.setBackground(new java.awt.Color(51, 51, 51));
+        shiAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        shiAccB.setForeground(new java.awt.Color(255, 192, 160));
+        shiAccB.setText("Accept");
+
+        javax.swing.GroupLayout shiPnlLayout = new javax.swing.GroupLayout(shiPnl);
+        shiPnl.setLayout(shiPnlLayout);
+        shiPnlLayout.setHorizontalGroup(
+            shiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(shiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shiName, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addGroup(shiPnlLayout.createSequentialGroup()
+                        .addComponent(shiQ, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(shiAccB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        shiPnlLayout.setVerticalGroup(
+            shiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(shiPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(shiName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(shiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(shiAccB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(shiPnlLayout.createSequentialGroup()
+                        .addComponent(shiQ, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        mashiriaLayers.add(shiPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 330, -1));
+
+        kaeName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        kaeName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kaeName.setText("Kaede");
+
+        kaeQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        kaeQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kaeQ.setText("<html>\n<p>\nNéhány szörny visszatért a hegy barlangjaiba.<br>\nKérlek intézd el őket.<br>\n1000 - 5000  xp,<br>\n500 - 3500 gold\n</p>\n</html>");
+
+        kaeAccB.setBackground(new java.awt.Color(51, 51, 51));
+        kaeAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        kaeAccB.setForeground(new java.awt.Color(255, 192, 160));
+        kaeAccB.setText("Accept");
+
+        javax.swing.GroupLayout kaePnlLayout = new javax.swing.GroupLayout(kaePnl);
+        kaePnl.setLayout(kaePnlLayout);
+        kaePnlLayout.setHorizontalGroup(
+            kaePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kaePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(kaePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kaeName, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addGroup(kaePnlLayout.createSequentialGroup()
+                        .addComponent(kaeQ, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(kaeAccB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        kaePnlLayout.setVerticalGroup(
+            kaePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kaePnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(kaeName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(kaePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kaeQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kaeAccB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        mashiriaLayers.add(kaePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 350, 150));
+
+        masName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        masName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        masName.setText("Mashiron");
+
+        masAccB.setBackground(new java.awt.Color(51, 51, 51));
+        masAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        masAccB.setForeground(new java.awt.Color(255, 192, 160));
+        masAccB.setText("Accept");
+
+        masQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        masQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        masQ.setText("<html>\n<p>\nAz erdőre ráférne egy kis tisztítás...<br>\n1000 - 10000 xp,<br>\n1000 - 5000 gold\n</p>\n</html>");
+
+        javax.swing.GroupLayout masPnlLayout = new javax.swing.GroupLayout(masPnl);
+        masPnl.setLayout(masPnlLayout);
+        masPnlLayout.setHorizontalGroup(
+            masPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(masPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(masName, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                    .addGroup(masPnlLayout.createSequentialGroup()
+                        .addComponent(masQ, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(masAccB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        masPnlLayout.setVerticalGroup(
+            masPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(masPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(masName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(masPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(masPnlLayout.createSequentialGroup()
+                        .addComponent(masAccB, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                        .addGap(28, 28, 28))
+                    .addGroup(masPnlLayout.createSequentialGroup()
+                        .addComponent(masQ)
+                        .addContainerGap())))
+        );
+
+        mashiriaLayers.add(masPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 340, 130));
+
+        hiroName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        hiroName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hiroName.setText("Hiro");
+
+        hiroQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        hiroQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hiroQ.setText("<html>\n<p>\nA hegy újra kezd veszélyes lenni...<br>\n1000 - 3000  xp,<br>\n500 - 1500 gold\n</p>\n</html>");
+
+        hiroAccB.setBackground(new java.awt.Color(51, 51, 51));
+        hiroAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        hiroAccB.setForeground(new java.awt.Color(255, 192, 160));
+        hiroAccB.setText("Accept");
+
+        javax.swing.GroupLayout hiroPnlLayout = new javax.swing.GroupLayout(hiroPnl);
+        hiroPnl.setLayout(hiroPnlLayout);
+        hiroPnlLayout.setHorizontalGroup(
+            hiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hiroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(hiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hiroName, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                    .addGroup(hiroPnlLayout.createSequentialGroup()
+                        .addComponent(hiroQ, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hiroAccB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        hiroPnlLayout.setVerticalGroup(
+            hiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hiroPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hiroName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(hiroPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(hiroPnlLayout.createSequentialGroup()
+                        .addComponent(hiroAccB, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                        .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(hiroPnlLayout.createSequentialGroup()
+                        .addComponent(hiroQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        mashiriaLayers.add(hiroPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 360, 140));
+
+        chiName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        chiName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chiName.setText("Chi");
+
+        chiQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        chiQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        chiQ.setText("<html>\n<p>\nKiváncsi vagyok a szörnyekre onnan, ahonnan jöttél (The Shire)<br>\n750 - 3000 xp, 1000 gold\n</p>\n</html>");
+
+        chiAccB.setBackground(new java.awt.Color(51, 51, 51));
+        chiAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
+        chiAccB.setForeground(new java.awt.Color(255, 192, 160));
+        chiAccB.setText("Accept");
+
+        javax.swing.GroupLayout chiPnlLayout = new javax.swing.GroupLayout(chiPnl);
+        chiPnl.setLayout(chiPnlLayout);
+        chiPnlLayout.setHorizontalGroup(
+            chiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(chiPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(chiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chiName, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addGroup(chiPnlLayout.createSequentialGroup()
+                        .addComponent(chiQ, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chiAccB, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        chiPnlLayout.setVerticalGroup(
+            chiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(chiPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chiName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(chiPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chiQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chiAccB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        mashiriaLayers.add(chiPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 550, 330, 130));
+
+        shelLayer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        shelQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        shelQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        shelQ.setText("<html>\n<p>\nJátszunk egy játékot...<br>\nKő-Papír-Olló-Gyík-Spoch<br>\n0 - 15000  xp,<br>\n0 - 15000 gold\n</p>\n</html>");
+        shelLayer.add(shelQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 140, 130));
+
+        shelC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kő", "Papír", "Olló", "Gyík", "Spoch" }));
+        shelLayer.add(shelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 141, -1));
+
+        sheldonName.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        sheldonName.setText("Sheldon a remete");
+        shelLayer.add(sheldonName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        winlose.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
+        winlose.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        winlose.setText("win");
+        shelLayer.add(winlose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 140, 30));
+
+        shelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/sheldon.png"))); // NOI18N
+        shelImg.setText("jLabel2");
+        shelLayer.add(shelImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 0, 238, 187));
+
+        shelChoose.setBackground(new java.awt.Color(51, 51, 51));
+        shelChoose.setFont(new java.awt.Font("Papyrus", 3, 12)); // NOI18N
+        shelChoose.setForeground(new java.awt.Color(255, 192, 160));
+        shelChoose.setText("Choose");
+        shelLayer.add(shelChoose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140, 30));
+
+        javax.swing.GroupLayout sheldonPnlLayout = new javax.swing.GroupLayout(sheldonPnl);
+        sheldonPnl.setLayout(sheldonPnlLayout);
+        sheldonPnlLayout.setHorizontalGroup(
+            sheldonPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(shelLayer)
+        );
+        sheldonPnlLayout.setVerticalGroup(
+            sheldonPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(shelLayer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, Short.MAX_VALUE)
+        );
+
+        mashiriaLayers.add(sheldonPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 570, 420, 140));
+
+        mashiriaMap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mashiriaMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wayofisekai/mashiriamap.png"))); // NOI18N
+        mashiriaLayers.add(mashiriaMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 790));
+
         javax.swing.GroupLayout MashiriaCityLayout = new javax.swing.GroupLayout(MashiriaCity);
         MashiriaCity.setLayout(MashiriaCityLayout);
         MashiriaCityLayout.setHorizontalGroup(
             MashiriaCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1600, Short.MAX_VALUE)
+            .addComponent(mashiriaLayers)
         );
         MashiriaCityLayout.setVerticalGroup(
             MashiriaCityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(MashiriaCityLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mashiriaLayers)
+                .addContainerGap())
         );
 
         lpFrame.add(MashiriaCity, "card6");
@@ -1676,6 +2261,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             chk.getXp(), chk.getSex(), chk.getMoney());
                     hp = ch.getHp();
                     removeAccept.setSelected(Boolean.FALSE);
+                    
+                    q5start.setEnabled(Boolean.FALSE);
+                    q4start.setEnabled(Boolean.FALSE);
+                    q3start.setEnabled(Boolean.FALSE);
+                    q2start.setEnabled(Boolean.FALSE);
+                    mashiriaB.setEnabled(Boolean.FALSE);
+                    
                     if (ch.getLvl() >= 45) { 
                         q5start.setEnabled(Boolean.TRUE); 
                         q4start.setEnabled(Boolean.TRUE);
@@ -1683,30 +2275,18 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         q2start.setEnabled(Boolean.TRUE);
                         mashiriaB.setEnabled(Boolean.TRUE);
                     } else if (ch.getLvl() >= 30) {
-                        q5start.setEnabled(Boolean.FALSE);
                         q4start.setEnabled(Boolean.TRUE);
                         q3start.setEnabled(Boolean.TRUE);
                         q2start.setEnabled(Boolean.TRUE);
                         mashiriaB.setEnabled(Boolean.TRUE);
                     } else if (ch.getLvl() >= 15) {
-                        q5start.setEnabled(Boolean.FALSE);
-                        q4start.setEnabled(Boolean.FALSE);
                         q3start.setEnabled(Boolean.TRUE);
                         q2start.setEnabled(Boolean.TRUE);
                         mashiriaB.setEnabled(Boolean.TRUE);
                     } else if (ch.getLvl() >= 5) {
-                        q5start.setEnabled(Boolean.FALSE);
-                        q4start.setEnabled(Boolean.FALSE);
-                        q3start.setEnabled(Boolean.FALSE);
                         q2start.setEnabled(Boolean.TRUE);
-                        mashiriaB.setEnabled(Boolean.FALSE);
-                    } else {
-                        q5start.setEnabled(Boolean.FALSE);
-                        q4start.setEnabled(Boolean.FALSE);
-                        q3start.setEnabled(Boolean.FALSE);
-                        q2start.setEnabled(Boolean.FALSE);
-                        mashiriaB.setEnabled(Boolean.FALSE);
                     }
+                    
                     meghiv(game);
 
                 }
@@ -1909,9 +2489,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
         fNameDisp.setText(ch.getName());
         flvl.setText(ch.getLvl().toString());
-        fHpDisp.setText(ch.getHp().toString() + " / " + ch.getHp().toString());
-        fDmgDisp.setText(ch.getAtk().toString());
-        fMonDisp.setText(ch.getMoney().toString());
+        fHpDisp.setText("Hp: " + 
+                ch.getHp().toString() + " / " + ch.getHp().toString());
+        fDmgDisp.setText("Dmg: " + ch.getAtk().toString());
+        fMonDisp.setText("Money: " + ch.getMoney().toString());
         lorc.setVisible(Boolean.FALSE);
         
         le = enemyF.quest(ch, qid);
@@ -1946,7 +2527,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             String hps = enemyHp.toString();
             eHpDisp.setText(hps + " / " + 
                     le.get(enemyFightID).getDefHp().toString());
-            fHpDisp.setText(hp.toString() + " / " + ch.getHp().toString());
+            fHpDisp.setText("Hp: " + 
+                    hp.toString() + " / " + ch.getHp().toString());
             
         }
         
@@ -2029,10 +2611,75 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void mashiriaBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashiriaBMouseClicked
         
-        if (mashiriaB.isEnabled() == Boolean.TRUE) meghiv(MashiriaCity);
+        if (mashiriaB.isEnabled() == Boolean.TRUE) {
+            
+            masPnl.setVisible(Boolean.FALSE);
+            shiPnl.setVisible(Boolean.FALSE);
+            rakuPnl.setVisible(Boolean.FALSE);
+            kaePnl.setVisible(Boolean.FALSE);
+            chiPnl.setVisible(Boolean.FALSE);
+            shiPnl.setVisible(Boolean.FALSE);
+            shiroPnl.setVisible(Boolean.FALSE);
+            kuroPnl.setVisible(Boolean.FALSE);
+            hiroPnl.setVisible(Boolean.FALSE);
+            sheldonPnl.setVisible(Boolean.FALSE);
+            
+            masComp.setVisible(Boolean.FALSE);
+            shiComp.setVisible(Boolean.FALSE);
+            rakuComp.setVisible(Boolean.FALSE);
+            kaeComp.setVisible(Boolean.FALSE);
+            chiComp.setVisible(Boolean.FALSE);
+            shiComp.setVisible(Boolean.FALSE);
+            shiroComp.setVisible(Boolean.FALSE);
+            kuroComp.setVisible(Boolean.FALSE);
+            hiro.setVisible(Boolean.FALSE);
+            
+            meghiv(MashiriaCity);
+        }
         
     }//GEN-LAST:event_mashiriaBMouseClicked
 
+    private void kuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kuroActionPerformed
+        //véletlen:cccccccc
+    }//GEN-LAST:event_kuroActionPerformed
+
+    private void sheldonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sheldonActionPerformed
+        //még mindig véletlen:/
+    }//GEN-LAST:event_sheldonActionPerformed
+
+    private void travelBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_travelBMouseClicked
+       
+        meghiv(game);
+        
+    }//GEN-LAST:event_travelBMouseClicked
+
+    public Integer cost = 100;
+    
+    private void healMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_healMouseClicked
+        
+        if (ch.getMoney() >= cost && ch.getHp() != hp) {
+            hp = ch.getHp();
+            ch.setMoney(-cost);
+            cost += 50;
+            heal.setText("Heal / " + cost);
+            fMonDisp.setText("Money: " + ch.getMoney().toString());
+            fightUpdate();
+        } else {
+            JOptionPane.showMessageDialog(null, "Nincs elég pénzed Healre, vagy teljes az életerőd!");
+        }
+        
+    }//GEN-LAST:event_healMouseClicked
+
+    public Boolean 
+            npcMashiron = Boolean.FALSE,
+            npcShiina   = Boolean.FALSE,
+            npcRaku     = Boolean.FALSE,
+            npcKaede    = Boolean.FALSE,
+            npcChi      = Boolean.FALSE,
+            npcShiro    = Boolean.FALSE,
+            npcKuro     = Boolean.FALSE,
+            npcHiro     = Boolean.FALSE;
+    
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -2087,6 +2734,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel cSex3;
     private javax.swing.JLabel cSexDisp;
     private javax.swing.JLabel charimg;
+    private javax.swing.JButton chi;
+    private javax.swing.JButton chiAccB;
+    private javax.swing.JLabel chiComp;
+    private javax.swing.JLabel chiName;
+    private javax.swing.JPanel chiPnl;
+    private javax.swing.JLabel chiQ;
     private javax.swing.JPanel choice;
     private javax.swing.JLabel cimlbl;
     private javax.swing.JPanel city;
@@ -2119,11 +2772,29 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JPanel game;
     private javax.swing.JButton gameExit1;
     private javax.swing.JButton heal;
+    private javax.swing.JButton hiro;
+    private javax.swing.JButton hiroAccB;
+    private javax.swing.JLabel hiroComp;
+    private javax.swing.JLabel hiroName;
+    private javax.swing.JPanel hiroPnl;
+    private javax.swing.JLabel hiroQ;
     private javax.swing.JButton igsave;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton kaeAccB;
+    private javax.swing.JLabel kaeComp;
+    private javax.swing.JLabel kaeName;
+    private javax.swing.JPanel kaePnl;
+    private javax.swing.JLabel kaeQ;
+    private javax.swing.JButton kaede;
+    private javax.swing.JButton kuro;
+    private javax.swing.JComboBox<String> kuroAnsw;
+    private javax.swing.JButton kuroAnswB;
+    private javax.swing.JLabel kuroComp;
+    private javax.swing.JLabel kuroName;
+    private javax.swing.JPanel kuroPnl;
+    private javax.swing.JLabel kuroQ;
     private javax.swing.JButton load;
     private javax.swing.JButton loadBack;
     private javax.swing.JPanel loadPnl;
@@ -2137,7 +2808,16 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton male;
     private javax.swing.JPanel mapDisp;
     private javax.swing.JLabel mapLabel;
+    private javax.swing.JLayeredPane mapLayers;
+    private javax.swing.JButton masAccB;
+    private javax.swing.JLabel masComp;
+    private javax.swing.JLabel masName;
+    private javax.swing.JPanel masPnl;
+    private javax.swing.JLabel masQ;
     private javax.swing.JButton mashiriaB;
+    private javax.swing.JLayeredPane mashiriaLayers;
+    private javax.swing.JLabel mashiriaMap;
+    private javax.swing.JButton mashiron;
     private javax.swing.JPanel newChar;
     private javax.swing.JButton newSave;
     private javax.swing.JLabel profilkep;
@@ -2162,6 +2842,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JButton q5point;
     private javax.swing.JButton q5start;
     private javax.swing.JPanel quests;
+    private javax.swing.JButton raku;
+    private javax.swing.JComboBox<String> rakuAnsw;
+    private javax.swing.JButton rakuAnswB;
+    private javax.swing.JLabel rakuComp;
+    private javax.swing.JLabel rakuName;
+    private javax.swing.JPanel rakuPnl;
+    private javax.swing.JLabel rakuQ;
     private javax.swing.JCheckBox removeAccept;
     private javax.swing.JLabel req;
     private javax.swing.JLabel req1;
@@ -2169,7 +2856,30 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private javax.swing.JLabel req3;
     private javax.swing.JLabel req4;
     private javax.swing.JLabel sex;
+    private javax.swing.JComboBox<String> shelC;
+    private javax.swing.JButton shelChoose;
+    private javax.swing.JLabel shelImg;
+    private javax.swing.JLayeredPane shelLayer;
+    private javax.swing.JLabel shelQ;
+    private javax.swing.JButton sheldon;
+    private javax.swing.JLabel sheldonName;
+    private javax.swing.JPanel sheldonPnl;
+    private javax.swing.JButton shiAccB;
+    private javax.swing.JLabel shiComp;
+    private javax.swing.JLabel shiName;
+    private javax.swing.JPanel shiPnl;
+    private javax.swing.JLabel shiQ;
+    private javax.swing.JButton shiina;
+    private javax.swing.JButton shiro;
+    private javax.swing.JComboBox<String> shiroAnsw;
+    private javax.swing.JButton shiroAnswB;
+    private javax.swing.JLabel shiroComp;
+    private javax.swing.JLabel shiroName;
+    private javax.swing.JPanel shiroPnl;
+    private javax.swing.JLabel shiroQ;
     private javax.swing.JTable tbLoad;
+    private javax.swing.JButton travelB;
+    private javax.swing.JTextField winlose;
     private javax.swing.JProgressBar xpBar;
     private javax.swing.JLabel xpBarDisp;
     // End of variables declaration//GEN-END:variables

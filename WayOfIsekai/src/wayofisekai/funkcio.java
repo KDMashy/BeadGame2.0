@@ -374,6 +374,37 @@ public class funkcio<gameClass> {
         
     }
     
+    public Boolean npcQuest(Character ch, Integer xpMin, Integer xpMax, Integer gMin, Integer gMax){
+        
+        Random rand = new Random();
+        
+        try {
+            
+            if (xpMin == 0) {
+                ch.setXp(rand.nextInt(xpMax));
+            } else {
+                Integer avg = rand.nextInt(xpMax) + xpMin;
+                ch.setXp(avg);
+            }
+            
+            if (gMin == 0) {
+                ch.setMoney(rand.nextInt(gMax));
+            } else {
+                Integer avg = rand.nextInt(gMax) + gMin; 
+                ch.setMoney(avg);
+            }
+            
+            return Boolean.TRUE;
+            
+        } catch(Exception ex) {
+            
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+            return Boolean.FALSE;
+            
+        }
+        
+    }
+    
 }
 
 class van extends Exception{}
