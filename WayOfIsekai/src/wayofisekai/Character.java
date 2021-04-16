@@ -32,8 +32,8 @@ public class Character extends inheritCharNEnemy {
         this.sex = sex;
         this.money = money;
         
-        this.hp = 500 + ((lvl - 1) * 150);
-        this.atk = 50 + ((lvl - 1) * 25);
+        this.hp = 750 + ((lvl - 1) * 250);
+        this.atk = 75 + ((lvl - 1) * 25);
         this.def = 30 + ((lvl - 1) * 10);
         
         
@@ -55,8 +55,8 @@ public class Character extends inheritCharNEnemy {
         funkcio<Character> xpStay = new funkcio<>();
         this.lvl++;
         this.xp -= xpStay.lvlUpXp(this.lvl - 1);
-        this.hp = 500 + ((lvl - 1) * 150);
-        this.atk = 50 + ((lvl - 1) * 25);
+        this.hp = 750 + ((lvl - 1) * 250);
+        this.atk = 75 + ((lvl - 1) * 25);
         this.def = 30 + ((lvl - 1) * 10);
         funkcio<Enemy> stat = new funkcio<>();
         ArrayList<Enemy> e = stat.loadEnemy(this);

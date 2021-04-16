@@ -3,7 +3,7 @@
     <enemy>
         <name>Wolf</name>
         <hp>100</hp>
-        <dmg>12</dmg>
+        <dmg>6</dmg>
         <def>14</def>
         <drate>20</drate>
         <quest>1</quest>
@@ -11,7 +11,7 @@
     <enemy>
         <name>Bear</name>
         <hp>200</hp>
-        <dmg>15</dmg>
+        <dmg>7</dmg>
         <def>24</def>
         <drate>25</drate>
         <quest>1</quest>
@@ -19,7 +19,7 @@
     <enemy>
         <name>Wyvern</name>
         <hp>300</hp>
-        <dmg>17</dmg>
+        <dmg>9</dmg>
         <def>34</def>
         <drate>30</drate>
         <quest>1</quest>
@@ -27,7 +27,7 @@
     <enemy>
         <name>Goblin</name>
         <hp>150</hp>
-        <dmg>14</dmg>
+        <dmg>6</dmg>
         <def>20</def>
         <drate>35</drate>
         <quest>2</quest>
@@ -35,7 +35,7 @@
     <enemy>
         <name>Harpy worker</name>
         <hp>200</hp>
-        <dmg>20</dmg>
+        <dmg>9</dmg>
         <def>30</def>
         <drate>40</drate>
         <quest>2</quest>
@@ -43,7 +43,7 @@
     <enemy>
         <name>Harpy Warrior</name>
         <hp>300</hp>
-        <dmg>30</dmg>
+        <dmg>12</dmg>
         <def>40</def>
         <drate>45</drate>
         <quest>2</quest>
@@ -51,7 +51,7 @@
     <enemy>
         <name>Troll</name>
         <hp>300</hp>
-        <dmg>30</dmg>
+        <dmg>14</dmg>
         <def>50</def>
         <drate>50</drate>
         <quest>3</quest>
@@ -59,7 +59,7 @@
     <enemy>
         <name>High Mount Goblin</name>
         <hp>350</hp>
-        <dmg>40</dmg>
+        <dmg>16</dmg>
         <def>50</def>
         <drate>55</drate>
         <quest>3</quest>
@@ -67,7 +67,7 @@
     <enemy>
         <name>Goblin King</name>
         <hp>450</hp>
-        <dmg>50</dmg>
+        <dmg>25</dmg>
         <def>70</def>
         <drate>60</drate>
         <quest>3</quest>
@@ -75,7 +75,7 @@
     <enemy>
         <name>Watcher</name>
         <hp>350</hp>
-        <dmg>32</dmg>
+        <dmg>16</dmg>
         <def>40</def>
         <drate>65</drate>
         <quest>4</quest>
@@ -83,7 +83,7 @@
     <enemy>
         <name>Behemoth</name>
         <hp>450</hp>
-        <dmg>50</dmg>
+        <dmg>20</dmg>
         <def>70</def>
         <drate>70</drate>
         <quest>4</quest>
@@ -91,7 +91,7 @@
     <enemy>
         <name>Thunderjaw</name>
         <hp>600</hp>
-        <dmg>70</dmg>
+        <dmg>24</dmg>
         <def>100</def>
         <drate>75</drate>
         <quest>4</quest>
@@ -99,7 +99,7 @@
     <enemy>
         <name>Werewolf</name>
         <hp>500</hp>
-        <dmg>60</dmg>
+        <dmg>30</dmg>
         <def>100</def>
         <drate>80</drate>
         <quest>5</quest>
@@ -107,7 +107,7 @@
     <enemy>
         <name>Vampire</name>
         <hp>700</hp>
-        <dmg>60</dmg>
+        <dmg>34</dmg>
         <def>100</def>
         <drate>85</drate>
         <quest>5</quest>
@@ -115,7 +115,7 @@
     <enemy>
         <name>KALKULUS</name>
         <hp>800</hp>
-        <dmg>80</dmg>
+        <dmg>50</dmg>
         <def>150</def>
         <drate>100</drate>
         <quest>5</quest>

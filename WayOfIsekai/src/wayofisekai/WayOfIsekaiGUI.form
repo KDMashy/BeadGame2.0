@@ -2466,7 +2466,7 @@
                           <Font name="Dialog" size="14" style="3"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p&gt;&#xa;Teljes&#xed;tsd &#xfa;jra az elss&#x151; k&#xfc;ldet&#xe9;st&lt;br&gt;&#xa;500 - 3000 xp, &lt;br&gt;&#xa;500 - 1000 gold&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
+                        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;p&gt;&#xa;Teljes&#xed;tsd &#xfa;jra az els&#x151; k&#xfc;ldet&#xe9;st&lt;br&gt;&#xa;500 - 3000 xp, &lt;br&gt;&#xa;500 - 1000 gold&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="shiAccB">
@@ -2920,6 +2920,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Choose"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="shelChooseMouseClicked"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="10" y="60" width="140" height="30"/>

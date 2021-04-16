@@ -2,6 +2,7 @@
 package wayofisekai;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -1618,7 +1619,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         shiQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         shiQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        shiQ.setText("<html>\n<p>\nTeljesítsd újra az elsső küldetést<br>\n500 - 3000 xp, <br>\n500 - 1000 gold\n</p>\n</html>");
+        shiQ.setText("<html>\n<p>\nTeljesítsd újra az első küldetést<br>\n500 - 3000 xp, <br>\n500 - 1000 gold\n</p>\n</html>");
 
         shiAccB.setBackground(new java.awt.Color(51, 51, 51));
         shiAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
@@ -1877,6 +1878,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         shelChoose.setFont(new java.awt.Font("Papyrus", 3, 12)); // NOI18N
         shelChoose.setForeground(new java.awt.Color(255, 192, 160));
         shelChoose.setText("Choose");
+        shelChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shelChooseMouseClicked(evt);
+            }
+        });
         shelLayer.add(shelChoose, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140, 30));
 
         javax.swing.GroupLayout sheldonPnlLayout = new javax.swing.GroupLayout(sheldonPnl);
@@ -2424,6 +2430,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     hp = ch.getHp();
                     removeAccept.setSelected(Boolean.FALSE);
                     
+                    gameUpdate();
+                    
                     npc xynpc = new npc("xy", Boolean.FALSE,
                         Boolean.FALSE, "nb");
                     npcList = chF.loadNpc(xynpc);
@@ -2487,10 +2495,39 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cDmgDisp.setText(ch.getAtk().toString());
         lvl.setText(ch.getLvl().toString());
         xpBar.setMaximum(chF.lvlUpXp(ch.getLvl()));
-        xpBarDisp.setText(ch.getXp().toString());
+        xpBar.setValue(ch.getXp());
+        xpBarDisp.setText(ch.getXp().toString() + " / "
+                + chF.lvlUpXp(ch.getLvl()));
         cHpDisp.setText(ch.getHp().toString());
         cMoneyDisp.setText(ch.getMoney().toString());
         eTable.setVisible(Boolean.FALSE);
+        
+        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {
+                    
+            ch.lvlUp();
+
+        }
+        
+        kaede.setVisible(Boolean.FALSE);
+        sheldon.setVisible(Boolean.FALSE);
+        mashiron.setVisible(Boolean.FALSE);
+        raku.setVisible(Boolean.FALSE);
+        
+        if (ch.getLvl() >= 45) {
+            raku.setVisible(Boolean.TRUE); //45
+            mashiron.setVisible(Boolean.TRUE); //30
+            kaede.setVisible(Boolean.TRUE); //15
+            sheldon.setVisible(Boolean.TRUE); //23
+        } else if (ch.getLvl() >= 30){
+            mashiron.setVisible(Boolean.TRUE);
+            sheldon.setVisible(Boolean.TRUE);
+            kaede.setVisible(Boolean.TRUE);
+        } else if (ch.getLvl() >= 23){
+            sheldon.setVisible(Boolean.TRUE);
+            kaede.setVisible(Boolean.TRUE);
+        } else if (ch.getLvl() >= 15) {
+            kaede.setVisible(Boolean.TRUE);
+        }
         
     }
     
@@ -2532,7 +2569,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             npc xy = new npc("asd", Boolean.FALSE, Boolean.FALSE, "asd");
             npcList = npcsave.loadNpc(xy);
             for (npc savenpc : npcList) {
-                npcsave.removeNpcs(savenpc, ch.getName());
+                npcsave.removeNpcs(savenpc, cBox.getSelectedItem().toString());
             }
             removeAccept.setSelected(Boolean.FALSE);
             clearTable(tbLoad);
@@ -2841,6 +2878,35 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             kuroComp.setVisible(Boolean.FALSE);
             hiroComp.setVisible(Boolean.FALSE);
             
+            for(npc np : npcList){
+                switch (np.getVilName()){
+                    case "Mashiron":
+                        if (np.isComp()) mashiron.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Kaede":
+                        if (np.isComp()) kaede.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Shiro":
+                        if (np.isComp()) shiro.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Kuro":
+                        if (np.isComp()) kuro.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Shiina":
+                        if (np.isComp()) shiina.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Hiro":
+                        if (np.isComp()) hiro.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Raku":
+                        if (np.isComp()) raku.setEnabled(Boolean.FALSE);
+                        break;
+                    case "Chi":
+                        if (np.isComp()) chi.setEnabled(Boolean.FALSE);
+                        break;
+                }
+            }
+            
             meghiv(MashiriaCity);
         }
         
@@ -2856,6 +2922,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void travelBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_travelBMouseClicked
        
+        sheldon.setEnabled(Boolean.TRUE);
         gameUpdate();
         meghiv(game);
         
@@ -2884,7 +2951,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             pnl.setVisible(Boolean.TRUE);
             btn.setEnabled(Boolean.FALSE);
             
-        } else if (pnl.isVisible() == Boolean.TRUE){
+        } else if (pnl.isVisible() == Boolean.TRUE || btn.getText().contains("Sheldon")){
             
             pnl.setVisible(Boolean.FALSE);
             btn.setEnabled(Boolean.TRUE);
@@ -2893,39 +2960,57 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }
     
     private void mashironMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseClicked
-        switchQ(masPnl, mashiron);
+        if (searchComplete("Mashiron") == Boolean.FALSE && ch.getLvl() >= 30) {
+            switchQ(masPnl, mashiron);
+        }
     }//GEN-LAST:event_mashironMouseClicked
 
     private void kaedeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseClicked
-        switchQ(kaePnl, kaede);
+        if (searchComplete("Kaede") == Boolean.FALSE && ch.getLvl() >= 15) {
+            switchQ(kaePnl, kaede);
+        }
     }//GEN-LAST:event_kaedeMouseClicked
 
     private void shiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseClicked
-        switchQ(shiroPnl, shiro);
+        if (searchComplete("Shiro") == Boolean.FALSE) {
+            switchQ(shiroPnl, shiro);
+        }
     }//GEN-LAST:event_shiroMouseClicked
 
     private void kuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseClicked
-        switchQ(kuroPnl, kuro);
+        if (searchComplete("Kuro") == Boolean.FALSE) {
+            switchQ(kuroPnl, kuro);
+        }
     }//GEN-LAST:event_kuroMouseClicked
 
     private void shiinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseClicked
-        switchQ(shiPnl, shiina);
+        if (searchComplete("Shiina") == Boolean.FALSE) {
+            switchQ(shiPnl, shiina);
+        }
     }//GEN-LAST:event_shiinaMouseClicked
 
     private void hiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseClicked
-        switchQ(hiroPnl, hiro);
+        if (searchComplete("Hiro") == Boolean.FALSE) {
+            switchQ(hiroPnl, hiro);
+        }
     }//GEN-LAST:event_hiroMouseClicked
 
     private void rakuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseClicked
-        switchQ(rakuPnl, raku);
+        if (searchComplete("Raku") == Boolean.FALSE && ch.getLvl() >= 45) {
+            switchQ(rakuPnl, raku);
+        }
     }//GEN-LAST:event_rakuMouseClicked
 
     private void chiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseClicked
-        switchQ(chiPnl, chi);
+        if (searchComplete("Chi") == Boolean.FALSE) {
+            switchQ(chiPnl, chi);
+        }
     }//GEN-LAST:event_chiMouseClicked
 
     private void sheldonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sheldonMouseClicked
-        switchQ(sheldonPnl, sheldon);
+        if (ch.getLvl() >= 23) {
+            switchQ(sheldonPnl, sheldon);
+        }
     }//GEN-LAST:event_sheldonMouseClicked
 
     public void searchAccept(String name, JPanel pnl, JButton btn){
@@ -3087,6 +3172,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             searchAccept("Chi", chiPnl, chiAccB);
         }
     }//GEN-LAST:event_chiAccBMouseClicked
+
+    private void shelChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shelChooseMouseClicked
+        Shelli();
+    }//GEN-LAST:event_shelChooseMouseClicked
     
     public void accQuest(Boolean comp, String vilname,
             Integer xpMin, Integer xpMax,
@@ -3126,6 +3215,64 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         } catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Nem jó válasz!");
+        }
+        
+    }
+    
+    public void Shelli(){
+        Random rnd = new Random();
+        Integer val = shelC.getSelectedIndex() + 1;
+        Integer gep = rnd.nextInt(5) + 1;
+        
+        try{
+            switch (gep) {
+            case 1:
+                if (val == 2 || val == 5) {
+                   winlose.setText("Nyertél");
+                   npcsave.npcQuestComplete(ch, 0, 15000, 0, 15000);
+                }
+                else if (val == 3 || val == 4) winlose.setText("Vesztettél");
+                else winlose.setText("Döntetlen");
+                break;
+            case 2:
+                if (val == 1 || val == 5) winlose.setText("Vesztettél");
+                else if (val == 3 || val == 4) {
+                    winlose.setText("Nyertél");
+                    npcsave.npcQuestComplete(ch, 0, 15000, 0, 15000);
+                }
+                else winlose.setText("Döntetlen");
+                break;
+            case 3:
+                if (val == 1 || val == 5) {
+                    winlose.setText("Nyertél");
+                    npcsave.npcQuestComplete(ch, 0, 15000, 0, 15000);
+                }
+                else if (val == 2 || val == 4) winlose.setText("Vesztettél");
+                else winlose.setText("Döntetlen");
+                break;
+            case 4:
+                if (val == 1 || val == 3) {
+                    winlose.setText("Nyertél");
+                    npcsave.npcQuestComplete(ch, 0, 15000, 0, 15000);
+                }
+                else if (val == 2 || val == 5) winlose.setText("Vesztettél");
+                else winlose.setText("Döntetlen");
+                break;
+            case 5:
+                if (val == 1 || val == 3) winlose.setText("Vesztettél");
+                else if (val == 2 || val == 5) {
+                    winlose.setText("Nyertél");
+                    npcsave.npcQuestComplete(ch, 0, 15000, 0, 15000);
+                }
+                else winlose.setText("Döntetlen");
+                break;
+            default:
+                break;
+            }
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+        } finally {
+            gameUpdate();
         }
         
     }
