@@ -4,6 +4,9 @@ package wayofisekai;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -1139,7 +1142,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         enemyimg.setText("ENEMY");
 
         charimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        charimg.setText("CHARACTER");
 
         epnl.setBackground(new java.awt.Color(96, 0, 25));
 
@@ -1196,7 +1198,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
-                        .addComponent(enemyimg, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                        .addComponent(enemyimg, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(fDataPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fightLayout.createSequentialGroup()
@@ -1207,7 +1209,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             .addGroup(fightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fightLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(charimg, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                    .addComponent(charimg, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                     .addGap(990, 990, 990)))
         );
         fightLayout.setVerticalGroup(
@@ -1293,6 +1295,17 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         kuro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         kuro.setForeground(new java.awt.Color(255, 192, 160));
         kuro.setText("Kuro");
+        kuro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kuroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                kuroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                kuroMouseExited(evt);
+            }
+        });
         kuro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kuroActionPerformed(evt);
@@ -1304,18 +1317,51 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         shiina.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         shiina.setForeground(new java.awt.Color(255, 192, 160));
         shiina.setText("Shiina");
+        shiina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shiinaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                shiinaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                shiinaMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(shiina, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 150, 50));
 
         raku.setBackground(new java.awt.Color(51, 51, 51));
         raku.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         raku.setForeground(new java.awt.Color(255, 192, 160));
         raku.setText("Raku");
+        raku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rakuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rakuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rakuMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(raku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 460, 150, 50));
 
         shiro.setBackground(new java.awt.Color(51, 51, 51));
         shiro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         shiro.setForeground(new java.awt.Color(255, 192, 160));
         shiro.setText("Shiro");
+        shiro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shiroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                shiroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                shiroMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(shiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 150, 50));
 
         mashiron.setBackground(new java.awt.Color(51, 51, 51));
@@ -1326,6 +1372,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mashironMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mashironMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mashironMouseExited(evt);
+            }
         });
         mashiriaLayers.add(mashiron, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 720, 150, 50));
 
@@ -1333,24 +1385,62 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         hiro.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         hiro.setForeground(new java.awt.Color(255, 192, 160));
         hiro.setText("Hiro");
+        hiro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hiroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hiroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hiroMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(hiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 320, 150, 50));
 
         chi.setBackground(new java.awt.Color(51, 51, 51));
         chi.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         chi.setForeground(new java.awt.Color(255, 192, 160));
         chi.setText("Chi");
+        chi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                chiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                chiMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(chi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 680, 150, 50));
 
         kaede.setBackground(new java.awt.Color(51, 51, 51));
         kaede.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         kaede.setForeground(new java.awt.Color(255, 192, 160));
         kaede.setText("Kaede");
+        kaede.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kaedeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                kaedeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                kaedeMouseExited(evt);
+            }
+        });
         mashiriaLayers.add(kaede, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 150, 50));
 
         sheldon.setBackground(new java.awt.Color(51, 51, 51));
         sheldon.setFont(new java.awt.Font("Papyrus", 3, 18)); // NOI18N
         sheldon.setForeground(new java.awt.Color(255, 192, 160));
         sheldon.setText("Sheldon");
+        sheldon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sheldonMouseClicked(evt);
+            }
+        });
         sheldon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sheldonActionPerformed(evt);
@@ -1377,6 +1467,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         kuroAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         kuroAnswB.setForeground(new java.awt.Color(255, 192, 160));
         kuroAnswB.setText("Answer");
+        kuroAnswB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kuroAnswBMouseClicked(evt);
+            }
+        });
 
         kuroQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         kuroQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1425,6 +1520,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         shiroAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         shiroAnswB.setForeground(new java.awt.Color(255, 192, 160));
         shiroAnswB.setText("Answer");
+        shiroAnswB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shiroAnswBMouseClicked(evt);
+            }
+        });
 
         shiroQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         shiroQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1475,6 +1575,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         rakuAnswB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         rakuAnswB.setForeground(new java.awt.Color(255, 192, 160));
         rakuAnswB.setText("Answer");
+        rakuAnswB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rakuAnswBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout rakuPnlLayout = new javax.swing.GroupLayout(rakuPnl);
         rakuPnl.setLayout(rakuPnlLayout);
@@ -1519,6 +1624,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         shiAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         shiAccB.setForeground(new java.awt.Color(255, 192, 160));
         shiAccB.setText("Accept");
+        shiAccB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                shiAccBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout shiPnlLayout = new javax.swing.GroupLayout(shiPnl);
         shiPnl.setLayout(shiPnlLayout);
@@ -1562,6 +1672,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         kaeAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         kaeAccB.setForeground(new java.awt.Color(255, 192, 160));
         kaeAccB.setText("Accept");
+        kaeAccB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kaeAccBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout kaePnlLayout = new javax.swing.GroupLayout(kaePnl);
         kaePnl.setLayout(kaePnlLayout);
@@ -1599,6 +1714,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         masAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         masAccB.setForeground(new java.awt.Color(255, 192, 160));
         masAccB.setText("Accept");
+        masAccB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                masAccBMouseClicked(evt);
+            }
+        });
 
         masQ.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         masQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1647,6 +1767,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         hiroAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         hiroAccB.setForeground(new java.awt.Color(255, 192, 160));
         hiroAccB.setText("Accept");
+        hiroAccB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hiroAccBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout hiroPnlLayout = new javax.swing.GroupLayout(hiroPnl);
         hiroPnl.setLayout(hiroPnlLayout);
@@ -1691,6 +1816,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         chiAccB.setFont(new java.awt.Font("Papyrus", 3, 14)); // NOI18N
         chiAccB.setForeground(new java.awt.Color(255, 192, 160));
         chiAccB.setText("Accept");
+        chiAccB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chiAccBMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout chiPnlLayout = new javax.swing.GroupLayout(chiPnl);
         chiPnl.setLayout(chiPnlLayout);
@@ -2186,6 +2316,18 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
                     ch.setName(cNameText.getText());
                     ch.setSex(charSex);
+                    
+                    if (cNameText.getText().equals("Kaede")) {
+                        
+                        ch.setXp(1000000);
+                        
+                        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {
+                    
+                            ch.lvlUp();
+
+                        }
+                    }
+                    
                     chF.saveObject(ch, ch.getName());
                     
                     String[] npcNames = new String[] 
@@ -2323,6 +2465,18 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     public void gameUpdate(){
         
+        if (questId == 1 && dead == Boolean.FALSE) {
+            accQuest(Boolean.TRUE, "Shiina", 500, 3000, 500, 1000, shiina);
+            accQuest(Boolean.TRUE, "Chi", 750, 3000, 0, 1000, chi);
+        }
+        else if (questId == 2 && dead == Boolean.FALSE) 
+            accQuest(Boolean.TRUE, "Hiro", 1000, 3000, 500, 1500, hiro);
+        else if (questId == 3 && dead == Boolean.FALSE) 
+            accQuest(Boolean.TRUE, "Kaede", 1000, 5000, 500, 3500, kaede);
+        else if (questId == 4 && dead == Boolean.FALSE) 
+            accQuest(Boolean.TRUE, "Mashiron", 1000, 10000, 1000, 5000, mashiron);
+        
+        cost = 100;
         hp = ch.getHp();
         cNameDisp.setText(ch.getName());
         if (ch.getSex() == Boolean.TRUE) {
@@ -2375,7 +2529,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (del.isEnabled() == Boolean.TRUE) {
             
             chF.removeChar(ch, cBox.getSelectedItem().toString());
-            chF.removeNpcs(ch, cBox.getSelectedItem().toString());
+            npc xy = new npc("asd", Boolean.FALSE, Boolean.FALSE, "asd");
+            npcList = npcsave.loadNpc(xy);
+            for (npc savenpc : npcList) {
+                npcsave.removeNpcs(savenpc, ch.getName());
+            }
             removeAccept.setSelected(Boolean.FALSE);
             clearTable(tbLoad);
             fillTableCharacter();
@@ -2509,6 +2667,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                
             JOptionPane.showMessageDialog(null, "Meghaltál");
             hp = ch.getHp();
+            dead = Boolean.TRUE;
             gameUpdate();
             meghiv(game);
                
@@ -2519,8 +2678,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_atkMouseClicked
 
     public ArrayList<Enemy> le = new ArrayList<>();
+    public Integer questId = 0;
     
     public void fightStart(Integer qid){
+        
+        questId = qid;
+        dead = Boolean.FALSE;
         
         fNameDisp.setText(ch.getName());
         flvl.setText(ch.getLvl().toString());
@@ -2529,6 +2692,15 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         fDmgDisp.setText("Dmg: " + ch.getAtk().toString());
         fMonDisp.setText("Money: " + ch.getMoney().toString());
         lorc.setVisible(Boolean.FALSE);
+        
+        ImageIcon fightIcon = new ImageIcon();
+        if (ch.getSex() == Boolean.TRUE) {
+            fightIcon = new ImageIcon("src\\wayofisekai\\charfightfemale.png");
+            charimg.setIcon(fightIcon);
+        } else {
+            fightIcon = new ImageIcon("src\\wayofisekai\\charfightmale.png");
+            charimg.setIcon(fightIcon);
+        }
         
         le = enemyF.quest(ch, qid);
         enemyHp = le.get(0).getHp();
@@ -2667,7 +2839,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             shiComp.setVisible(Boolean.FALSE);
             shiroComp.setVisible(Boolean.FALSE);
             kuroComp.setVisible(Boolean.FALSE);
-            hiro.setVisible(Boolean.FALSE);
+            hiroComp.setVisible(Boolean.FALSE);
             
             meghiv(MashiriaCity);
         }
@@ -2684,6 +2856,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
     private void travelBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_travelBMouseClicked
        
+        gameUpdate();
         meghiv(game);
         
     }//GEN-LAST:event_travelBMouseClicked
@@ -2705,23 +2878,257 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_healMouseClicked
 
-    private void mashironMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseClicked
-        if (mashiron.isEnabled() == Boolean.TRUE) {
+    public void switchQ(JPanel pnl, JButton btn){
+        if (btn.isEnabled() == Boolean.TRUE) {
             
-            masPnl.setVisible(Boolean.TRUE);
+            pnl.setVisible(Boolean.TRUE);
+            btn.setEnabled(Boolean.FALSE);
+            
+        } else if (pnl.isVisible() == Boolean.TRUE){
+            
+            pnl.setVisible(Boolean.FALSE);
+            btn.setEnabled(Boolean.TRUE);
             
         }
+    }
+    
+    private void mashironMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseClicked
+        switchQ(masPnl, mashiron);
     }//GEN-LAST:event_mashironMouseClicked
 
-    public Boolean 
-            npcMashiron = Boolean.FALSE,
-            npcShiina   = Boolean.FALSE,
-            npcRaku     = Boolean.FALSE,
-            npcKaede    = Boolean.FALSE,
-            npcChi      = Boolean.FALSE,
-            npcShiro    = Boolean.FALSE,
-            npcKuro     = Boolean.FALSE,
-            npcHiro     = Boolean.FALSE;
+    private void kaedeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseClicked
+        switchQ(kaePnl, kaede);
+    }//GEN-LAST:event_kaedeMouseClicked
+
+    private void shiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseClicked
+        switchQ(shiroPnl, shiro);
+    }//GEN-LAST:event_shiroMouseClicked
+
+    private void kuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseClicked
+        switchQ(kuroPnl, kuro);
+    }//GEN-LAST:event_kuroMouseClicked
+
+    private void shiinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseClicked
+        switchQ(shiPnl, shiina);
+    }//GEN-LAST:event_shiinaMouseClicked
+
+    private void hiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseClicked
+        switchQ(hiroPnl, hiro);
+    }//GEN-LAST:event_hiroMouseClicked
+
+    private void rakuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseClicked
+        switchQ(rakuPnl, raku);
+    }//GEN-LAST:event_rakuMouseClicked
+
+    private void chiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseClicked
+        switchQ(chiPnl, chi);
+    }//GEN-LAST:event_chiMouseClicked
+
+    private void sheldonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sheldonMouseClicked
+        switchQ(sheldonPnl, sheldon);
+    }//GEN-LAST:event_sheldonMouseClicked
+
+    public void searchAccept(String name, JPanel pnl, JButton btn){
+        
+        for (npc np : npcList){
+            if (np.getVilName().contains(name)) {
+                np.setAcc(Boolean.TRUE);
+                pnl.setVisible(Boolean.FALSE);
+                btn.setEnabled(Boolean.FALSE);
+            }
+        }
+        
+    }
+    
+    public Boolean searchComplete(String name){
+        for (npc np : npcList) {
+            if (np.getVilName().contains(name)) {
+                return np.isComp();
+            }
+        }
+        
+        return Boolean.FALSE;
+    }
+    
+    private void mashironMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseEntered
+        if (searchComplete("Mashiron") == Boolean.TRUE) {
+            masComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_mashironMouseEntered
+
+    private void mashironMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseExited
+        if (searchComplete("Mashiron") == Boolean.TRUE) {
+            masComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_mashironMouseExited
+
+    private void kaedeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseEntered
+        if (searchComplete("Kaede") == Boolean.TRUE) {
+            kaeComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_kaedeMouseEntered
+
+    private void kaedeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseExited
+        if (searchComplete("Kaede") == Boolean.TRUE) {
+            kaeComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_kaedeMouseExited
+
+    private void kuroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseEntered
+        if (searchComplete("Kuro") == Boolean.TRUE) {
+            kuroComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_kuroMouseEntered
+
+    private void kuroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseExited
+        if (searchComplete("Kuro") == Boolean.TRUE) {
+            kuroComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_kuroMouseExited
+
+    private void shiinaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseEntered
+        if (searchComplete("Shiina") == Boolean.TRUE) {
+            shiComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_shiinaMouseEntered
+
+    private void shiinaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseExited
+        if (searchComplete("Shiina") == Boolean.TRUE) {
+            shiComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_shiinaMouseExited
+
+    private void shiroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseEntered
+        if (searchComplete("Shiro") == Boolean.TRUE) {
+            shiroComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_shiroMouseEntered
+
+    private void shiroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseExited
+        if (searchComplete("Shiro") == Boolean.TRUE) {
+            shiroComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_shiroMouseExited
+
+    private void hiroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseEntered
+        if (searchComplete("Hiro") == Boolean.TRUE) {
+            hiroComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_hiroMouseEntered
+
+    private void hiroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseExited
+        if (searchComplete("Hiro") == Boolean.TRUE) {
+            hiroComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_hiroMouseExited
+
+    private void rakuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseEntered
+        if (searchComplete("Raku") == Boolean.TRUE) {
+            rakuComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_rakuMouseEntered
+
+    private void rakuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseExited
+        if (searchComplete("Raku") == Boolean.TRUE) {
+            rakuComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_rakuMouseExited
+
+    private void chiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseEntered
+        if (searchComplete("Chi") == Boolean.TRUE) {
+            chiComp.setVisible(Boolean.TRUE);
+        }
+    }//GEN-LAST:event_chiMouseEntered
+
+    private void chiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseExited
+        if (searchComplete("Chi") == Boolean.TRUE) {
+            chiComp.setVisible(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_chiMouseExited
+
+    private void kuroAnswBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroAnswBMouseClicked
+        qaQuest(kuroAnsw, "The Shire", 0, 1000, 0, 500, "Kuro", kuroPnl, kuro);
+    }//GEN-LAST:event_kuroAnswBMouseClicked
+
+    private void shiroAnswBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroAnswBMouseClicked
+        qaQuest(shiroAnsw, "Mount of Sep", 1500, 3000, 0, 500, "Shiro", shiroPnl, shiro);
+    }//GEN-LAST:event_shiroAnswBMouseClicked
+
+    private void rakuAnswBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuAnswBMouseClicked
+        qaQuest(rakuAnsw, "KALKULUS", 0, 15000, 0, 15000, "Raku", rakuPnl, raku);
+    }//GEN-LAST:event_rakuAnswBMouseClicked
+
+    private void shiAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiAccBMouseClicked
+        if (shiAccB.isEnabled() == Boolean.TRUE) {
+            searchAccept("Shiina", shiPnl, shiAccB);
+        }
+    }//GEN-LAST:event_shiAccBMouseClicked
+
+    private void masAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masAccBMouseClicked
+        if (masAccB.isEnabled() == Boolean.TRUE) {
+            searchAccept("Mashiron", masPnl, masAccB);
+        }
+    }//GEN-LAST:event_masAccBMouseClicked
+
+    private void kaeAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaeAccBMouseClicked
+        if (kaeAccB.isEnabled() == Boolean.TRUE) {
+            searchAccept("Kaede", kaePnl, kaeAccB);
+        }
+    }//GEN-LAST:event_kaeAccBMouseClicked
+
+    private void hiroAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroAccBMouseClicked
+        if (hiroAccB.isEnabled() == Boolean.TRUE) {
+            searchAccept("Hiro", hiroPnl, hiroAccB);
+        }
+    }//GEN-LAST:event_hiroAccBMouseClicked
+
+    private void chiAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiAccBMouseClicked
+        if (chiAccB.isEnabled() == Boolean.TRUE) {
+            searchAccept("Chi", chiPnl, chiAccB);
+        }
+    }//GEN-LAST:event_chiAccBMouseClicked
+    
+    public void accQuest(Boolean comp, String vilname,
+            Integer xpMin, Integer xpMax,
+            Integer gMin, Integer gMax,
+            JButton btn){
+        
+        for (npc np : npcList){
+            if (np.getVilName().contains(vilname)) {
+                if (comp == Boolean.TRUE && np.isAcc() == Boolean.TRUE) {
+                    npcsave.npcQuestComplete(ch, xpMin, xpMax, gMin, gMax);
+                    np.setComp(Boolean.TRUE);
+                    np.setAcc(Boolean.FALSE);
+                    btn.setEnabled(Boolean.FALSE);
+                }  
+            }
+        }
+    }
+    
+    public void qaQuest(JComboBox box, String answer,
+            Integer xpMin, Integer xpMax,
+            Integer gMin, Integer gMax,
+            String vilname, JPanel pnl,
+            JButton btn){
+        
+        try {
+            if (box.getSelectedItem().toString().contains(answer)) {
+                npcsave.npcQuestComplete(ch, xpMin, xpMax, gMin, gMax);
+                for (npc np : npcList){
+                    if (np.getVilName().contains(vilname)) {
+                        np.setComp(Boolean.TRUE);
+                    }
+                }
+                pnl.setVisible(Boolean.FALSE);
+                btn.setEnabled(Boolean.FALSE);
+            } else {
+                throw new Exception();
+            }
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Nem jó válasz!");
+        }
+        
+    }
     
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

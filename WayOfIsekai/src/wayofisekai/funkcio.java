@@ -180,7 +180,7 @@ public class funkcio<gameClass> {
             
         } catch (Exception ex) {
             
-            JOptionPane.showMessageDialog(null, "ANYÁD");
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
             
         }
         
@@ -478,7 +478,18 @@ public class funkcio<gameClass> {
         
     }
     
-    public Boolean npcQuest(Character ch, Integer xpMin, Integer xpMax, Integer gMin, Integer gMax){
+    public Boolean npcQuestStart(npc acc){
+        try{
+            
+            
+            return Boolean.TRUE;
+        } catch(Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+            return Boolean.FALSE;
+        }
+    }
+    
+    public Boolean npcQuestComplete(Character ch, Integer xpMin, Integer xpMax, Integer gMin, Integer gMax){
         
         Random rand = new Random();
         
