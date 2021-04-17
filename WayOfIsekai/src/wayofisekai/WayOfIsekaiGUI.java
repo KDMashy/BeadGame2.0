@@ -2291,6 +2291,12 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             ch.lvlUp();
                         }
                     }
+                    if (cNameText.getText().equals("Molli")) {
+                        ch.setXp(4000000);
+                        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {                    
+                            ch.lvlUp();
+                        }
+                    }
                     //karakter mentése
                     chF.saveObject(ch, ch.getName());
                     //karakterhez npc-k létrehozása
@@ -2380,7 +2386,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     //karakterhez tartozó npc-k beállítása
                     npc xynpc = new npc("xy", Boolean.FALSE,
                         Boolean.FALSE, "nb");
-                    npcList = chF.loadNpc(xynpc);
+                    npcList = chF.loadNpc(xynpc, cBox.getSelectedItem().toString());
                     //küldetések beállítása
                     q5start.setEnabled(Boolean.FALSE);
                     q4start.setEnabled(Boolean.FALSE);
@@ -2499,7 +2505,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         if (del.isEnabled() == Boolean.TRUE) {            
             chF.removeChar(ch, cBox.getSelectedItem().toString());
             npc xy = new npc("asd", Boolean.FALSE, Boolean.FALSE, "asd");
-            npcList = npcsave.loadNpc(xy);
+            npcList = npcsave.loadNpc(xy, cBox.getSelectedItem().toString());
             for (npc savenpc : npcList) {
                 npcsave.removeNpcs(savenpc, cBox.getSelectedItem().toString());
             }

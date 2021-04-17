@@ -7,25 +7,25 @@
 </npc>
 <npc>
 <acc type="Boolean">false</acc>
-<comp type="Boolean">true</comp>
+<comp type="Boolean">false</comp>
 <vilName type="String">Shiina</vilName>
 <cname type="String">Kaede</cname>
 </npc>
 <npc>
 <acc type="Boolean">false</acc>
-<comp type="Boolean">true</comp>
+<comp type="Boolean">false</comp>
 <vilName type="String">Raku</vilName>
 <cname type="String">Kaede</cname>
 </npc>
 <npc>
 <acc type="Boolean">false</acc>
-<comp type="Boolean">true</comp>
+<comp type="Boolean">false</comp>
 <vilName type="String">Kaede</vilName>
 <cname type="String">Kaede</cname>
 </npc>
 <npc>
 <acc type="Boolean">false</acc>
-<comp type="Boolean">true</comp>
+<comp type="Boolean">false</comp>
 <vilName type="String">Chi</vilName>
 <cname type="String">Kaede</cname>
 </npc>
@@ -41,4 +41,52 @@
 <vilName type="String">Kuro</vilName>
 <cname type="String">Kaede</cname>
 </npc>
-<npc><acc type="Boolean">false</acc><comp type="Boolean">true</comp><vilName type="String">Hiro</vilName><cname type="String">Kaede</cname></npc></wayofisekai.npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Hiro</vilName>
+<cname type="String">Kaede</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Mashiron</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Shiina</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Raku</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Kaede</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Chi</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Shiro</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc>
+<acc type="Boolean">false</acc>
+<comp type="Boolean">false</comp>
+<vilName type="String">Kuro</vilName>
+<cname type="String">Molli</cname>
+</npc>
+<npc><acc type="Boolean">false</acc><comp type="Boolean">false</comp><vilName type="String">Hiro</vilName><cname type="String">Molli</cname></npc></wayofisekai.npc>

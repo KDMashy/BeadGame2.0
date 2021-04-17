@@ -249,7 +249,7 @@ public class funkcio<gameClass> {
         return enemies;
     }
     //npc-k betöltése
-    public ArrayList<npc> loadNpc(npc xy){
+    public ArrayList<npc> loadNpc(npc xy, String chName){
         //npc lista létrehozása
         ArrayList<npc> npcs = new ArrayList<>();
         try {
@@ -271,8 +271,10 @@ public class funkcio<gameClass> {
                 Boolean acc = Boolean.parseBoolean
                     (npcAdat.getElementsByTagName("acc").item(0).getTextContent());
                 String cname = npcAdat.getElementsByTagName("cname").item(0).getTextContent();
-                xy = new npc(name, comp, acc, cname);
-                npcs.add(xy);
+                if (cname.contains(chName)) {
+                    xy = new npc(name, comp, acc, cname);
+                    npcs.add(xy);
+                }
             }
         }
         catch(Exception ex){
