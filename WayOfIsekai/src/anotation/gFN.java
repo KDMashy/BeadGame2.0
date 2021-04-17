@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface gFN {
-    
+    //objektum tulajdonságokra, menzéshez
     String value() default "";
     Class type() default Object.class;
     

@@ -16,40 +16,34 @@ import javax.xml.xpath.XPathExpressionException;
 
 public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
-    public Character ch = new Character();
-    public Enemy en = new Enemy();
-    public funkcio<Character> chF = new funkcio<Character>();
-    public funkcio<Enemy> enemyF = new funkcio<Enemy>();
-    public ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
-    public funkcio<npc> npcsave = new funkcio<>();
-    public ArrayList<npc> npcList = new ArrayList<>();
+    //alap változók
+    private Character ch = new Character();
+    private Enemy en = new Enemy();
+    private funkcio<Character> chF = new funkcio<Character>();
+    private funkcio<Enemy> enemyF = new funkcio<Enemy>();
+    private ArrayList<Enemy> listenemy = enemyF.loadEnemy(ch);
+    private funkcio<npc> npcsave = new funkcio<>();
+    private ArrayList<npc> npcList = new ArrayList<>();
     
     public WayOfIsekaiGUI() {
         initComponents();
-        
         //Panelek eltüntetése / login panel meghívása
         meghiv(login);
-        
         logScreen.setLocation(500, 200);
-        
         //Login Panelen newChar panel !visible
         newChar.setVisible(Boolean.FALSE);
         loadPnl.setVisible(Boolean.FALSE);
         del.setEnabled(Boolean.FALSE);
-        
     }
-    
-    public void meghiv(JPanel name){
-        
+    //panel card meghívása
+    private void meghiv(JPanel name){
         lpFrame.removeAll();
         lpFrame.add(name);
         lpFrame.repaint();
         lpFrame.revalidate();
-        
     }
-    
+    //karakter táblázat feltöltése betöltése
     private void fillTableCharacter(){
-        
         //character táblázat feltöltés
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
         String header[] = new String [] {"Name", "Lvl", "Xp"};
@@ -61,17 +55,11 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         }
         //Combo box feltöltés
         for (Character k : list) {
-            
             cBox.addItem(k.getName());
-            
         }
-        
         tbLoad.setEnabled(Boolean.FALSE);
-        
     }
-    
-    
-    
+    //ellenfél táblázat feltöltése IG
     private void fillTableEnemy(){
         DefaultTableModel dtm = new DefaultTableModel(0, 0);
         String header[] = new String [] {"Name", "Hp", "Dmg", "Def", "quest"};
@@ -86,19 +74,16 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 dtm.addRow(new Object[] {k.getName(), k.getHp()*2*chLvl, k.getAtk()*2*chLvl, 
                     k.getDef()*2*chLvl, k.getQuest()});
             }
-            
-       }
+        }
     }
-    
-    public void clearTable(JTable tbl){
-        
+    //táblák törlése (generic)
+    private void clearTable(JTable tbl){
         //jTable clear
         DefaultTableModel dm = (DefaultTableModel)tbl.getModel();
         dm.getDataVector().removeAllElements();
         dm.fireTableDataChanged();
         //ComboBox clear
         cBox.removeAllItems();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -2253,89 +2238,62 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //kilépés
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        
-        if (exit.isEnabled() == Boolean.TRUE) {
-            
+        if (exit.isEnabled() == Boolean.TRUE) {            
             //Kilépés
             System.exit(0);
-            
         }
-        
     }//GEN-LAST:event_exitMouseClicked
-
+    //új karakter
     private void newSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newSaveMouseClicked
-        
         if (newSave.isEnabled() == Boolean.TRUE) {
-            
             //Kreáció panele
             newChar.setVisible(Boolean.TRUE);
-
             //gombok !enabled
             load.setEnabled(Boolean.FALSE);
             newSave.setEnabled(Boolean.FALSE);
             exit.setEnabled(Boolean.FALSE);
             createC.setEnabled(Boolean.FALSE);
-
             //Nem alap beállítása
             female.setSelected(Boolean.TRUE);
-            
         }
-        
     }//GEN-LAST:event_newSaveMouseClicked
-
+    //betöltés gomb
     private void loadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadMouseClicked
-        
-        if (load.isEnabled() == Boolean.TRUE) {
-         
+        if (load.isEnabled() == Boolean.TRUE) {        
             //Játék betöltése
             fillTableCharacter();
             loadPnl.setVisible(Boolean.TRUE);
             logScreen.setVisible(Boolean.FALSE);
             if (cBox.getItemAt(0) == "") {
-                
                 loadSaveGame.setEnabled(Boolean.FALSE);
-                
             } else {
-                
                 loadSaveGame.setEnabled(Boolean.TRUE);
-                
             }
-            
         }
-        
     }//GEN-LAST:event_loadMouseClicked
-
+    //karakter létrehozása gomb
     private void createCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCMouseClicked
-        
         if (createC.isEnabled() == Boolean.TRUE) {
-            
-            try {
-            
+            try {            
                 //Mentés, név alaphelyzetbe állítása, gombok ->enabled
                 if (cNameText.getText().length() < 1) {
-
                     throw new Exception();
-
                 } else {
-
+                    //karakter beállítása
                     ch.setName(cNameText.getText());
                     ch.setSex(charSex);
-                    
+                    //karakter szint beállítása ha csaló név van
                     if (cNameText.getText().equals("Kaede")) {
-                        
                         ch.setXp(1000000);
-                        
-                        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {
-                    
+                        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {                    
                             ch.lvlUp();
-
                         }
                     }
-                    
+                    //karakter mentése
                     chF.saveObject(ch, ch.getName());
-                    
+                    //karakterhez npc-k létrehozása
                     String[] npcNames = new String[] 
                         {"Mashiron", "Shiina",
                         "Raku", "Kaede",
@@ -2346,30 +2304,23 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         npcsave.saveObject(xy, npcNames[i]);
                     }
                     cNameText.setText("");
-
                 }
+                //gombok visszaállítása
                 load.setEnabled(Boolean.TRUE);
                 newSave.setEnabled(Boolean.TRUE);
                 exit.setEnabled(Boolean.TRUE);
-
                 //newChar panel !visible
                 newChar.setVisible(Boolean.FALSE);
-
             } catch (Exception ex) {
-
+                //egyéb hiba
                 JOptionPane.showMessageDialog(rootPane, "A karakternek nevet kell adni!");
-
             }
-            
         }
-        
     }//GEN-LAST:event_createCMouseClicked
-
     //Nemek csekkolása, radio-button váltás
     private Boolean charSex;
-    
+    //Nő gomb
     private void femaleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_femaleStateChanged
-        
         if (female.isSelected()) {
             female.setEnabled(Boolean.FALSE);
             male.setSelected(Boolean.FALSE);
@@ -2380,11 +2331,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             male.setSelected(Boolean.TRUE);
             charSex = Boolean.FALSE;
         }
-        
     }//GEN-LAST:event_femaleStateChanged
-
+    //férfi gomb
     private void maleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_maleStateChanged
-        
         if (male.isSelected()) {
             male.setEnabled(Boolean.FALSE);
             female.setSelected(Boolean.FALSE);
@@ -2395,20 +2344,17 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             female.setSelected(Boolean.TRUE);
             charSex = Boolean.TRUE;
         }
-        
     }//GEN-LAST:event_maleStateChanged
-
+    //kiválasztott karakter betöltése gomb
     private void loadSaveGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSaveGameMouseClicked
-        
-        if (loadSaveGame.isEnabled() == Boolean.TRUE) {
-            
+        if (loadSaveGame.isEnabled() == Boolean.TRUE) {    
             //Kiválasztja hogy melyik az az elmentett objektum amit be akarunk tölteni
             for(Character chk : chF.loadList(ch)){
-
                 String boxName = cBox.getSelectedItem().toString();
+                //betöltendő karakter kiválasztása
                 if (chk.getName().contains(boxName) && 
                         chk.getName().length() == boxName.length() ) {
-
+                    //IG alapbeállítások
                     cNameDisp.setText(chk.getName());
                     if (chk.getSex() == Boolean.TRUE) {
                         cSexDisp.setText("female");
@@ -2429,19 +2375,19 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                             chk.getXp(), chk.getSex(), chk.getMoney());
                     hp = ch.getHp();
                     removeAccept.setSelected(Boolean.FALSE);
-                    
+                    //fix IG frissítés
                     gameUpdate();
-                    
+                    //karakterhez tartozó npc-k beállítása
                     npc xynpc = new npc("xy", Boolean.FALSE,
                         Boolean.FALSE, "nb");
                     npcList = chF.loadNpc(xynpc);
-                    
+                    //küldetések beállítása
                     q5start.setEnabled(Boolean.FALSE);
                     q4start.setEnabled(Boolean.FALSE);
                     q3start.setEnabled(Boolean.FALSE);
                     q2start.setEnabled(Boolean.FALSE);
                     mashiriaB.setEnabled(Boolean.FALSE);
-                    
+                    //szint szerint
                     if (ch.getLvl() >= 45) { 
                         q5start.setEnabled(Boolean.TRUE); 
                         q4start.setEnabled(Boolean.TRUE);
@@ -2460,19 +2406,15 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     } else if (ch.getLvl() >= 5) {
                         q2start.setEnabled(Boolean.TRUE);
                     }
-                    
+                    //játék card behozása
                     meghiv(game);
-
                 }
-
             }
-            
         }
-        
     }//GEN-LAST:event_loadSaveGameMouseClicked
-
-    public void gameUpdate(){
-        
+    //IG játék frissítés
+    private void gameUpdate(){
+        //küldetések ellenőrzése
         if (questId == 1 && dead == Boolean.FALSE) {
             accQuest(Boolean.TRUE, "Shiina", 500, 3000, 500, 1000, shiina);
             accQuest(Boolean.TRUE, "Chi", 750, 3000, 0, 1000, chi);
@@ -2483,7 +2425,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             accQuest(Boolean.TRUE, "Kaede", 1000, 5000, 500, 3500, kaede);
         else if (questId == 4 && dead == Boolean.FALSE) 
             accQuest(Boolean.TRUE, "Mashiron", 1000, 10000, 1000, 5000, mashiron);
-        
+        //frissítések eszközölése
         cost = 100;
         hp = ch.getHp();
         cNameDisp.setText(ch.getName());
@@ -2501,23 +2443,21 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         cHpDisp.setText(ch.getHp().toString());
         cMoneyDisp.setText(ch.getMoney().toString());
         eTable.setVisible(Boolean.FALSE);
-        
-        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {
-                    
+        //ha a karakter szintet lép
+        while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {     
             ch.lvlUp();
-
         }
-        
-        kaede.setVisible(Boolean.FALSE);
-        sheldon.setVisible(Boolean.FALSE);
-        mashiron.setVisible(Boolean.FALSE);
-        raku.setVisible(Boolean.FALSE);
-        
+        //npc gombok beállítása
+        kaede.setVisible(Boolean.FALSE); //15
+        sheldon.setVisible(Boolean.FALSE); //23
+        mashiron.setVisible(Boolean.FALSE); //30
+        raku.setVisible(Boolean.FALSE); //45
+        //szint szerint
         if (ch.getLvl() >= 45) {
-            raku.setVisible(Boolean.TRUE); //45
-            mashiron.setVisible(Boolean.TRUE); //30
-            kaede.setVisible(Boolean.TRUE); //15
-            sheldon.setVisible(Boolean.TRUE); //23
+            raku.setVisible(Boolean.TRUE);
+            mashiron.setVisible(Boolean.TRUE); 
+            kaede.setVisible(Boolean.TRUE); 
+            sheldon.setVisible(Boolean.TRUE); 
         } else if (ch.getLvl() >= 30){
             mashiron.setVisible(Boolean.TRUE);
             sheldon.setVisible(Boolean.TRUE);
@@ -2530,41 +2470,33 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         }
         
     }
-    
+    //betöltés gomb cancel
     private void loadBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadBackMouseClicked
-        
+        //tábla törlés
         clearTable(tbLoad);
         loadPnl.setVisible(Boolean.FALSE);
         logScreen.setVisible(Boolean.TRUE);
-        
     }//GEN-LAST:event_loadBackMouseClicked
-
+    //karakter törlés cancel
     private void createCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createCancelMouseClicked
-        
+        //visszaállítás
         cNameText.setText("");
         newChar.setVisible(Boolean.FALSE);
         load.setEnabled(Boolean.TRUE);
         newSave.setEnabled(Boolean.TRUE);
         exit.setEnabled(Boolean.TRUE);
-        
     }//GEN-LAST:event_createCancelMouseClicked
-
+    //karakter létrehozás - név mező ellenőrzése
     private void cNameTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNameTextKeyReleased
         if (cNameText.getText().length() > 2) {
-            
             createC.setEnabled(Boolean.TRUE);
-            
         } else {
-            
             createC.setEnabled(Boolean.FALSE);
-            
         }
     }//GEN-LAST:event_cNameTextKeyReleased
-
+    //karakter - hozzátartozó npc-k törlése
     private void delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseClicked
-        
-        if (del.isEnabled() == Boolean.TRUE) {
-            
+        if (del.isEnabled() == Boolean.TRUE) {            
             chF.removeChar(ch, cBox.getSelectedItem().toString());
             npc xy = new npc("asd", Boolean.FALSE, Boolean.FALSE, "asd");
             npcList = npcsave.loadNpc(xy);
@@ -2572,52 +2504,40 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 npcsave.removeNpcs(savenpc, cBox.getSelectedItem().toString());
             }
             removeAccept.setSelected(Boolean.FALSE);
+            //tábla frissítés
             clearTable(tbLoad);
             fillTableCharacter();
-            
         }
-        
     }//GEN-LAST:event_delMouseClicked
-
+    //biztos akarja törölni?
     private void removeAcceptStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_removeAcceptStateChanged
-        
-        if (removeAccept.isSelected()) {
-            
-            del.setEnabled(Boolean.TRUE);
-            
+        if (removeAccept.isSelected()) {            
+            del.setEnabled(Boolean.TRUE);            
         } else {
-            
             del.setEnabled(Boolean.FALSE);
-            
         }
-        
     }//GEN-LAST:event_removeAcceptStateChanged
-
+    //enemy lista csekkolás
     private Boolean elc = Boolean.FALSE;
+    //enemy lista behozása
     private void enemyListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enemyListMouseClicked
-        
         if (elc == Boolean.FALSE) {
-            
             elc = Boolean.TRUE;
             fillTableEnemy();
             enemyList.setText("Hide Enemy List");
             eTable.setVisible(Boolean.TRUE);
-            
         } else {
-            
             elc = Boolean.FALSE;
             clearTable(enemyListTable);
             enemyList.setText("List Enemy");
             eTable.setVisible(Boolean.FALSE);
-            
         }
-        
     }//GEN-LAST:event_enemyListMouseClicked
-
+    //IG játékból kilépés gomb
     private void gameExit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gameExit1MouseClicked
-        
         logScreen.setVisible(Boolean.TRUE);
         clearTable(tbLoad);
+        //autosave
         chF.removeChar(ch, ch.getName());
         chF.saveObject(ch, ch.getName());
         for (npc savenpc : npcList) {
@@ -2625,103 +2545,93 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             npcsave.saveObject(savenpc, savenpc.getVilName());
         }
         meghiv(login);
-        
     }//GEN-LAST:event_gameExit1MouseClicked
-
+    //manuális mentés
     private void igsaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_igsaveMouseClicked
-        
         chF.removeChar(ch, ch.getName());
         chF.saveObject(ch, ch.getName());
         for (npc savenpc : npcList) {
             npcsave.removeNpcs(savenpc, savenpc.getCname());
             npcsave.saveObject(savenpc, savenpc.getVilName());
         }
-        
     }//GEN-LAST:event_igsaveMouseClicked
 
     private void HITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HITActionPerformed
         //véletlen volt... :'c
     }//GEN-LAST:event_HITActionPerformed
-
+    //támadás panel behozása (más volt a terv, de egyéb problémák miatt
+    //talán egy másik frissítésben a jövőben...)
     private void HITMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HITMouseClicked
-        
+        //támadás panel
         lorc.setVisible(Boolean.TRUE);
-        
     }//GEN-LAST:event_HITMouseClicked
-
+    //megfutamodás
     private void LEAVEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LEAVEMouseClicked
-        
+        //játék frissítés
         gameUpdate();
         meghiv(game);
-        
     }//GEN-LAST:event_LEAVEMouseClicked
-
-    public Integer enemyFightID = 0;
-    public Boolean dead = Boolean.FALSE;
-    public Integer hp = ch.getHp();
-    public Integer enemyHp;
-    
+    //fight szükséges változói
+    private Integer enemyFightID = 0;
+    private Boolean dead = Boolean.FALSE;
+    private Integer hp = ch.getHp();
+    private Integer enemyHp;
+    //támadások
     private void atkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atkMouseClicked
-        System.out.println(hp);
         enemyHp -= ch.getAtk();
-        
-        System.out.println(enemyHp);
+        //ha meghalt, vagy van még enemy
         if (enemyHp <= 0 && enemyFightID < 3) {
-            
             enemyFightID++;
+            //halott, és van még enemy
             if (enemyFightID != 3) {
-                
+                //következő
                 dead = Boolean.TRUE;
                 fightUpdate();
-                
             } else if (enemyFightID == 3){
-                
+                //vége a küldetésnek
                 Integer m = 0;
                 Integer xpd = 0;
+                //dropok kiadása
                 for(Enemy y : le) {
-                    
                     xpd += y.getXpDrop();
                     m += y.getMoneyDrop();
-                    
                 }
+                //karakter beállítása
                 ch.setXp(xpd);
                 ch.setMoney(m);
+                //ha szintet lép
                 if (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {
-                    
                     ch.lvlUp();
-                    
                 }
+                //visszaállítás, vissza a game panelre
                 enemyFightID = 0;
                 hp = ch.getHp();
                 gameUpdate();
                 meghiv(game);
-                
-            }
-               
+            }               
         }
         hp -= le.get(enemyFightID).getAtk();
+        //ha a karakter halott
         if (hp <= 0) {
-               
+            //visszaállítás, vissza a game panelre   
             JOptionPane.showMessageDialog(null, "Meghaltál");
             hp = ch.getHp();
             dead = Boolean.TRUE;
             gameUpdate();
             meghiv(game);
-               
         }
-        
+        //harc frissítés
         fightUpdate();
-        
     }//GEN-LAST:event_atkMouseClicked
-
-    public ArrayList<Enemy> le = new ArrayList<>();
-    public Integer questId = 0;
-    
+    //Szükséges változók
+    private ArrayList<Enemy> le = new ArrayList<>();
+    private Integer questId = 0;
+    //harc kezdése
     public void fightStart(Integer qid){
-        
+        //küldetésekhez id
         questId = qid;
         dead = Boolean.FALSE;
-        
+        //alap beállítások
         fNameDisp.setText(ch.getName());
         flvl.setText(ch.getLvl().toString());
         fHpDisp.setText("Hp: " + 
@@ -2729,7 +2639,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         fDmgDisp.setText("Dmg: " + ch.getAtk().toString());
         fMonDisp.setText("Money: " + ch.getMoney().toString());
         lorc.setVisible(Boolean.FALSE);
-        
+        //karakter img
         ImageIcon fightIcon = new ImageIcon();
         if (ch.getSex() == Boolean.TRUE) {
             fightIcon = new ImageIcon("src\\wayofisekai\\charfightfemale.png");
@@ -2738,7 +2648,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             fightIcon = new ImageIcon("src\\wayofisekai\\charfightmale.png");
             charimg.setIcon(fightIcon);
         }
+        //enemy img
         
+        //ellenfél/ellenfelek lekérése
         le = enemyF.quest(ch, qid);
         enemyHp = le.get(0).getHp();
         fename.setText(le.get(0).getName());
@@ -2747,14 +2659,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         String hp =le.get(0).getHp().toString();
         eHpDisp.setText(hp + " / " + hp);
         efDmg.setText(le.get(0).getAtk().toString());
-        
     }
-    
+    //harc frissítése
     public void fightUpdate(){
-        
+        //ha halott az ellenfél
         //le.get(enemyFightID - 1).setHp(le.get(enemyFightID - 1).getDefHp());
         if (dead == Boolean.TRUE) {
-            
+            //új ellenfél
             fename.setText(le.get(enemyFightID).getName());
             eHpBar.setMaximum(le.get(enemyFightID).getHp());
             eHpBar.setValue(le.get(enemyFightID).getHp());
@@ -2764,99 +2675,85 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             efDmg.setText(le.get(enemyFightID).getAtk().toString());
             enemyHp = le.get(enemyFightID).getHp();
             dead = Boolean.FALSE;
-            
         } else {
-            
+            //karakter sebződik
             eHpBar.setValue(enemyHp);
             String hps = enemyHp.toString();
             eHpDisp.setText(hps + " / " + 
                     le.get(enemyFightID).getDefHp().toString());
             fHpDisp.setText("Hp: " + 
                     hp.toString() + " / " + ch.getHp().toString());
-            
         }
-        
-        
     }
-    
+    //1. küldetés
     private void q1startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q1startMouseClicked
-        
         if (q1start.isEnabled() == Boolean.TRUE) {
             chF.quest(ch, 1);
             fightStart(1);
             meghiv(fight);
         }
-        
     }//GEN-LAST:event_q1startMouseClicked
-
+    //2. küldetés
     private void q2startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q2startMouseClicked
-        
         if (q2start.isEnabled() == Boolean.TRUE) {
             chF.quest(ch, 2);
             fightStart(2);
             meghiv(fight);
         }
-        
     }//GEN-LAST:event_q2startMouseClicked
-
+    //3. küldetés
     private void q3startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q3startMouseClicked
-        
         if (q3start.isEnabled() == Boolean.TRUE) {
             chF.quest(ch, 3);
             fightStart(3);
             meghiv(fight);
         }
-        
     }//GEN-LAST:event_q3startMouseClicked
-
+    //4. küldetés
     private void q4startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q4startMouseClicked
-        
         if (q4start.isEnabled() == Boolean.TRUE) {
             chF.quest(ch, 4);
             fightStart(4);
             meghiv(fight);
         }
-        
     }//GEN-LAST:event_q4startMouseClicked
-
+    //5. küldetés
     private void q5startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q5startMouseClicked
-        
         if (q5start.isEnabled() == Boolean.TRUE) {
             chF.quest(ch, 5);
             fightStart(5);
             meghiv(fight);
         }
-        
     }//GEN-LAST:event_q5startMouseClicked
-
+    //1. q térkép
     private void q1pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q1pointMouseClicked
         q1startMouseClicked(evt);
     }//GEN-LAST:event_q1pointMouseClicked
-
+    //2. q térkép
     private void q2pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q2pointMouseClicked
         q2startMouseClicked(evt);
     }//GEN-LAST:event_q2pointMouseClicked
-
+    //3. q térkép
     private void q3pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q3pointMouseClicked
         q3startMouseClicked(evt);
     }//GEN-LAST:event_q3pointMouseClicked
-
+    //4. q térkép
     private void q4pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q4pointMouseClicked
         q4startMouseClicked(evt);
     }//GEN-LAST:event_q4pointMouseClicked
-
+    //5. q térkép
     private void q5pointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_q5pointMouseClicked
         q5startMouseClicked(evt);
     }//GEN-LAST:event_q5pointMouseClicked
-
+    //város térkép
     private void cityPointMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cityPointMouseClicked
         mashiriaBMouseClicked(evt);
     }//GEN-LAST:event_cityPointMouseClicked
-
+    //város gomb
     private void mashiriaBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashiriaBMouseClicked
-        
+        //város alapbeállításai
         if (mashiriaB.isEnabled() == Boolean.TRUE) {
-            
+            //panelek
             masPnl.setVisible(Boolean.FALSE);
             shiPnl.setVisible(Boolean.FALSE);
             rakuPnl.setVisible(Boolean.FALSE);
@@ -2867,7 +2764,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             kuroPnl.setVisible(Boolean.FALSE);
             hiroPnl.setVisible(Boolean.FALSE);
             sheldonPnl.setVisible(Boolean.FALSE);
-            
+            //kész - jelzés
             masComp.setVisible(Boolean.FALSE);
             shiComp.setVisible(Boolean.FALSE);
             rakuComp.setVisible(Boolean.FALSE);
@@ -2877,7 +2774,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             shiroComp.setVisible(Boolean.FALSE);
             kuroComp.setVisible(Boolean.FALSE);
             hiroComp.setVisible(Boolean.FALSE);
-            
+            //karakterhez tartozó npc-k betöltése
             for(npc np : npcList){
                 switch (np.getVilName()){
                     case "Mashiron":
@@ -2906,10 +2803,9 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                         break;
                 }
             }
-            
+            //város panel
             meghiv(MashiriaCity);
         }
-        
     }//GEN-LAST:event_mashiriaBMouseClicked
 
     private void kuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kuroActionPerformed
@@ -2927,11 +2823,10 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         meghiv(game);
         
     }//GEN-LAST:event_travelBMouseClicked
-
-    public Integer cost = 100;
-    
+    //gyógyítás költség
+    private Integer cost = 100;
+    //gyógyítás method
     private void healMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_healMouseClicked
-        
         if (ch.getMoney() >= cost && ch.getHp() != hp) {
             hp = ch.getHp();
             ch.setMoney(-cost);
@@ -2940,81 +2835,76 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             fMonDisp.setText("Money: " + ch.getMoney().toString());
             fightUpdate();
         } else {
+            //halott / nincs pénz:c
             JOptionPane.showMessageDialog(null, "Nincs elég pénzed Healre, vagy teljes az életerőd!");
         }
-        
     }//GEN-LAST:event_healMouseClicked
-
-    public void switchQ(JPanel pnl, JButton btn){
+    //város gombok nyomhatósága
+    private void switchQ(JPanel pnl, JButton btn){
         if (btn.isEnabled() == Boolean.TRUE) {
-            
             pnl.setVisible(Boolean.TRUE);
             btn.setEnabled(Boolean.FALSE);
-            
         } else if (pnl.isVisible() == Boolean.TRUE || btn.getText().contains("Sheldon")){
-            
             pnl.setVisible(Boolean.FALSE);
             btn.setEnabled(Boolean.TRUE);
-            
         }
     }
-    
+    //npcMashiron
     private void mashironMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseClicked
         if (searchComplete("Mashiron") == Boolean.FALSE && ch.getLvl() >= 30) {
             switchQ(masPnl, mashiron);
         }
     }//GEN-LAST:event_mashironMouseClicked
-
+    //npcKaede
     private void kaedeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseClicked
         if (searchComplete("Kaede") == Boolean.FALSE && ch.getLvl() >= 15) {
             switchQ(kaePnl, kaede);
         }
     }//GEN-LAST:event_kaedeMouseClicked
-
+    //npcShiro
     private void shiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseClicked
         if (searchComplete("Shiro") == Boolean.FALSE) {
             switchQ(shiroPnl, shiro);
         }
     }//GEN-LAST:event_shiroMouseClicked
-
+    //npcKuro
     private void kuroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseClicked
         if (searchComplete("Kuro") == Boolean.FALSE) {
             switchQ(kuroPnl, kuro);
         }
     }//GEN-LAST:event_kuroMouseClicked
-
+    //npcShiina
     private void shiinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseClicked
         if (searchComplete("Shiina") == Boolean.FALSE) {
             switchQ(shiPnl, shiina);
         }
     }//GEN-LAST:event_shiinaMouseClicked
-
+    //npcHiro
     private void hiroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseClicked
         if (searchComplete("Hiro") == Boolean.FALSE) {
             switchQ(hiroPnl, hiro);
         }
     }//GEN-LAST:event_hiroMouseClicked
-
+    //npcRaku
     private void rakuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseClicked
         if (searchComplete("Raku") == Boolean.FALSE && ch.getLvl() >= 45) {
             switchQ(rakuPnl, raku);
         }
     }//GEN-LAST:event_rakuMouseClicked
-
+    //npcChi
     private void chiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseClicked
         if (searchComplete("Chi") == Boolean.FALSE) {
             switchQ(chiPnl, chi);
         }
     }//GEN-LAST:event_chiMouseClicked
-
+    //npcSheldon
     private void sheldonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sheldonMouseClicked
         if (ch.getLvl() >= 23) {
             switchQ(sheldonPnl, sheldon);
         }
     }//GEN-LAST:event_sheldonMouseClicked
-
-    public void searchAccept(String name, JPanel pnl, JButton btn){
-        
+    //keresett npc küldetésének elfogadása
+    private void searchAccept(String name, JPanel pnl, JButton btn){
         for (npc np : npcList){
             if (np.getVilName().contains(name)) {
                 np.setAcc(Boolean.TRUE);
@@ -3022,19 +2912,17 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 btn.setEnabled(Boolean.FALSE);
             }
         }
-        
     }
-    
-    public Boolean searchComplete(String name){
+    //keresett npc küldetés állapotának lekérése
+    private Boolean searchComplete(String name){
         for (npc np : npcList) {
             if (np.getVilName().contains(name)) {
                 return np.isComp();
             }
         }
-        
         return Boolean.FALSE;
     }
-    
+    //Mashiron kész - jelzés
     private void mashironMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mashironMouseEntered
         if (searchComplete("Mashiron") == Boolean.TRUE) {
             masComp.setVisible(Boolean.TRUE);
@@ -3046,7 +2934,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             masComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_mashironMouseExited
-
+    //Kaede kész - jelzés
     private void kaedeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaedeMouseEntered
         if (searchComplete("Kaede") == Boolean.TRUE) {
             kaeComp.setVisible(Boolean.TRUE);
@@ -3058,7 +2946,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             kaeComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_kaedeMouseExited
-
+    //Kuro kész - jelzés
     private void kuroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroMouseEntered
         if (searchComplete("Kuro") == Boolean.TRUE) {
             kuroComp.setVisible(Boolean.TRUE);
@@ -3070,7 +2958,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             kuroComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_kuroMouseExited
-
+    //Shiina kész - jelzés
     private void shiinaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiinaMouseEntered
         if (searchComplete("Shiina") == Boolean.TRUE) {
             shiComp.setVisible(Boolean.TRUE);
@@ -3082,7 +2970,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             shiComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_shiinaMouseExited
-
+    //Shiro kész - jelzés
     private void shiroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiroMouseEntered
         if (searchComplete("Shiro") == Boolean.TRUE) {
             shiroComp.setVisible(Boolean.TRUE);
@@ -3094,7 +2982,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             shiroComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_shiroMouseExited
-
+    //Hiro kész - jelzés
     private void hiroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroMouseEntered
         if (searchComplete("Hiro") == Boolean.TRUE) {
             hiroComp.setVisible(Boolean.TRUE);
@@ -3106,7 +2994,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             hiroComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_hiroMouseExited
-
+    //Raku kész - jelzés
     private void rakuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuMouseEntered
         if (searchComplete("Raku") == Boolean.TRUE) {
             rakuComp.setVisible(Boolean.TRUE);
@@ -3118,7 +3006,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             rakuComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_rakuMouseExited
-
+    //Chi kész - jelzés
     private void chiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiMouseEntered
         if (searchComplete("Chi") == Boolean.TRUE) {
             chiComp.setVisible(Boolean.TRUE);
@@ -3130,7 +3018,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             chiComp.setVisible(Boolean.FALSE);
         }
     }//GEN-LAST:event_chiMouseExited
-
+    //Q&A küldetések
     private void kuroAnswBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kuroAnswBMouseClicked
         qaQuest(kuroAnsw, "The Shire", 0, 1000, 0, 500, "Kuro", kuroPnl, kuro);
     }//GEN-LAST:event_kuroAnswBMouseClicked
@@ -3142,46 +3030,46 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     private void rakuAnswBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rakuAnswBMouseClicked
         qaQuest(rakuAnsw, "KALKULUS", 0, 15000, 0, 15000, "Raku", rakuPnl, raku);
     }//GEN-LAST:event_rakuAnswBMouseClicked
-
+    //Shiina küldetés elfogadása
     private void shiAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shiAccBMouseClicked
         if (shiAccB.isEnabled() == Boolean.TRUE) {
             searchAccept("Shiina", shiPnl, shiAccB);
         }
     }//GEN-LAST:event_shiAccBMouseClicked
-
+    //Mashiron küldetés elfogadása
     private void masAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masAccBMouseClicked
         if (masAccB.isEnabled() == Boolean.TRUE) {
             searchAccept("Mashiron", masPnl, masAccB);
         }
     }//GEN-LAST:event_masAccBMouseClicked
-
+    //Kaede küldetés elfogadása
     private void kaeAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kaeAccBMouseClicked
         if (kaeAccB.isEnabled() == Boolean.TRUE) {
             searchAccept("Kaede", kaePnl, kaeAccB);
         }
     }//GEN-LAST:event_kaeAccBMouseClicked
-
+    //Hiro küldetés elfogadása
     private void hiroAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiroAccBMouseClicked
         if (hiroAccB.isEnabled() == Boolean.TRUE) {
             searchAccept("Hiro", hiroPnl, hiroAccB);
         }
     }//GEN-LAST:event_hiroAccBMouseClicked
-
+    //Chi küldetés elfogadása
     private void chiAccBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chiAccBMouseClicked
         if (chiAccB.isEnabled() == Boolean.TRUE) {
             searchAccept("Chi", chiPnl, chiAccB);
         }
     }//GEN-LAST:event_chiAccBMouseClicked
-
+    //kő papír olló gyík Spoch
     private void shelChooseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_shelChooseMouseClicked
         Shelli();
     }//GEN-LAST:event_shelChooseMouseClicked
-    
-    public void accQuest(Boolean comp, String vilname,
+    //Küldetés jutalom kiadása method
+    private void accQuest(Boolean comp, String vilname,
             Integer xpMin, Integer xpMax,
             Integer gMin, Integer gMax,
             JButton btn){
-        
+        //adott npc és jutalom lekérése, megadása
         for (npc np : npcList){
             if (np.getVilName().contains(vilname)) {
                 if (comp == Boolean.TRUE && np.isAcc() == Boolean.TRUE) {
@@ -3193,15 +3081,16 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             }
         }
     }
-    
-    public void qaQuest(JComboBox box, String answer,
+    //Q&A küldetés jutalom kiosztása HA
+    private void qaQuest(JComboBox box, String answer,
             Integer xpMin, Integer xpMax,
             Integer gMin, Integer gMax,
             String vilname, JPanel pnl,
             JButton btn){
-        
+        //Próbálkozás
         try {
             if (box.getSelectedItem().toString().contains(answer)) {
+                //helyes válasz
                 npcsave.npcQuestComplete(ch, xpMin, xpMax, gMin, gMax);
                 for (npc np : npcList){
                     if (np.getVilName().contains(vilname)) {
@@ -3214,16 +3103,17 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 throw new Exception();
             }
         } catch(Exception ex){
+            //nem jó válasz :c
             JOptionPane.showMessageDialog(null, "Nem jó válasz!");
         }
         
     }
-    
-    public void Shelli(){
+    //kő papír olló gyík Spoch method
+    private void Shelli(){
         Random rnd = new Random();
         Integer val = shelC.getSelectedIndex() + 1;
         Integer gep = rnd.nextInt(5) + 1;
-        
+        //bekérés, eldöntés, kiosztás (Vini, Vidi, Vichi[?])
         try{
             switch (gep) {
             case 1:
@@ -3274,7 +3164,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         } finally {
             gameUpdate();
         }
-        
     }
     
     public static void main(String args[]) {
