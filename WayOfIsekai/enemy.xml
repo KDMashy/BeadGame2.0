@@ -33,7 +33,7 @@
         <quest>2</quest>
     </enemy>
     <enemy>
-        <name>Harpy worker</name>
+        <name>Harpy</name>
         <hp>200</hp>
         <dmg>9</dmg>
         <def>30</def>
@@ -41,15 +41,15 @@
         <quest>2</quest>
     </enemy>
     <enemy>
-        <name>Harpy Warrior</name>
+        <name>Troll</name>
         <hp>300</hp>
         <dmg>12</dmg>
-        <def>40</def>
-        <drate>45</drate>
+        <def>50</def>
+        <drate>50</drate>
         <quest>2</quest>
     </enemy>
     <enemy>
-        <name>Troll</name>
+        <name>Mount Troll</name>
         <hp>300</hp>
         <dmg>14</dmg>
         <def>50</def>
@@ -57,7 +57,7 @@
         <quest>3</quest>
     </enemy>
     <enemy>
-        <name>High Mount Goblin</name>
+        <name>High Mount Troll</name>
         <hp>350</hp>
         <dmg>16</dmg>
         <def>50</def>

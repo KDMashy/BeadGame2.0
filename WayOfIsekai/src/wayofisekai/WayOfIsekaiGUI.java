@@ -371,38 +371,40 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cProfLayout.createSequentialGroup()
                         .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cSex2)
-                            .addComponent(cSex1)
-                            .addComponent(cSex3))
-                        .addGap(18, 18, 18)
-                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cMoneyDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(cProfLayout.createSequentialGroup()
-                                .addComponent(cDmgDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(cProfLayout.createSequentialGroup()
-                        .addComponent(cSex)
-                        .addGap(41, 41, 41)
-                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cProfLayout.createSequentialGroup()
+                                .addGap(84, 84, 84)
                                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(xpBarDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(xpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(cHpDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cProfLayout.createSequentialGroup()
-                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 47, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cProfLayout.createSequentialGroup()
+                                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cNameDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(cProfLayout.createSequentialGroup()
+                                        .addComponent(cNameDot)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cLvl)
+                                    .addComponent(lvl, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21))
                             .addGroup(cProfLayout.createSequentialGroup()
-                                .addComponent(cNameDot)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cLvl)
-                            .addComponent(lvl, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)))
-                .addContainerGap())
+                                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cSex2)
+                                    .addComponent(cSex1))
+                                .addGap(18, 18, 18)
+                                .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cSexDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cDmgDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(cProfLayout.createSequentialGroup()
+                                .addComponent(cSex)
+                                .addGap(41, 41, 41)
+                                .addComponent(cHpDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(cProfLayout.createSequentialGroup()
+                        .addComponent(cSex3)
+                        .addGap(12, 12, 12)
+                        .addComponent(cMoneyDisp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         cProfLayout.setVerticalGroup(
             cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +421,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                 .addComponent(xpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(xpBarDisp)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(cProfLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cSex)
                     .addComponent(cHpDisp))
@@ -940,8 +942,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         gameLayout.setVerticalGroup(
             gameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameLayout.createSequentialGroup()
-                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(cProf, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(enemyList)
                 .addGap(18, 18, 18)
                 .addComponent(igsave)
@@ -1125,7 +1127,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         );
 
         enemyimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        enemyimg.setText("ENEMY");
 
         charimg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -2285,17 +2286,19 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     ch.setName(cNameText.getText());
                     ch.setSex(charSex);
                     //karakter szint beállítása ha csaló név van
-                    if (cNameText.getText().equals("Kaede")) {
+                    if (cNameText.getText().equalsIgnoreCase("Kaede")) {
                         ch.setXp(1000000);
                         while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {                    
                             ch.lvlUp();
                         }
+                        ch.setMoney(1000000);
                     }
-                    if (cNameText.getText().equals("Molli")) {
-                        ch.setXp(4000000);
+                    if (cNameText.getText().equalsIgnoreCase("Molli")) {
+                        ch.setXp(6000000);
                         while (ch.getXp() >= chF.lvlUpXp(ch.getLvl())) {                    
                             ch.lvlUp();
                         }
+                        ch.setMoney(1000000);
                     }
                     //karakter mentése
                     chF.saveObject(ch, ch.getName());
@@ -2311,6 +2314,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     }
                     cNameText.setText("");
                 }
+                ch = new Character();
                 //gombok visszaállítása
                 load.setEnabled(Boolean.TRUE);
                 newSave.setEnabled(Boolean.TRUE);
@@ -2502,7 +2506,8 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_cNameTextKeyReleased
     //karakter - hozzátartozó npc-k törlése
     private void delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseClicked
-        if (del.isEnabled() == Boolean.TRUE) {            
+        try{
+            if (del.isEnabled() == Boolean.TRUE) {            
             chF.removeChar(ch, cBox.getSelectedItem().toString());
             npc xy = new npc("asd", Boolean.FALSE, Boolean.FALSE, "asd");
             npcList = npcsave.loadNpc(xy, cBox.getSelectedItem().toString());
@@ -2513,6 +2518,13 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             //tábla frissítés
             clearTable(tbLoad);
             fillTableCharacter();
+            }
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null, "Nincs karakter amit törölhetnél");
+            removeAccept.setSelected(Boolean.FALSE);
+            del.setEnabled(Boolean.FALSE);
+            loadPnl.setVisible(Boolean.FALSE);
+            logScreen.setVisible(Boolean.TRUE);
         }
     }//GEN-LAST:event_delMouseClicked
     //biztos akarja törölni?
@@ -2632,6 +2644,78 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
     //Szükséges változók
     private ArrayList<Enemy> le = new ArrayList<>();
     private Integer questId = 0;
+    //ellenfél img választás
+    private void eimg(Enemy e){
+        ImageIcon enemyIcon = new ImageIcon();
+        Random rnd = new Random();
+        switch (e.getName()){
+            case "Wolf":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\1.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Bear":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\2.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Wyvern":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\3.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Goblin":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\4.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Harpy":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\5.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Troll":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\6és7.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Mount Troll":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\6és7.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "High Mount Troll":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\8.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Goblin King":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\9.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Watcher":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\10.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Behemoth":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\11.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Thunderjaw":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\12.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Werewolf":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\13.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+            case "Vampire":
+                if (rnd.nextBoolean() == Boolean.TRUE) {
+                    enemyIcon = new ImageIcon("src\\wayofisekai\\14f.png");
+                    enemyimg.setIcon(enemyIcon);
+                } else {
+                    enemyIcon = new ImageIcon("src\\wayofisekai\\14m.png");
+                    enemyimg.setIcon(enemyIcon);
+                }
+                break;
+            case "KALKULUS":
+                enemyIcon = new ImageIcon("src\\wayofisekai\\15.png");
+                enemyimg.setIcon(enemyIcon);
+                break;
+        }
+    }
     //harc kezdése
     public void fightStart(Integer qid){
         //küldetésekhez id
@@ -2654,8 +2738,6 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
             fightIcon = new ImageIcon("src\\wayofisekai\\charfightmale.png");
             charimg.setIcon(fightIcon);
         }
-        //enemy img
-        
         //ellenfél/ellenfelek lekérése
         le = enemyF.quest(ch, qid);
         enemyHp = le.get(0).getHp();
@@ -2665,6 +2747,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
         String hp =le.get(0).getHp().toString();
         eHpDisp.setText(hp + " / " + hp);
         efDmg.setText(le.get(0).getAtk().toString());
+        eimg(le.get(0));
     }
     //harc frissítése
     public void fightUpdate(){
@@ -2680,6 +2763,7 @@ public class WayOfIsekaiGUI extends javax.swing.JFrame {
                     le.get(enemyFightID).getDefHp().toString());
             efDmg.setText(le.get(enemyFightID).getAtk().toString());
             enemyHp = le.get(enemyFightID).getHp();
+            eimg(le.get(enemyFightID));
             dead = Boolean.FALSE;
         } else {
             //karakter sebződik

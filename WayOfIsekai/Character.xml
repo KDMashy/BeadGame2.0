@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><wayofisekai.Character>
-<Character>
-<lvl type="Integer">28</lvl>
-<money type="Integer">379</money>
-<def type="Integer">300</def>
-<sex type="Boolean">true</sex>
-<xp type="Integer">48794</xp>
-<name type="String">Kaede</name>
-<hp type="Integer">7500</hp>
-<atk type="Integer">750</atk>
-</Character>
-<Character><lvl type="Integer">46</lvl><money type="Integer">0</money><def type="Integer">480</def><sex type="Boolean">true</sex><xp type="Integer">365000</xp><name type="String">Molli</name><hp type="Integer">12000</hp><atk type="Integer">1200</atk></Character></wayofisekai.Character>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><wayofisekai.Character><Character><lvl type="Integer">1</lvl><money type="Integer">0</money><def type="Integer">30</def><sex type="Boolean">false</sex><xp type="Integer">0</xp><name type="String">Raku</name><hp type="Integer">350</hp><atk type="Integer">50</atk></Character><Character><lvl type="Integer">28</lvl><money type="Integer">1000000</money><def type="Integer">300</def><sex type="Boolean">true</sex><xp type="Integer">46000</xp><name type="String">Kaede</name><hp type="Integer">7500</hp><atk type="Integer">750</atk></Character><Character><lvl type="Integer">48</lvl><money type="Integer">1000000</money><def type="Integer">500</def><sex type="Boolean">true</sex><xp type="Integer">435000</xp><name type="String">Molli</name><hp type="Integer">12500</hp><atk type="Integer">1250</atk></Character><Character><lvl type="Integer">1</lvl><money type="Integer">0</money><def type="Integer">30</def><sex type="Boolean">true</sex><xp type="Integer">0</xp><name type="String">TEST</name><hp type="Integer">350</hp><atk type="Integer">50</atk></Character><Character><lvl type="Integer">1</lvl><money type="Integer">0</money><def type="Integer">30</def><sex type="Boolean">false</sex><xp type="Integer">0</xp><name type="String">TEST2</name><hp type="Integer">350</hp><atk type="Integer">50</atk></Character></wayofisekai.Character>

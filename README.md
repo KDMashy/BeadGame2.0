@@ -64,7 +64,7 @@ Az ellenfelek leírását tartalmazó lista megjelenítése
 
     Save
 
-Manuális mentése a játék 
+Manuális mentése a játéknak 
 
     Exit
 
