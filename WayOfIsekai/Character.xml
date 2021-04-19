@@ -49,4 +49,14 @@
 <hp type="Integer">750</hp>
 <atk type="Integer">75</atk>
 </Character>
+<Character>
+<lvl type="Integer">1</lvl>
+<money type="Integer">0</money>
+<def type="Integer">30</def>
+<sex type="Boolean">false</sex>
+<xp type="Integer">0</xp>
+<name type="String">TEST1</name>
+<hp type="Integer">350</hp>
+<atk type="Integer">50</atk>
+</Character>
 <Character><lvl type="Integer">49</lvl><money type="Integer">1087554</money><def type="Integer">510</def><sex type="Boolean">true</sex><xp type="Integer">3674</xp><name type="String">Molli</name><hp type="Integer">12750</hp><atk type="Integer">1275</atk></Character></wayofisekai.Character>
